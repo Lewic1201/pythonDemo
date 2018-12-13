@@ -102,5 +102,5 @@ if __name__ == '__main__':
     # ss.containsDuplicate([1, 2, 3, 1])
     # ss.containsDuplicate([1, 2, 3, 4])
     # ss.containsDuplicate([1, 1, 1, 3, 3, 4, 3, 2, 4, 2])
-    ss.singleNumber([2, 2, 1])
-    ss.singleNumber([4, 1, 2, 1, 2])
+    # ss.singleNumber([2, 2, 1])
+    # ss.singleNumber([4, 1, 2, 1, 2])
