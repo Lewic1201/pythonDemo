@@ -91,6 +91,46 @@ class Solution:
             res ^= i
         return res
 
+    @prints
+    def isValidSudoku(self, board):
+        """
+        :type board: List[List[str]]
+        :rtype: bool
+        """
+        board_col = []
+        board_div = []
+        for ri, row in enumerate(board):
+            for ci, num in enumerate(row):
+                if num == '.':
+                    continue
+                while ci >= len(board_col):
+                    board_col.append([])
+                board_col[ci].append(num)
+                board_div_index = ci // 3 + (ri // 3) * 3
+                while board_div_index >= len(board_div):
+                    board_div.append([])
+                board_div[board_div_index].append(num)
+
+        for row in board:
+            tmp = []
+            for num in row:
+                if num != '.':
+                    tmp.append(num)
+            if len(tmp) != len(set(tmp)):
+                return False
+        for row in board_col:
+            tmp = []
+            for num in row:
+                tmp.append(num)
+            if len(tmp) != len(set(tmp)):
+                return False
+        for row in board_div:
+            tmp = []
+            for num in row:
+                tmp.append(num)
+            if len(tmp) != len(set(tmp)):
+                return False
+        return True
 
 if __name__ == '__main__':
     ss = Solution()
