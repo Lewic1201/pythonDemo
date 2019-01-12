@@ -132,6 +132,25 @@ class Solution:
                 return False
         return True
 
+    @prints
+    def plusOne(self, digits):
+        """
+        :type digits: List[int]
+        :rtype: List[int]
+        """
+        dlen = len(digits)
+        for k, v in enumerate(digits[::-1]):
+            if v == 9:
+                digits[dlen - k - 1] = 0
+                if k == dlen - 1:
+                    digits.insert(0, 1)
+                    return digits
+                continue
+            else:
+                digits[dlen - k - 1] += 1
+                return digits
+
+
 if __name__ == '__main__':
     ss = Solution()
     # ss.removeDuplicates([1, 1, 2])
