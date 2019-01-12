@@ -57,45 +57,129 @@ class Solution:
         return profit
 
     @prints
-    def containsDuplicate(self, nums):
+    def plusOne(self, digits):
         """
-        :type nums: List[int]
-        :rtype: bool
+        :type digits: List[int]
+        :rtype: List[int]
         """
-        # for i in range(len(nums) - 1):
-        #     for j in range(i + 1, len(nums)):
-        #         if nums[i] == nums[j]:
-        #             return True
-        # else:
-        #     return False
-        if len(nums) == len(set(nums)):
-            return False
-        else:
-            return True
+        # digits[-1] += 1
+        # return digits
+        # digits = []
+        dlen = len(digits)
+        for k, v in enumerate(digits[::-1]):
+            if v == 9:
+                digits[dlen - k - 1] = 0
+                if k == dlen - 1:
+                    digits.insert(0, 1)
+                    return digits
+                continue
+            else:
+                digits[dlen - k - 1] += 1
+                return digits
 
     @prints
-    def singleNumber(self, nums):
+    def intersect(self, nums1, nums2):
+        """
+        :type nums1: List[int]
+        :type nums2: List[int]
+        :rtype: List[int]
+        """
+        set1 = set(nums1)
+        set2 = set(nums2)
+        for i in set1:
+            m = nums1.count(i)
+            if i in set2:
+                n = nums2.count(i)
+                if m > n:
+                    for j in range(m - n):
+                        nums1.remove(i)
+            else:
+                for j in range(m):
+                    nums1.remove(i)
+        return nums1
+
+    @prints
+    def subsets(self, nums):
         """
         :type nums: List[int]
-        :rtype: int
+        :rtype: List[List[int]]
         """
-        # set_ = set()
+        from copy import deepcopy
+        ret = []
+        nums_len = len(nums)
+        for i in range(nums_len):
+            num = []
+            for j in range(i, nums_len):
+                num.append(nums[j])
+                ret.append(deepcopy(num))
+        ret.append([])
+        return ret
+
+    @prints
+    # Definition for singly-linked list.
+    # class ListNode:
+    #     def __init__(self, x):
+    #         self.val = x
+    #         self.next = None
+    def addTwoNumbers(self, l1, l2):
+        """
+        :type l1: ListNode
+        :type l2: ListNode
+        :rtype: ListNode
+        """
+        pass
+
+    @prints
+    def longestCommonPrefix(self, strs):
+        """
+        :type strs: List[str]
+        :rtype: str
+        """
+        prefix_str = ""
+        for i in strs[0]:
+            prefix_str += i
+            for j in strs:
+                if not j.startswith(prefix_str):
+                    return prefix_str[:-1]
+
+    @prints
+    def moveZeroes(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: void Do not return anything, modify nums in-place instead.
+        """
         # for i in nums:
-        #     if i in set_:
-        #         set_.remove(i)
-        #     else:
-        #         set_.add(i)
-        # return set_[0]
-        res = 0
+        #     if i == 0:
+        #         nums.remove(0)
+        #         nums.append(0)
+        # return nums
+        j = 0
         for i in nums:
-            res ^= i
-        return res
+            if i != 0:
+                nums[j] = i
+                j += 1
+        for k in range(j, len(nums)):
+            nums[k] = 0
+        return nums
 
     @prints
     def isValidSudoku(self, board):
         """
         :type board: List[List[str]]
         :rtype: bool
+        input:
+        [
+          ["5","3",".",".","7",".",".",".","."],
+          ["6",".",".","1","9","5",".",".","."],
+          [".","9","8",".",".",".",".","6","."],
+          ["8",".",".",".","6",".",".",".","3"],
+          ["4",".",".","8",".","3",".",".","1"],
+          ["7",".",".",".","2",".",".",".","6"],
+          [".","6",".",".",".",".","2","8","."],
+          [".",".",".","4","1","9",".",".","5"],
+          [".",".",".",".","8",".",".","7","9"]
+        ]
+        return: true
         """
         board_col = []
         board_div = []
@@ -150,6 +234,41 @@ class Solution:
                 digits[dlen - k - 1] += 1
                 return digits
 
+    @prints
+    def containsDuplicate(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: bool
+        """
+        # for i in range(len(nums) - 1):
+        #     for j in range(i + 1, len(nums)):
+        #         if nums[i] == nums[j]:
+        #             return True
+        # else:
+        #     return False
+        if len(nums) == len(set(nums)):
+            return False
+        else:
+            return True
+
+    @prints
+    def singleNumber(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        # set_ = set()
+        # for i in nums:
+        #     if i in set_:
+        #         set_.remove(i)
+        #     else:
+        #         set_.add(i)
+        # return set_[0]
+        res = 0
+        for i in nums:
+            res ^= i
+        return res
+
 
 if __name__ == '__main__':
     ss = Solution()
@@ -158,8 +277,25 @@ if __name__ == '__main__':
     # ss.maxProfit([7, 1, 5, 3, 6, 4])
     # ss.maxProfit([1, 2, 3, 4, 5])
     # ss.maxProfit([7, 6, 4, 3, 1])
-    # ss.containsDuplicate([1, 2, 3, 1])
-    # ss.containsDuplicate([1, 2, 3, 4])
-    # ss.containsDuplicate([1, 1, 1, 3, 3, 4, 3, 2, 4, 2])
-    # ss.singleNumber([2, 2, 1])
-    # ss.singleNumber([4, 1, 2, 1, 2])
+    # ss.plusOne([1, 2, 3])
+    # ss.plusOne([4, 3, 2, 1])
+    # ss.plusOne([4, 3, 2, 9])
+    # ss.plusOne([9, 9, 9, 9])
+    # ss.intersect([1, 2, 2, 1], [2, 2])
+    # ss.intersect([4, 9, 5], [9, 4, 9, 8, 4])
+    # ss.subsets([1,2,3])
+    # ss.moveZeroes([0, 1, 0, 3, 12])
+    # ss.moveZeroes([])
+    # ss.moveZeroes([0])
+    # jgg = [
+    #     ["5", "3", ".", ".", "7", ".", ".", ".", "."],
+    #     ["6", ".", ".", "1", "9", "5", ".", ".", "."],
+    #     [".", "9", "8", ".", ".", ".", ".", "6", "."],
+    #     ["8", ".", ".", ".", "6", ".", ".", ".", "3"],
+    #     ["4", ".", ".", "8", ".", "3", ".", ".", "1"],
+    #     ["7", ".", ".", ".", "2", ".", ".", ".", "6"],
+    #     [".", "6", ".", ".", ".", ".", "2", "8", "."],
+    #     [".", ".", ".", "4", "1", "9", ".", ".", "5"],
+    #     [".", ".", ".", ".", "8", ".", ".", "7", "9"]
+    # ]
+    # ss.isValidSudoku(jgg)
