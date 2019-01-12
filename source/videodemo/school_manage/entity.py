@@ -83,3 +83,4 @@ class ManageView:
 
 class TeacherView:
     def __init__(self, teacher):
+        pass
