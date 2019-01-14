@@ -3,3 +3,5 @@
 /.idea/modules.xml
 /.idea/pythonDemo.iml
 /.idea/workspace.xml
+*.pyc
+*.log
