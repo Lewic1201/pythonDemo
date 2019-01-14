@@ -269,6 +269,45 @@ class Solution:
             res ^= i
         return res
 
+    @prints
+    def threeSum(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: List[List[int]]
+
+        例如, 给定数组 nums = [-1, 0, 1, 2, -1, -4]，
+
+        满足要求的三元组集合为：
+        [
+          [-1, 0, 1],
+          [-1, -1, 2]
+        ]
+        """
+        min0 = []
+        max0 = []
+        ret = []
+        for i in nums:
+            if i < 0:
+                min0.append(i)
+            else:
+                max0.append(i)
+
+        for j in set(min0):
+            for k in set(max0):
+                m = -j - k
+                if m in nums:
+                    if m < 0:
+                        group = [m, j, k]
+                    elif m > 0:
+                        group = [j, k, m]
+                    else:
+                        group = [j, m, k]
+
+                    if group not in ret:
+                        ret.append(group)
+
+        return ret
+
 
 if __name__ == '__main__':
     ss = Solution()
@@ -299,3 +338,4 @@ if __name__ == '__main__':
     #     [".", ".", ".", ".", "8", ".", ".", "7", "9"]
     # ]
     # ss.isValidSudoku(jgg)
+    ss.threeSum([-1, 0, 1, 2, -1, -4])
