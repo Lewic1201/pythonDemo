@@ -1,27 +1,1816 @@
-C:\Python\Python27\python2 -m pip install aniso8601-1.2.0.tar.gz
-C:\Python\Python27\python2 -m pip install argparse-1.4.0.tar.gz
-C:\Python\Python27\python2 -m pip install boto-2.38.0.tar.gz
-C:\Python\Python27\python2 -m pip install Flask-0.10.1.tar.gz
-C:\Python\Python27\python2 -m pip install Flask-RESTful-0.3.5.tar.gz
-C:\Python\Python27\python2 -m pip install gunicorn-19.7.1.tar.gz
-C:\Python\Python27\python2 -m pip install ipaddress-1.0.16.tar.gz
-C:\Python\Python27\python2 -m pip install itsdangerous-0.23.tar.gz
-C:\Python\Python27\python2 -m pip install Jinja2-2.8.tar.gz
-C:\Python\Python27\python2 -m pip install MarkupSafe-1.0.tar.gz
-C:\Python\Python27\python2 -m pip install netifaces-0.10.4.tar.gz
-C:\Python\Python27\python2 -m pip install pip-7.1.2.tar.gz
-C:\Python\Python27\python2 -m pip install psycopg2-2.5.1.tar.gz
-C:\Python\Python27\python2 -m pip install python-dateutil-2.5.3.tar.gz
-C:\Python\Python27\python2 -m pip install python-ipy-IPy-0.51.tar.gz
-C:\Python\Python27\python2 -m pip install pytz-2014.10.tar.bz2
-C:\Python\Python27\python2 -m pip install requests-2.13.0.tar.gz
-C:\Python\Python27\python2 -m pip install retrying-1.3.3.tar.gz
-C:\Python\Python27\python2 -m pip install setuptools-19.6.2.tar.gz
-C:\Python\Python27\python2 -m pip install six-1.10.0.tar.gz
-C:\Python\Python27\python2 -m pip install SQLAlchemy-1.0.11.tar.gz
-C:\Python\Python27\python2 -m pip install SQLAlchemy-Utils-0.31.6.tar.gz
-C:\Python\Python27\python2 -m pip install virtualenv-14.0.0.tar.gz
-C:\Python\Python27\python2 -m pip install Werkzeug-0.12.2.tar.gz
-C:\Python\Python27\python2 -m pip install xlrd-1.1.0.tar.gz
-C:\Python\Python27\python2 -m pip install XlsxWriter-0.9.8.tar.gz
-C:\Python\Python27\python2 -m pip install xlwt-1.2.0.tar.gz
+"""Swagger UI(self):
+"""swagger(self):
+"""Select a spec(self):
+
+"""上海数讯云平台 RESTful APIs(self):
+""" 1.0.0(self):
+"""[ Base URL(self): 192.168.199.143(self):18080_api ] http(self):__192.168.199.143(self):18080_api_v2_api_docs(self):
+"""上海数讯云平台 RESTful 风格的接口文档。(self):
+
+"""Terms of service(self):
+"""VPN接口(self):
+"""VPN Controller"""
+    
+
+
+
+def test_get_ikepolicies(self):
+"""获取IKE策略一览"""
+    
+
+def test_post_ikepolicies(self):
+"""创建IKE策略"""
+    
+
+def test_get_ikepolicies_id(self):
+"""获取IKE策略详情"""
+    
+
+def test_get_ipsec_connections(self):
+"""获取VPN服务连接一览"""
+    
+
+def test_post_ipsec_connections(self):
+"""创建VPN服务连接"""
+    
+
+def test_get_ipsec_connections_id(self):
+"""获取VPN服务连接详情"""
+    
+
+def test_get_ipsecpolicies(self):
+"""获取IPSEC策略一览"""
+    
+
+def test_post_ipsecpolicies(self):
+"""创建IPSEC策略"""
+    
+
+def test_get_ipsecpolicies_id(self):
+"""获取IPSEC策略详情"""
+    
+
+def test_get_vpns(self):
+"""获取VPN一览"""
+    
+
+def test_post_vpns(self):
+"""创建VPN"""
+    
+
+def test_get_vpns_id(self):
+"""获取VPN详情"""
+    
+
+def test_put_vpns_id(self):
+"""更新VPN"""
+    
+
+def test_delete_vpns_id(self):
+"""删除VPN(self):
+"""主机集群接口(self):
+"""Host Controller"""
+    
+
+
+
+def test_get_host_aggregates(self):
+"""获取主机集群列表"""
+    
+
+def test_post_host_aggregates(self):
+"""创建主机集群"""
+    
+
+def test_get_host_aggregates_id(self):
+"""获取主机集群详情"""
+    
+
+def test_put_host_aggregates_id(self):
+"""更新主机集群"""
+    
+
+def test_delete_host_aggregates_id(self):
+"""删除主机集群"""
+    
+
+def test_put_host_aggregates_id_add(self):
+"""主机集群添加主机"""
+    
+
+def test_put_host_aggregates_id_remove(self):
+"""主机集群移除主机"""
+    
+
+def test_get_hosts(self):
+"""获取主机列表"""
+    
+
+def test_get_hosts_id(self):
+"""获取主机详情"""
+    
+
+"""云主机接口(self):
+"""Instance Controller"""
+    
+
+
+
+def test_get_instances(self):
+"""获取云主机列表"""
+    
+
+def test_post_instances(self):
+"""创建云主机"""
+    
+
+def test_delete_instances(self):
+"""真批量删除云主机"""
+    
+
+def test_get_instances_id(self):
+"""获取云主机详情"""
+    
+
+def test_put_instances_id(self):
+"""更新云主机"""
+    
+
+def test_delete_instances_id(self):
+"""删除单个云主机(立即删除)"""
+    
+
+def test_post_instances_id_backup(self):
+"""创建云主机备份"""
+    
+
+def test_post_instances_id_forceRestart(self):
+"""硬重启云主机"""
+    
+
+def test_post_instances_id_image_imageName_type_type(self):
+"""创建主机镜像"""
+    
+
+def test_post_instances_id_liveMigration_hostName(self):
+"""迁移云主机"""
+    
+
+def test_get_instances_id_os_getRDPConsole(self):
+"""获取RDP控制台"""
+    
+
+def test_get_instances_id_os_getSerialConsole(self):
+"""获取serial控制台"""
+    
+
+def test_get_instances_id_os_getSPICEConsole(self):
+"""获取spice控制台"""
+    
+
+def test_get_instances_id_os_getVNCConsole(self):
+"""获取vnc控制台(self):
+"""HEAD(self):
+"""_instances_id_os_getVNCConsole(self):
+"""获取vnc控制台"""
+    
+
+def test_post_instances_id_os_getVNCConsole(self):
+"""获取vnc控制台"""
+    
+
+def test_put_instances_id_os_getVNCConsole(self):
+"""获取vnc控制台"""
+    
+
+def test_delete_instances_id_os_getVNCConsole(self):
+"""获取vnc控制台(self):
+"""OPTIONS(self):
+"""_instances_id_os_getVNCConsole(self):
+"""获取vnc控制台"""
+    
+
+def test_patch_instances_id_os_getVNCConsole(self):
+"""获取vnc控制台"""
+    
+
+def test_post_instances_id_pause(self):
+"""暂停云主机"""
+    
+
+def test_post_instances_id_ports(self):
+"""云主机添加端口"""
+    
+
+def test_delete_instances_id_ports_portId(self):
+"""云主机移除端口"""
+    
+
+def test_post_instances_id_reset_password(self):
+"""云主机重置密码"""
+    
+
+def test_post_instances_id_resize_flavorId(self):
+"""调整云主机规格"""
+    
+
+def test_post_instances_id_restart(self):
+"""软重启云主机"""
+    
+
+def test_post_instances_id_resume(self):
+"""恢复云主机"""
+    
+
+def test_post_instances_id_snapshots(self):
+"""创建云主机快照"""
+    
+
+def test_post_instances_id_start(self):
+"""开启云主机"""
+    
+
+def test_post_instances_id_stop(self):
+"""关闭云主机"""
+    
+
+def test_post_instances_id_suspend(self):
+"""挂起云主机"""
+    
+
+def test_post_instances_id_unpause(self):
+"""取消暂停云主机"""
+    
+
+def test_get_instances_id_volumes(self):
+"""获取云主机硬盘列表"""
+    
+
+def test_post_instances_id_volumes(self):
+"""云主机添加硬盘"""
+    
+
+def test_delete_instances_id_volumes_volumeId(self):
+"""云主机移除硬盘"""
+    
+
+def test_get_instances_config(self):
+"""获取云主机配置"""
+    
+
+def test_delete_instances_reclaim(self):
+"""删除云主机(批量删除，不立刻删除，进入资源回收区。后台择机删除)"""
+    
+
+def test_post_instances_startHA(self):
+"""开启云主机HA(批量)"""
+    
+
+def test_post_instances_stopHA(self):
+"""关闭云主机HA(批量)"""
+    
+
+def test_put_instances_unDelete(self):
+"""取消删除云主机()(self):
+"""云桌面接口(self):
+"""VDI Controller"""
+    
+
+
+
+def test_get_vdi_instances(self):
+"""获取云桌面一览"""
+    
+
+def test_post_vdi_instances(self):
+"""创建云桌面"""
+    
+
+def test_get_vdi_instances_id(self):
+"""获取云桌面详细"""
+    
+
+def test_get_vdi_instances_config(self):
+"""获取云桌面配置(self):
+"""云硬盘QoS接口(self):
+"""Volume Qo S Controller"""
+    
+
+
+
+def test_get_volumeQos(self):
+"""获取云硬盘QoS一览"""
+    
+
+def test_post_volumeQos(self):
+"""创建云硬盘QoS"""
+    
+
+def test_get_volumeQos_id(self):
+"""获取云硬盘QoS详情"""
+    
+
+def test_delete_volumeQos_id(self):
+"""删除云硬盘QoS"""
+    
+
+def test_put_volumeQos_id_attach_volumeTypeId(self):
+"""云硬盘类型绑定云硬盘QoS"""
+    
+
+def test_put_volumeQos_id_detach_volumeTypeId(self):
+"""云硬盘类型解绑云硬盘QoS(self):
+"""云硬盘接口(self):
+"""Volume Controller"""
+    
+
+
+
+def test_get_volumes(self):
+"""获取云硬盘一览"""
+    
+
+def test_post_volumes(self):
+"""创建云硬盘"""
+    
+
+def test_delete_volumes(self):
+"""批量删除云硬盘"""
+    
+
+def test_get_volumes_id(self):
+"""获取云硬盘详情"""
+    
+
+def test_put_volumes_id(self):
+"""更新云硬盘"""
+    
+
+def test_delete_volumes_id(self):
+"""删除云硬盘"""
+    
+
+def test_put_volumes_id_size(self):
+"""扩充云硬盘"""
+    
+
+def test_get_volumes_config(self):
+"""获取云硬盘配置(self):
+"""云硬盘类型接口(self):
+"""Volume Type Controller"""
+    
+
+
+
+def test_get_volumes_backend(self):
+"""获取存储后端一览"""
+    
+
+def test_get_volumes_type(self):
+"""获取云硬盘类型一览"""
+    
+
+def test_post_volumes_type(self):
+"""创建云硬盘类型"""
+    
+
+def test_get_volumes_type_id(self):
+"""获取云硬盘类型详情"""
+    
+
+def test_put_volumes_type_id(self):
+"""更新云硬盘类型"""
+    
+
+def test_delete_volumes_type_id(self):
+"""删除云硬盘类型(self):
+"""区域接口(self):
+"""Region Controller"""
+    
+
+
+
+def test_get_regions(self):
+"""获取区域一览"""
+    
+
+def test_put_regions_id(self):
+"""更新当前区域(self):
+"""单价模板操作接口(self):
+"""Rating Template Controller"""
+    
+
+
+
+def test_post_rating_init(self):
+"""初始化计费信息"""
+    
+
+def test_post_rating_policies_id(self):
+"""创建计费策略"""
+    
+
+def test_get_rating_policies_id_fieldId(self):
+"""获取计费条目详情"""
+    
+
+def test_get_rating_services(self):
+"""获取计费的服务列表"""
+    
+
+def test_post_rating_services(self):
+"""创建可计费的服务"""
+    
+
+def test_get_rating_services_id(self):
+"""获取计费的服务详情"""
+    
+
+def test_get_rating_tenants(self):
+"""获取组织和单价模板映射列表"""
+    
+
+def test_post_rating_tenants(self):
+"""适用单价模板"""
+    
+
+def test_get_rating_tenants_id(self):
+"""获取组织和单价模板映射"""
+    
+
+def test_put_rating_tenants_id(self):
+"""更新租户计费模板"""
+    
+
+def test_delete_rating_tenants_id(self):
+"""取消组织适用的单价模板"""
+    
+
+def test_get_rating_versions(self):
+"""获取单价模板版本列表"""
+    
+
+def test_get_rating_versions_id(self):
+"""获取单价模板版本详情"""
+    
+
+def test_put_rating_versions_id(self):
+"""更新计费版本"""
+    
+
+def test_delete_rating_versions_id(self):
+"""删除计费版本"""
+    
+
+def test_get_templates(self):
+"""获取单价模板列表"""
+    
+
+def test_post_templates(self):
+"""创建单价模板"""
+    
+
+def test_get_templates_id(self):
+"""获取单价模板详情"""
+    
+
+def test_put_templates_id(self):
+"""更新单价模板"""
+    
+
+def test_delete_templates_id(self):
+"""删除单价模板(self):
+"""备份任务接口(self):
+"""Backup Task Controller"""
+    
+
+
+
+"""备份接口(self):
+"""Backup Controller"""
+    
+
+
+
+"""子网接口(self):
+"""Subnet Controller"""
+    
+
+
+
+"""安全组接口(self):
+"""Security Group Controller"""
+    
+
+
+
+"""安全组规则接口(self):
+"""Security Group Rule Controller"""
+    
+
+
+
+"""容器操作接口(self):
+"""Container Controller"""
+    
+
+
+
+def test_get_k8scontainers(self):
+"""check用户是否已经开通容器服务"""
+    
+
+def test_post_k8scontainers(self):
+"""开启容器服务"""
+    
+
+def test_get_k8scontainers_config(self):
+"""获取容器配置"""
+    
+
+def test_get_k8scontainers_containers(self):
+"""获取容器列表"""
+    
+
+def test_post_k8scontainers_containers(self):
+"""创建容器"""
+    
+
+def test_get_k8scontainers_containers_id(self):
+"""获取容器详细信息"""
+    
+
+def test_delete_k8scontainers_containers_id(self):
+"""删除容器"""
+    
+
+def test_delete_k8scontainers_namespaces_name(self):
+"""关闭容器服务"""
+    
+
+def test_get_k8scontainers_networksetting(self):
+"""获取容器网络设置(self):
+"""容器磁盘操作接口(self):
+"""Container Volume Controller"""
+    
+
+
+
+def test_get_k8scontainers_volumes(self):
+"""获取容器磁盘列表"""
+    
+
+def test_post_k8scontainers_volumes(self):
+"""创建容器磁盘"""
+    
+
+def test_get_k8scontainers_volumes_id(self):
+"""获取容器磁盘详情"""
+    
+
+def test_put_k8scontainers_volumes_id(self):
+"""更新容器磁盘"""
+    
+
+def test_delete_k8scontainers_volumes_id(self):
+"""删除容器磁盘"""
+    
+
+def test_get_k8svolumes_config(self):
+"""获取容器磁盘配置"""
+    
+
+"""容器镜像操作接口"""
+    
+
+"""Container Image Controller"""
+    
+
+
+
+def test_get_containerimages(self):
+"""获取容器镜像列表"""
+    
+
+def test_post_containerimages(self):
+"""创建容器镜像"""
+    
+
+def test_get_containerimages_id(self):
+"""获取容器镜像列详情"""
+    
+
+def test_put_containerimages_id(self):
+"""更新容器镜像"""
+    
+
+def test_delete_containerimages_id(self):
+"""删除容器镜像"""
+    
+
+def test_post_containerimages_id_file(self):
+"""上传镜像"""
+    
+
+def test_put_containerimages_id_file(self):
+"""通知开始上传文件"""
+    
+
+def test_put_containerimages_id_file_filename(self):
+"""通知上传文件完成"""
+    
+
+def test_put_containerimages_id_status_status(self):
+"""重置容器镜像状态"""
+    
+
+"""密钥对接口"""
+    
+
+"""Keypair Controller"""
+    
+
+
+
+"""工作流定义操作接口(self):
+"""Process Def Controller"""
+    
+
+
+
+def test_get_workflow_processDefinition_id(self):
+"""获取工作流定义详情"""
+    
+
+def test_put_workflow_processDefinition_id(self):
+"""更新流程定义信息"""
+    
+
+def test_put_workflow_processDefinition_id_action(self):
+"""启用_禁用流程定义"""
+    
+
+def test_get_workflow_processDefinitions(self):
+"""获取工作流定义列表"""
+    
+
+def test_put_workflow_step_id(self):
+"""更新流程步骤信息"""
+    
+
+def test_put_workflow_step_id_action(self):
+"""启用_禁用流程步骤"""
+    
+
+def test_post_workflow_steps(self):
+"""新建流程步骤信息(self):
+"""平台服务操作接口(self):
+"""Cloud Service Controller"""
+    
+
+
+
+"""平台资源操作接口(self):
+"""Resource Manager Controller"""
+    
+
+
+
+def test_get_aggregation_info(self):
+"""获取集群中资源信息"""
+    
+
+def test_get_configurations(self):
+"""获取平台设置"""
+    
+
+def test_put_configurations(self):
+"""更新平台设置"""
+    
+
+def test_get_overcommits(self):
+"""获取超配比"""
+    
+
+def test_put_overcommits(self):
+"""更新超配比"""
+    
+
+def test_get_platform_hosts(self):
+"""获取物理机列表"""
+    
+
+def test_get_platform_hosts_id(self):
+"""获取物理机详情"""
+    
+
+def test_get_platform_resources(self):
+"""获取主机资源使用信息"""
+    
+
+def test_get_resource_state(self):
+"""获取同步中资源列表"""
+    
+
+def test_get_total_resources(self):
+"""获取平台资源信息(self):
+"""拓扑图操作接口(self):
+"""Topology Controller"""
+    
+
+
+
+def test_get_topology(self):
+"""获取网络拓扑图(self):
+"""数据库接口(self):
+"""DB Controller"""
+    
+
+
+
+def test_get_datastores(self):
+"""获取数据库一览"""
+    
+
+def test_get_dbinstances(self):
+"""获取所有数据库主机一览"""
+    
+
+def test_post_dbinstances(self):
+"""创建数据库主机"""
+    
+
+def test_get_dbinstances_id(self):
+"""获取数据库主机详细"""
+    
+
+def test_delete_dbinstances_id(self):
+"""删除数据库主机"""
+    
+
+def test_delete_dbinstances_id_dbs_dbId(self):
+"""删除数据库"""
+    
+
+def test_post_dbinstances_id_restart(self):
+"""重启数据库主机"""
+    
+
+def test_get_dbinstances_id_users(self):
+"""获取数据库用户"""
+    
+
+def test_post_dbinstances_id_users(self):
+"""添加数据库用户"""
+    
+
+def test_delete_dbinstances_id_users_userId(self):
+"""移除数据库用户"""
+    
+
+def test_post_dbinstances_id_users_userId_databases(self):
+"""给予用户访问权限"""
+    
+
+def test_put_dbinstances_id_users_userId_databases(self):
+"""修改用户访问权限"""
+    
+
+def test_delete_dbinstances_id_users_userId_databases(self):
+"""取消用户访问权限"""
+    
+
+def test_post_dbinstances_instanceId_dbs(self):
+"""创建数据库"""
+    
+
+def test_get_dbinstances_config(self):
+"""获取数据库配置"""
+    
+
+def test_get_nonRelationalDatabases(self):
+"""获取非关系型数据库一览"""
+    
+
+def test_get_relationalDatabases(self):
+"""获取关系型数据库主机一览(self):
+"""日志操作接口(self):
+"""Operation Log Controller"""
+    
+
+
+
+def test_get_operations(self):
+"""获取操作日志列表"""
+    
+
+def test_delete_operations(self):
+"""删除操作日志"""
+    
+
+def test_get_operations_id(self):
+"""获取操作日志详情"""
+    
+
+def test_get_operations_export(self):
+"""导出操作日志(self):
+"""机架接口(self):
+"""Chassis Controller"""
+    
+
+
+
+def test_get_chassis(self):
+"""获取机架列表"""
+    
+
+def test_post_chassis(self):
+"""创建机架"""
+    
+
+def test_get_chassis_id(self):
+"""获取机架详情(self):
+"""权限接口(self):
+"""Permission Controller"""
+    
+
+
+
+def test_get_permissions(self):
+"""获取权限列表"""
+    
+
+def test_get_permissions_get(self):
+"""获取全部注解"""
+    
+
+def test_get_permissions_set(self):
+"""刷新全部注解(self):
+"""流程实例操作接口(self):
+"""Processes Controller"""
+    
+
+
+
+def test_get_workflow_processInstance(self):
+"""取得所有与当前用户相关的流程实例"""
+    
+
+def test_get_workflow_processInstance_id(self):
+"""获取流程实例详情"""
+    
+
+def test_put_workflow_processInstance_id(self):
+"""再次申请流程"""
+    
+
+def test_delete_workflow_processInstance_id(self):
+"""删除流程实例(self):
+"""流程操作接口(self):
+"""Task Controller"""
+    
+
+
+
+def test_post_workflow_task_id_action(self):
+"""审批流程(self):
+"""流程角色绑定操作接口(self):
+"""Role Bind Controller"""
+    
+
+
+
+def test_delete_workflow_role_id(self):
+"""删除权限"""
+    
+
+def test_post_workflow_role_origUserAccount_delegateRole_targetUserAccount(self):
+"""将审批权限赋予其他人"""
+    
+
+def test_delete_workflow_role_delegateRole_id(self):
+"""收回审批权限"""
+    
+
+def test_get_workflow_roles(self):
+"""根据条件查询权限列表"""
+    
+
+def test_post_workflow_roles(self):
+"""批量绑定权限"""
+    
+
+def test_put_workflow_roles_id(self):
+"""更新绑定权限(self):
+"""浮动IP接口(self):
+"""Floating IP Controller"""
+    
+
+
+
+def test_get_floating_ips(self):
+"""获取浮动IP列表"""
+    
+
+def test_post_floating_ips(self):
+"""创建浮动IP"""
+    
+
+def test_get_floating_ips_id(self):
+"""获取浮动IP详情"""
+    
+
+def test_put_floating_ips_id(self):
+"""更新浮动IP"""
+    
+
+def test_delete_floating_ips_id(self):
+"""删除浮动IP"""
+    
+
+def test_delete_floating_ips_id_port(self):
+"""浮动IP解绑端口"""
+    
+
+def test_put_floating_ips_id_port_portId(self):
+"""浮动IP绑定端口"""
+    
+
+def test_get_floating_ips_config(self):
+"""获取浮动IP配置(self):
+"""物理机接口(self):
+"""Phys Node Controller"""
+    
+
+
+
+def test_get_bare_metals(self):
+"""获取物理节点信息一览"""
+    
+
+def test_post_bare_metals(self):
+"""创建物理节点"""
+    
+
+def test_get_bare_metals_id(self):
+"""获取物理节点信息详情"""
+    
+
+def test_put_bare_metals_id(self):
+"""更新物理机电源状态"""
+    
+
+def test_delete_bare_metals_id(self):
+"""删除物理节点"""
+    
+
+def test_patch_bare_metals_id(self):
+"""更新物理节点"""
+    
+
+def test_get_bare_metals_config(self):
+"""获取物理机配置"""
+    
+
+def test_delete_bare_metals_delete(self):
+"""批量删除物理机"""
+    
+
+def test_get_bare_metals_flavors(self):
+"""获取物理机规格信息"""
+    
+
+def test_get_bare_metals_instances(self):
+"""获取物理机一览"""
+    
+
+def test_post_bare_metals_instances(self):
+"""创建物理机"""
+    
+
+def test_get_bare_metals_instances_id(self):
+"""获取物理机详细"""
+    
+
+def test_put_bare_metals_power_action(self):
+"""一次开机_关机_重启 多台裸机(self):
+"""用户操作接口(self):
+"""Cloud User Controller"""
+    
+
+
+
+def test_get_auth_sign_up(self):
+"""注册用户(self):
+"""HEAD(self):
+"""_auth_sign_up(self):
+"""注册用户"""
+    
+
+def test_post_auth_sign_up(self):
+"""注册用户"""
+    
+
+def test_put_auth_sign_up(self):
+"""注册用户"""
+    
+
+def test_delete_auth_sign_up(self):
+"""注册用户(self):
+"""OPTIONS(self):
+"""_auth_sign_up(self):
+"""注册用户"""
+    
+
+def test_patch_auth_sign_up(self):
+"""注册用户"""
+    
+
+def test_get_ddhs(self):
+"""获取用户订单"""
+    
+
+def test_put_user_tenant_name(self):
+"""切换组织"""
+    
+
+def test_get_users(self):
+"""获取用户列表"""
+    
+
+def test_post_users(self):
+"""创建用户"""
+    
+
+def test_delete_users(self):
+"""删除用户"""
+    
+
+def test_get_users_id(self):
+"""获取用户详情"""
+    
+
+def test_delete_users_id(self):
+"""删除用户"""
+    
+
+def test_put_users_id_action(self):
+"""用户操作"""
+    
+
+def test_put_users_id_bind_ddh(self):
+"""为用户绑定订单号"""
+    
+
+def test_delete_users_destroy(self):
+"""用户销户(self):
+"""皮肤操作接口(self):
+"""Portal Skin Controller"""
+    
+
+
+
+def test_get_skins(self):
+"""获取皮肤"""
+    
+
+def test_post_skins(self):
+"""创建皮肤(self):
+"""监控操作接口(self):
+"""Monitor Controller"""
+    
+
+
+
+def test_get_alarms(self):
+"""获取监控列表"""
+    
+
+def test_post_alarms(self):
+"""创建监控"""
+    
+
+def test_get_alarms_id(self):
+"""获取监控详情"""
+    
+
+def test_put_alarms_id(self):
+"""更新监控"""
+    
+
+def test_delete_alarms_id(self):
+"""删除监控"""
+    
+
+def test_put_alarms_id_action(self):
+"""监控操作"""
+    
+
+def test_post_alarms_id_resources(self):
+"""添加监控对象"""
+    
+
+def test_delete_alarms_id_resources_resourceId(self):
+"""移除监控对象"""
+    
+
+def test_post_alarms_id_rules(self):
+"""添加监控规则"""
+    
+
+def test_delete_alarms_id_rules(self):
+"""移除监控规则"""
+    
+
+def test_get_alarms_config(self):
+"""获取监控配置"""
+    
+
+def test_get_alarms_export_vm_history(self):
+"""导出监控数据"""
+    
+
+def test_get_alarms_getVMStatics(self):
+"""获取云主机监控数据"""
+    
+
+def test_get_alarms_monitorobjs(self):
+"""获取可被监控的对象列表"""
+    
+
+def test_get_monitors(self):
+"""获取监控模板列表"""
+    
+
+def test_post_monitors(self):
+"""创建监控模板"""
+    
+
+def test_get_monitors_id(self):
+"""获取监控模板详情"""
+    
+
+def test_put_monitors_id(self):
+"""更新监控模板"""
+    
+
+def test_delete_monitors_id(self):
+"""删除监控模板"""
+    
+
+def test_put_monitors_id_tenantId(self):
+"""适用监控模板"""
+    
+
+def test_delete_monitors_id_tenantId(self):
+"""取消适用监控模板"""
+    
+
+def test_get_monitors_apply(self):
+"""获取当前适用的监控模板"""
+    
+
+def test_get_monitors_config(self):
+"""获取监控模板配置"""
+    
+
+def test_get_monitors_containers(self):
+"""获取监控的容器信息"""
+    
+
+def test_get_monitors_services(self):
+"""获取监控的服务信息"""
+    
+
+def test_get_monitors_vms(self):
+"""获取监控的云主机信息(self):
+"""硬盘快照接口(self):
+"""Snapshot Controller"""
+    
+
+
+
+def test_get_snapshots(self):
+"""获取云硬盘快照一览"""
+    
+
+def test_post_snapshots(self):
+"""创建云硬盘快照"""
+    
+
+def test_get_snapshots_id(self):
+"""获取云硬盘快照详情"""
+    
+
+def test_put_snapshots_id(self):
+"""更新云硬盘快照"""
+    
+
+def test_delete_snapshots_id(self):
+"""删除云硬盘快照(self):
+"""端口接口(self):
+"""Port Controller"""
+    
+
+
+
+def test_get_ports(self):
+"""获取端口列表"""
+    
+
+def test_post_ports(self):
+"""创建端口"""
+    
+
+def test_get_ports_id(self):
+"""获取端口详情"""
+    
+
+def test_put_ports_id(self):
+"""更新端口"""
+    
+
+def test_delete_ports_id(self):
+"""删除端口(self):
+"""组织操作接口(self):
+"""Tenant Controller"""
+    
+
+
+
+def test_get_mytenants(self):
+"""获取当前可切换组织"""
+    
+
+def test_put_tenant_language_locale(self):
+"""切换语言"""
+    
+
+def test_get_tenants(self):
+"""获取组织列表"""
+    
+
+def test_post_tenants(self):
+"""创建组织"""
+    
+
+def test_get_tenants_id(self):
+"""获取组织详情"""
+    
+
+def test_put_tenants_id(self):
+"""更新组织"""
+    
+
+def test_delete_tenants_id(self):
+"""删除组织"""
+    
+
+def test_put_tenants_id_add(self):
+"""添加组织用户"""
+    
+
+def test_put_tenants_id_addRole(self):
+"""添加组织用户角色"""
+    
+
+def test_put_tenants_id_remove(self):
+"""移除组织用户(self):
+"""网络QoS接口(self):
+"""Network Qo S Controller"""
+    
+
+
+
+def test_get_networkQos(self):
+"""获取网络QoS列表"""
+    
+
+def test_post_networkQos(self):
+"""创建网络QoS"""
+    
+
+def test_get_networkQos_id(self):
+"""获取网络QoS详情(self):
+"""网络接口(self):
+"""Network Controller"""
+    
+
+
+
+def test_get_networks(self):
+"""获取网络列表"""
+    
+
+def test_post_networks(self):
+"""创建网络"""
+    
+
+def test_get_networks_id(self):
+"""获取网络详情"""
+    
+
+def test_put_networks_id(self):
+"""更新网络"""
+    
+
+def test_delete_networks_id(self):
+"""删除网络"""
+    
+
+def test_get_networks_id_ip_ip(self):
+"""校验ip是否合法"""
+    
+
+def test_get_networks_basic(self):
+"""获取基础网络"""
+    
+
+def test_post_networks_basic(self):
+"""创建基础网络"""
+    
+
+def test_get_networks_external_nets(self):
+"""获取外部网络列表(self):
+"""角色操作接口(self):
+"""Cloud Role Controller"""
+    
+
+
+
+def test_get_roles(self):
+"""获取角色列表"""
+    
+
+def test_post_roles(self):
+"""创建角色"""
+    
+
+def test_put_roles_id(self):
+"""更新角色"""
+    
+
+def test_delete_roles_id(self):
+"""删除角色"""
+    
+
+def test_get_roles_name(self):
+"""获取用户角色(self):
+"""计费操作接口(self):
+"""Price Controller"""
+    
+
+
+
+def test_get_currencies(self):
+"""获取货币列表"""
+    
+
+def test_post_currencies(self):
+"""创建计费货币"""
+    
+
+def test_get_currencies_id(self):
+"""获取货币详情"""
+    
+
+def test_delete_currencies_id(self):
+"""删除计费货币(self):
+"""认证操作接口(self):
+"""Auth Controller"""
+    
+
+
+
+def test_post_auth_checkOldPass(self):
+"""检查密码"""
+    
+
+def test_put_auth_logout(self):
+"""登出"""
+    
+
+def test_post_auth_modify(self):
+"""修改用户密码"""
+    
+
+def test_post_auth_tokens(self):
+"""登录(self):
+"""负载均衡接口(self):
+"""Loadbalance Instance Controller"""
+    
+
+
+
+def test_get_loadbalances(self):
+"""获取负载均衡一览"""
+    
+
+def test_post_loadbalances(self):
+"""创建负载均衡"""
+    
+
+def test_get_loadbalances_id(self):
+"""获取负载均衡详细"""
+    
+
+def test_delete_loadbalances_id(self):
+"""删除负载均衡"""
+    
+
+def test_delete_loadbalances_id_ports_portId(self):
+"""负载均衡移除端口"""
+    
+
+def test_post_loadbalances_id_posts(self):
+"""负载均衡添加端口"""
+    
+
+def test_get_loadbalances_config(self):
+"""获取负载均衡配置"""
+    
+
+def test_get_loadbalances_images(self):
+"""获取负载均衡镜像列表(self):
+"""账单操作接口(self):
+"""Billing Controller"""
+    
+
+
+
+def test_get_billing_details_id(self):
+"""获取账单详情"""
+    
+
+def test_get_billing_general(self):
+"""获取当前组织账单"""
+    
+
+def test_get_billing_statistic(self):
+"""获取账单列表"""
+    
+
+def test_get_billing_statistic_export(self):
+"""导出账单"""
+    
+
+def test_get_billings(self):
+"""获取开票账户一览"""
+    
+
+def test_post_billings(self):
+"""创建开票账户"""
+    
+
+def test_put_billings_id(self):
+"""设置默认开票账户"""
+    
+
+def test_delete_billings_id(self):
+"""删除开票账户"""
+    
+
+def test_put_billings_id_billingId(self):
+"""设置开票账户(self):
+"""资源池操作接口(self):
+"""Pool Controller"""
+    
+
+
+
+def test_get_pools(self):
+"""获取资源池一览"""
+    
+
+def test_post_pools(self):
+"""创建资源池"""
+    
+
+def test_get_pools_id(self):
+"""获取资源池详情"""
+    
+
+def test_put_pools_id(self):
+"""更新资源池"""
+    
+
+def test_delete_pools_id(self):
+"""删除资源池"""
+    
+
+def test_get_pools_config(self):
+"""获取资源池配置"""
+    
+
+def test_get_stacks(self):
+"""获取资源模板一览"""
+    
+
+def test_post_stacks(self):
+"""创建资源模板"""
+    
+
+def test_get_stacks_id(self):
+"""获取资源模板详情"""
+    
+
+def test_put_stacks_id(self):
+"""更新资源模板"""
+    
+
+def test_delete_stacks_id(self):
+"""删除资源模板"""
+    
+
+def test_get_stacks_config(self):
+"""获取模板配置(self):
+"""资源规格接口(self):
+"""Flavor Controller"""
+    
+
+
+
+def test_get_flavors(self):
+"""获取全部资源规格列表"""
+    
+
+def test_post_flavors(self):
+"""创建资源规格"""
+    
+
+def test_get_flavors_id(self):
+"""获取资源规格详情"""
+    
+
+def test_put_flavors_id(self):
+"""更新资源规格"""
+    
+
+def test_delete_flavors_id(self):
+"""删除资源规格"""
+    
+
+def test_post_flavors_id_extraspecs(self):
+"""设置额外规格"""
+    
+
+def test_get_tenant_flavors(self):
+"""获取本组织可使用的资源规格列表(self):
+"""路由接口(self):
+"""Router Controller"""
+    
+
+
+
+def test_get_routers(self):
+"""获取路由列表"""
+    
+
+def test_post_routers(self):
+"""创建路由"""
+    
+
+def test_get_routers_id(self):
+"""获取路由详情"""
+    
+
+def test_put_routers_id(self):
+"""更新路由"""
+    
+
+def test_delete_routers_id(self):
+"""删除路由"""
+    
+
+def test_delete_routers_id_disabledGateway(self):
+"""路由关闭公网网关"""
+    
+
+def test_put_routers_id_enabledGateway(self):
+"""路由开启公网网关"""
+    
+
+def test_put_routers_id_ports_portId(self):
+"""路由添加端口"""
+    
+
+def test_delete_routers_id_ports_portId(self):
+"""路由移除端口"""
+    
+
+def test_put_routers_id_subnets_subnetId(self):
+"""路由添加子网"""
+    
+
+def test_delete_routers_id_subnets_subnetId(self):
+"""路由移除子网(self):
+"""通知列表操作接口(self):
+"""Notification List Controller"""
+    
+
+
+
+def test_get_notification_lists(self):
+"""获取通知列表"""
+    
+
+def test_post_notification_lists(self):
+"""创建通知列表"""
+    
+
+def test_get_notification_lists_id(self):
+"""获取通知列表详情"""
+    
+
+def test_put_notification_lists_id(self):
+"""更新通知列表"""
+    
+
+def test_delete_notification_lists_id(self):
+"""删除通知列表"""
+    
+
+def test_post_notification_lists_id_terminals(self):
+"""创建终端"""
+    
+
+def test_delete_notification_lists_id_terminals_pid(self):
+"""删除终端"""
+    
+
+def test_post_notification_lists_terminals_id_verify(self):
+"""确认终端(self):
+"""通知消息操作接口(self):
+"""Notification Controller"""
+    
+
+
+
+def test_get_notifications(self):
+"""获取通知消息列表"""
+    
+
+def test_delete_notifications(self):
+"""删除通知消息"""
+    
+
+def test_get_notifications_id(self):
+"""获取通知消息详情"""
+    
+
+def test_put_notifications_id(self):
+"""更新通知消息"""
+    
+
+def test_put_notifications_read(self):
+"""更新通知消息列表"""
+    
+
+def test_put_notifications_unread(self):
+"""更新通知消息列表(self):
+"""配额接口(self):
+"""Quota Controller"""
+    
+
+
+
+def test_get_quota_fields(self):
+"""获取配额定义信息"""
+    
+
+def test_get_quota_templates(self):
+"""获取配额模板列表"""
+    
+
+def test_post_quota_templates(self):
+"""创建配额模板"""
+    
+
+def test_get_quota_templates_id(self):
+"""获取配额模板详情"""
+    
+
+def test_put_quota_templates_id(self):
+"""更新配额模板"""
+    
+
+def test_delete_quota_templates_id(self):
+"""删除配额模板"""
+    
+
+def test_put_quota_templates_id_tenantId(self):
+"""适用配额模板"""
+    
+
+def test_put_quota_templates_id_tenants(self):
+"""批量适用配额模板"""
+    
+
+def test_get_quotas(self):
+"""获取配额一览"""
+    
+
+def test_put_tenants_quota_templates(self):
+"""扩大配额(self):
+"""镜像接口(self):
+"""Image Controller"""
+    
+
+
+
+def test_get_images(self):
+"""获取镜像列表"""
+    
+
+def test_post_images(self):
+"""创建镜像"""
+    
+
+def test_get_images_id(self):
+"""获取镜像详情"""
+    
+
+def test_put_images_id(self):
+"""更新镜像"""
+    
+
+def test_delete_images_id(self):
+"""删除镜像"""
+    
+
+def test_post_images_id_file(self):
+"""上传镜像文件"""
+    
+
+def test_put_images_id_file(self):
+"""通知文件上传开始"""
+    
+
+def test_put_images_id_file_filename(self):
+"""通知文件上传完成"""
+    
+
+def test_put_images_id_status_status(self):
+"""重置镜像状态"""
+    
+
+def test_get_images_volumeType_id(self):
+"""镜像一览"""
+    
+
+def test_get_instance_images(self):
+"""获取云主机镜像列表"""
+    
+
+def test_get_private_images(self):
+"""获取私有镜像列表"""
+    
+
+def test_get_volume_images(self):
+"""获取云硬盘镜像列表(self):
+"""防火墙接口(self):
+"""Firewall Instance Controller"""
+    
+
+
+
+def test_get_firewalls(self):
+"""获取防火墙一览"""
+    
+
+def test_post_firewalls(self):
+"""创建防火墙"""
+    
+
+def test_get_firewalls_id(self):
+"""获取防火墙详细"""
+    
+
+def test_put_firewalls_id(self):
+"""更新防火墙"""
+    
+
+def test_delete_firewalls_id(self):
+"""删除防火墙"""
+    
+
+def test_post_firewalls_id_ports(self):
+"""防火墙添加端口"""
+    
+
+def test_delete_firewalls_id_ports_portId(self):
+"""防火墙删除端口"""
+    
+
+def test_post_firewalls_id_start(self):
+"""开启防火墙"""
+    
+
+def test_post_firewalls_id_stop(self):
+"""关闭防火墙"""
+    
+
+def test_get_firewalls_config(self):
+"""获取防火墙配置(self):
+"""Models(self):
+"""Error
