@@ -5,12 +5,27 @@
 # @File    : lc_main.py
 # @Software: PyCharm
 # @context :
+def printdef(func):
+    def wrapper(*args, **kwargs):
+        try:
+            print('-' * 100)
+            print("[METHOD]: {}()".format(func.__name__))
+            print("[INPUT]: ", *args)
+            ret = func(*args, **kwargs)
+            print("[RESULT]:", ret)
+            return ret
+        except Exception as err:
+            print(err)
+
+    return wrapper
+
+
 def prints(func):
     def wrapper(self, *args, **kwargs):
         try:
             print('-' * 100)
             print("[METHOD]: {}()".format(func.__name__))
-            print("[INPUT]: ", *args)
+            print("[INPUT]:  ", *args)
             ret = func(self, *args, **kwargs)
             print("[RESULT]: ", ret)
             return ret
@@ -18,6 +33,27 @@ def prints(func):
             print(err)
 
     return wrapper
+
+
+@printdef
+def list2link(nodes):
+    ret = None
+    for i in nodes[::-1]:
+        tmp = ret
+        ret = ListNode(i)
+        ret.next = tmp
+    return ret
+
+
+@printdef
+def link2list(link):
+    ret = []
+    while True:
+        if link:
+            ret.append(link.val)
+            link = link.next
+        else:
+            return ret
 
 
 class ListNode:
@@ -76,6 +112,78 @@ class Solution:
             head = head.next
         return ret
 
+    @prints
+    def mergeTwoLists(self, l1, l2):
+        """
+        :type l1: ListNode
+        :type l2: ListNode
+        :rtype: ListNode
+        """
+        # if l1 is None:
+        #     return l2
+        #
+        # def getNext(link, link2):
+        #     if link.next is None:
+        #         link.next = link2
+        #     else:
+        #         return getNext(link.next, link2)
+        #
+        # getNext(l1, l2)
+        #
+        # return l1
+
+        tmp1 = l1
+        tmp2 = l2
+        if l1 is None:
+            return l2
+        if l2 is None:
+            return l1
+        if l1.val < l2.val:
+            ret = ListNode(l1.val)
+            tmp1 = tmp1.next
+        else:
+            ret = ListNode(l2.val)
+            tmp2 = tmp2.next
+        tmp = ret
+
+        while tmp1 and tmp2:
+            if tmp1.val < tmp2.val:
+                tmp.next = ListNode(tmp1.val)
+                tmp1 = tmp1.next
+            else:
+                tmp.next = ListNode(tmp2.val)
+                tmp2 = tmp2.next
+            tmp = tmp.next
+        if tmp1 is None:
+            tmp.next = tmp2
+        else:
+            tmp.next = tmp1
+        return ret
+
+    def deleteNode(self, node):
+        """
+        :type node: ListNode
+        :rtype: void Do not return anything, modify node in-place instead.
+        """
+        pass
+
+    def removeNthFromEnd(self, head, n):
+        """
+        :type head: ListNode
+        :type n: int
+        :rtype: ListNode
+        """
+        # part = None
+        # tmp = head
+        # while True:
+        #     if tmp:
+        #         tmp=tmp.next
+        #         n-=1
+        #     if n<0:
+        #         part
+        pass
+
+
 
 if __name__ == '__main__':
     ss = Solution()
@@ -92,4 +200,21 @@ if __name__ == '__main__':
     # l2.next = ListNode(9)
     # a = ss.addTwoNumbers(l1, l2)
     # prints(123)
-    ss.reverseList(l1)
+    # ss.reverseList(l1)
+    # linkA = ListNode(1)
+    # linkA.next = ListNode(2)
+    # linkA.next.next = ListNode(4)
+    # linkA.next.next.next = ListNode(6)
+    # linkB = ListNode(6)
+    # linkB.next = ListNode(21)
+    # ss.mergeTwoLists(linkA, linkB)
+    # ss.mergeTwoLists(None, None)
+    # ss.mergeTwoLists(linkA, None)
+    # print(linkA)
+    # print(linkB)
+    q = list2link([1, 324, 543, 1, 6346, 1])
+    w = list2link([])
+    e = list2link([0, 1])
+    link2list(q)
+    link2list(w)
+    link2list(e)

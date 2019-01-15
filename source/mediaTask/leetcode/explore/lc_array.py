@@ -270,7 +270,6 @@ class Solution:
         return res
 
     @prints
-<<<<<<< HEAD:source/leetcode/explore/lc_array.py
     def merge(self, nums1, m, nums2, n):
         """
         :type nums1: List[int]
@@ -301,7 +300,9 @@ class Solution:
                 i -= 1
                 n -= 1
         return nums1
-=======
+
+    # ----------------------------------error-------------------------------------
+    @prints
     def threeSum(self, nums):
         """
         :type nums: List[int]
@@ -339,7 +340,25 @@ class Solution:
                         ret.append(group)
 
         return ret
->>>>>>> b0542158ded3613c5666f1c452f7462d400c9aef:source/mediaTask/leetcode/explore/lc_array.py
+
+    @prints
+    def removeElement(self, nums, val):
+        """
+        :type nums: List[int]
+        :type val: int
+        :rtype: int
+        """
+        count = 0
+        i = 0
+        while True:
+            if i + count >= len(nums):
+                break
+            if nums[i + count] == val:
+                count += 1
+                continue
+            nums[i] = nums[i + count]
+            i += 1
+        return count, nums
 
 
 if __name__ == '__main__':
@@ -371,10 +390,10 @@ if __name__ == '__main__':
     #     [".", ".", ".", ".", "8", ".", ".", "7", "9"]
     # ]
     # ss.isValidSudoku(jgg)
-<<<<<<< HEAD:source/leetcode/explore/lc_array.py
-    ss.merge([1, 2, 3, 0, 0, 0], 3, [2, 5, 6], 3)
-    ss.merge([1, 2, 3, 0, 0, 0], 3, [0, 5, 6], 3)
-    ss.merge([1, 2, 3, 0, 0, 0], 3, [1, 5, 6], 3)
-=======
-    ss.threeSum([-1, 0, 1, 2, -1, -4])
->>>>>>> b0542158ded3613c5666f1c452f7462d400c9aef:source/mediaTask/leetcode/explore/lc_array.py
+    # ss.merge([1, 2, 3, 0, 0, 0], 3, [2, 5, 6], 3)
+    # ss.merge([1, 2, 3, 0, 0, 0], 3, [0, 5, 6], 3)
+    # ss.merge([1, 2, 3, 0, 0, 0], 3, [1, 5, 6], 3)
+    # ss.threeSum([-1, 0, 1, 2, -1, -4])
+    ss.removeElement([3, 2, 2, 3], 3)
+    ss.removeElement([0, 1, 2, 2, 3, 0, 4, 2], 2)
+    ss.removeElement([0, 1, 2, 2, 3, 0, 4, 2], 2)
