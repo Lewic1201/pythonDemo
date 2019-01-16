@@ -1,7 +1,7 @@
 # coding=utf-8
 import time
 import unittest
-from testFile.testcase.browser_engine import BrowserEngine
+from source.env_test.testcase import BrowserEngine
 
 
 class BaiduSearch(unittest.TestCase):

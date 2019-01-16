@@ -1,7 +1,7 @@
 import configparser
 import os
 from selenium import webdriver
-from testFile.testcase.logger import Logger
+from source.env_test.testcase import Logger
 
 mylogger = Logger(logger='TestMyLog').getlog()
 
