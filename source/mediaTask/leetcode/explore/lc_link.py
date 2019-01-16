@@ -35,7 +35,7 @@ def prints(func):
     return wrapper
 
 
-@printdef
+# @printdef
 def list2link(nodes):
     ret = None
     for i in nodes[::-1]:
@@ -45,7 +45,7 @@ def list2link(nodes):
     return ret
 
 
-@printdef
+# @printdef
 def link2list(link):
     ret = []
     while True:
@@ -183,6 +183,28 @@ class Solution:
         #         part
         pass
 
+    def oddEvenList(self, head):
+        """
+        :type head: ListNode
+        :rtype: ListNode
+        """
+        tmp0 = head.val
+        tmp1 = head.next.val
+        index = 0
+        while True:
+            if head:
+                if index % 2 == 0:
+                    ret0 = tmp0
+                    ret0.next = ListNode(head.val)
+                    tmp0 = ret0
+                else:
+                    ret1 = tmp1
+                    ret1.next = ListNode(head.val)
+                    tmp1 = ret1
+                head = head.next
+            else:
+                pass
+            index += 1
 
 
 if __name__ == '__main__':
@@ -212,9 +234,9 @@ if __name__ == '__main__':
     # ss.mergeTwoLists(linkA, None)
     # print(linkA)
     # print(linkB)
-    q = list2link([1, 324, 543, 1, 6346, 1])
-    w = list2link([])
-    e = list2link([0, 1])
-    link2list(q)
-    link2list(w)
-    link2list(e)
+    # q = list2link([1, 324, 543, 1, 6346, 1])
+    # w = list2link([])
+    # e = list2link([0, 1])
+    # link2list(q)
+    # link2list(w)
+    # link2list(e)
