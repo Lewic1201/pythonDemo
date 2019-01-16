@@ -1,27 +1,119 @@
-C:\Python\Python27\python2 -m pip install aniso8601-1.2.0.tar.gz
-C:\Python\Python27\python2 -m pip install argparse-1.4.0.tar.gz
-C:\Python\Python27\python2 -m pip install boto-2.38.0.tar.gz
-C:\Python\Python27\python2 -m pip install Flask-0.10.1.tar.gz
-C:\Python\Python27\python2 -m pip install Flask-RESTful-0.3.5.tar.gz
-C:\Python\Python27\python2 -m pip install gunicorn-19.7.1.tar.gz
-C:\Python\Python27\python2 -m pip install ipaddress-1.0.16.tar.gz
-C:\Python\Python27\python2 -m pip install itsdangerous-0.23.tar.gz
-C:\Python\Python27\python2 -m pip install Jinja2-2.8.tar.gz
-C:\Python\Python27\python2 -m pip install MarkupSafe-1.0.tar.gz
-C:\Python\Python27\python2 -m pip install netifaces-0.10.4.tar.gz
-C:\Python\Python27\python2 -m pip install pip-7.1.2.tar.gz
-C:\Python\Python27\python2 -m pip install psycopg2-2.5.1.tar.gz
-C:\Python\Python27\python2 -m pip install python-dateutil-2.5.3.tar.gz
-C:\Python\Python27\python2 -m pip install python-ipy-IPy-0.51.tar.gz
-C:\Python\Python27\python2 -m pip install pytz-2014.10.tar.bz2
-C:\Python\Python27\python2 -m pip install requests-2.13.0.tar.gz
-C:\Python\Python27\python2 -m pip install retrying-1.3.3.tar.gz
-C:\Python\Python27\python2 -m pip install setuptools-19.6.2.tar.gz
-C:\Python\Python27\python2 -m pip install six-1.10.0.tar.gz
-C:\Python\Python27\python2 -m pip install SQLAlchemy-1.0.11.tar.gz
-C:\Python\Python27\python2 -m pip install SQLAlchemy-Utils-0.31.6.tar.gz
-C:\Python\Python27\python2 -m pip install virtualenv-14.0.0.tar.gz
-C:\Python\Python27\python2 -m pip install Werkzeug-0.12.2.tar.gz
-C:\Python\Python27\python2 -m pip install xlrd-1.1.0.tar.gz
-C:\Python\Python27\python2 -m pip install XlsxWriter-0.9.8.tar.gz
-C:\Python\Python27\python2 -m pip install xlwt-1.2.0.tar.gz
+    def test_get_instances(self):
+        """获取云主机列表"""
+
+    def test_post_instances(self):
+        """创建云主机"""
+
+    def test_delete_instances(self):
+        """真批量删除云主机"""
+
+    def test_get_instances_id(self):
+        """获取云主机详情"""
+
+    def test_put_instances_id(self):
+        """更新云主机"""
+
+    def test_delete_instances_id(self):
+        """删除单个云主机(立即删除)"""
+
+    def test_post_instances_id_backup(self):
+        """创建云主机备份"""
+
+    def test_post_instances_id_forceRestart(self):
+        """硬重启云主机"""
+
+    def test_post_instances_id_image_imageName_type_type(self):
+        """创建主机镜像"""
+
+    def test_post_instances_id_liveMigration_hostName(self):
+        """迁移云主机"""
+
+    def test_get_instances_id_os_getRDPConsole(self):
+        """获取RDP控制台"""
+
+    def test_get_instances_id_os_getSerialConsole(self):
+        """获取serial控制台"""
+
+    def test_get_instances_id_os_getSPICEConsole(self):
+        """获取spice控制台"""
+
+    def test_get_instances_id_os_getVNCConsole(self):
+        """获取vnc控制台"""
+
+    def test_head_instances_id_os_getVNCConsole(self):
+        """获取vnc控制台"""
+
+    def test_post_instances_id_os_getVNCConsole(self):
+        """获取vnc控制台"""
+
+    def test_put_instances_id_os_getVNCConsole(self):
+        """获取vnc控制台"""
+
+    def test_delete_instances_id_os_getVNCConsole(self):
+        """获取vnc控制台"""
+
+    def test_option_instances_id_os_getVNCConsole(self):
+        """获取vnc控制台"""
+
+    def test_patch_instances_id_os_getVNCConsole(self):
+        """获取vnc控制台"""
+
+    def test_post_instances_id_pause(self):
+        """暂停云主机"""
+
+    def test_post_instances_id_ports(self):
+        """云主机添加端口"""
+
+    def test_delete_instances_id_ports_portId(self):
+        """云主机移除端口"""
+
+    def test_post_instances_id_reset_password(self):
+        """云主机重置密码"""
+
+    def test_post_instances_id_resize_flavorId(self):
+        """调整云主机规格"""
+
+    def test_post_instances_id_restart(self):
+        """软重启云主机"""
+
+    def test_post_instances_id_resume(self):
+        """恢复云主机"""
+
+    def test_post_instances_id_snapshots(self):
+        """创建云主机快照"""
+
+    def test_post_instances_id_start(self):
+        """开启云主机"""
+
+    def test_post_instances_id_stop(self):
+        """关闭云主机"""
+
+    def test_post_instances_id_suspend(self):
+        """挂起云主机"""
+
+    def test_post_instances_id_unpause(self):
+        """取消暂停云主机"""
+
+    def test_get_instances_id_volumes(self):
+        """获取云主机硬盘列表"""
+
+    def test_post_instances_id_volumes(self):
+        """云主机添加硬盘"""
+
+    def test_delete_instances_id_volumes_volumeId(self):
+        """云主机移除硬盘"""
+
+    def test_get_instances_config(self):
+        """获取云主机配置"""
+
+    def test_delete_instances_reclaim(self):
+        """删除云主机(批量删除，不立刻删除，进入资源回收区。后台择机删除)"""
+
+    def test_post_instances_startHA(self):
+        """开启云主机HA(批量)"""
+
+    def test_post_instances_stopHA(self):
+        """关闭云主机HA(批量)"""
+
+    def test_put_instances_unDelete(self):
+        """取消删除云主机"""

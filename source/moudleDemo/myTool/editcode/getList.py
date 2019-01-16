@@ -1,4 +1,8 @@
-Swagger UI
+import re
+
+pattern = '(PUT\n|GET\n|POST\n|OPTION\n|DELETE\n|PATCH\n)(.*\n)(.*\n)'
+
+ss = '''Swagger UI
 swagger
 Select a spec
 
@@ -1399,4 +1403,19 @@ GET
 /firewalls/config
 获取防火墙配置
 Models
-Error
+Error'''
+
+apiList = re.findall(pattern, ss)
+
+ret = []
+for data in apiList:
+    itfc = []
+    for j in data:
+
+        if j.endswith('\n'):
+            tmp = j[:-1]
+        else:
+            tmp = j
+        itfc.append(tmp)
+    ret.append(itfc)
+print(ret)

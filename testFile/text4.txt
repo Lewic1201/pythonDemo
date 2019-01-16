@@ -1,0 +1,314 @@
+    def test_get_instances(self):
+        """获取云主机列表"""
+        suf_api = '/host-aggregates'
+        data = {"rating": False}
+        status_code, response_json = self.client.post(suf_api, data)
+        test1 = self.assertEqual(status_code, 200)
+
+
+    def test_post_instances(self):
+        """创建云主机"""
+        suf_api = '/host-aggregates'
+        data = {"rating": False}
+        status_code, response_json = self.client.post(suf_api, data)
+        test1 = self.assertEqual(status_code, 200)
+
+
+    def test_delete_instances(self):
+        """真批量删除云主机"""
+        suf_api = '/host-aggregates'
+        data = {"rating": False}
+        status_code, response_json = self.client.post(suf_api, data)
+        test1 = self.assertEqual(status_code, 200)
+
+
+    def test_get_instances_id(self):
+        """获取云主机详情"""
+        suf_api = '/host-aggregates'
+        data = {"rating": False}
+        status_code, response_json = self.client.post(suf_api, data)
+        test1 = self.assertEqual(status_code, 200)
+
+
+    def test_put_instances_id(self):
+        """更新云主机"""
+        suf_api = '/host-aggregates'
+        data = {"rating": False}
+        status_code, response_json = self.client.post(suf_api, data)
+        test1 = self.assertEqual(status_code, 200)
+
+
+    def test_delete_instances_id(self):
+        """删除单个云主机(立即删除)"""
+        suf_api = '/host-aggregates'
+        data = {"rating": False}
+        status_code, response_json = self.client.post(suf_api, data)
+        test1 = self.assertEqual(status_code, 200)
+
+
+    def test_post_instances_id_backup(self):
+        """创建云主机备份"""
+        suf_api = '/host-aggregates'
+        data = {"rating": False}
+        status_code, response_json = self.client.post(suf_api, data)
+        test1 = self.assertEqual(status_code, 200)
+
+
+    def test_post_instances_id_forceRestart(self):
+        """硬重启云主机"""
+        suf_api = '/host-aggregates'
+        data = {"rating": False}
+        status_code, response_json = self.client.post(suf_api, data)
+        test1 = self.assertEqual(status_code, 200)
+
+
+    def test_post_instances_id_image_imageName_type_type(self):
+        """创建主机镜像"""
+        suf_api = '/host-aggregates'
+        data = {"rating": False}
+        status_code, response_json = self.client.post(suf_api, data)
+        test1 = self.assertEqual(status_code, 200)
+
+
+    def test_post_instances_id_liveMigration_hostName(self):
+        """迁移云主机"""
+        suf_api = '/host-aggregates'
+        data = {"rating": False}
+        status_code, response_json = self.client.post(suf_api, data)
+        test1 = self.assertEqual(status_code, 200)
+
+
+    def test_get_instances_id_os_getRDPConsole(self):
+        """获取RDP控制台"""
+        suf_api = '/host-aggregates'
+        data = {"rating": False}
+        status_code, response_json = self.client.post(suf_api, data)
+        test1 = self.assertEqual(status_code, 200)
+
+
+    def test_get_instances_id_os_getSerialConsole(self):
+        """获取serial控制台"""
+        suf_api = '/host-aggregates'
+        data = {"rating": False}
+        status_code, response_json = self.client.post(suf_api, data)
+        test1 = self.assertEqual(status_code, 200)
+
+
+    def test_get_instances_id_os_getSPICEConsole(self):
+        """获取spice控制台"""
+        suf_api = '/host-aggregates'
+        data = {"rating": False}
+        status_code, response_json = self.client.post(suf_api, data)
+        test1 = self.assertEqual(status_code, 200)
+
+
+    def test_get_instances_id_os_getVNCConsole(self):
+        """获取vnc控制台"""
+        suf_api = '/host-aggregates'
+        data = {"rating": False}
+        status_code, response_json = self.client.post(suf_api, data)
+        test1 = self.assertEqual(status_code, 200)
+
+
+    def test_head_instances_id_os_getVNCConsole(self):
+        """获取vnc控制台"""
+        suf_api = '/host-aggregates'
+        data = {"rating": False}
+        status_code, response_json = self.client.post(suf_api, data)
+        test1 = self.assertEqual(status_code, 200)
+
+
+    def test_post_instances_id_os_getVNCConsole(self):
+        """获取vnc控制台"""
+        suf_api = '/host-aggregates'
+        data = {"rating": False}
+        status_code, response_json = self.client.post(suf_api, data)
+        test1 = self.assertEqual(status_code, 200)
+
+
+    def test_put_instances_id_os_getVNCConsole(self):
+        """获取vnc控制台"""
+        suf_api = '/host-aggregates'
+        data = {"rating": False}
+        status_code, response_json = self.client.post(suf_api, data)
+        test1 = self.assertEqual(status_code, 200)
+
+
+    def test_delete_instances_id_os_getVNCConsole(self):
+        """获取vnc控制台"""
+        suf_api = '/host-aggregates'
+        data = {"rating": False}
+        status_code, response_json = self.client.post(suf_api, data)
+        test1 = self.assertEqual(status_code, 200)
+
+
+    def test_option_instances_id_os_getVNCConsole(self):
+        """获取vnc控制台"""
+        suf_api = '/host-aggregates'
+        data = {"rating": False}
+        status_code, response_json = self.client.post(suf_api, data)
+        test1 = self.assertEqual(status_code, 200)
+
+
+    def test_patch_instances_id_os_getVNCConsole(self):
+        """获取vnc控制台"""
+        suf_api = '/host-aggregates'
+        data = {"rating": False}
+        status_code, response_json = self.client.post(suf_api, data)
+        test1 = self.assertEqual(status_code, 200)
+
+
+    def test_post_instances_id_pause(self):
+        """暂停云主机"""
+        suf_api = '/host-aggregates'
+        data = {"rating": False}
+        status_code, response_json = self.client.post(suf_api, data)
+        test1 = self.assertEqual(status_code, 200)
+
+
+    def test_post_instances_id_ports(self):
+        """云主机添加端口"""
+        suf_api = '/host-aggregates'
+        data = {"rating": False}
+        status_code, response_json = self.client.post(suf_api, data)
+        test1 = self.assertEqual(status_code, 200)
+
+
+    def test_delete_instances_id_ports_portId(self):
+        """云主机移除端口"""
+        suf_api = '/host-aggregates'
+        data = {"rating": False}
+        status_code, response_json = self.client.post(suf_api, data)
+        test1 = self.assertEqual(status_code, 200)
+
+
+    def test_post_instances_id_reset_password(self):
+        """云主机重置密码"""
+        suf_api = '/host-aggregates'
+        data = {"rating": False}
+        status_code, response_json = self.client.post(suf_api, data)
+        test1 = self.assertEqual(status_code, 200)
+
+
+    def test_post_instances_id_resize_flavorId(self):
+        """调整云主机规格"""
+        suf_api = '/host-aggregates'
+        data = {"rating": False}
+        status_code, response_json = self.client.post(suf_api, data)
+        test1 = self.assertEqual(status_code, 200)
+
+
+    def test_post_instances_id_restart(self):
+        """软重启云主机"""
+        suf_api = '/host-aggregates'
+        data = {"rating": False}
+        status_code, response_json = self.client.post(suf_api, data)
+        test1 = self.assertEqual(status_code, 200)
+
+
+    def test_post_instances_id_resume(self):
+        """恢复云主机"""
+        suf_api = '/host-aggregates'
+        data = {"rating": False}
+        status_code, response_json = self.client.post(suf_api, data)
+        test1 = self.assertEqual(status_code, 200)
+
+
+    def test_post_instances_id_snapshots(self):
+        """创建云主机快照"""
+        suf_api = '/host-aggregates'
+        data = {"rating": False}
+        status_code, response_json = self.client.post(suf_api, data)
+        test1 = self.assertEqual(status_code, 200)
+
+
+    def test_post_instances_id_start(self):
+        """开启云主机"""
+        suf_api = '/host-aggregates'
+        data = {"rating": False}
+        status_code, response_json = self.client.post(suf_api, data)
+        test1 = self.assertEqual(status_code, 200)
+
+
+    def test_post_instances_id_stop(self):
+        """关闭云主机"""
+        suf_api = '/host-aggregates'
+        data = {"rating": False}
+        status_code, response_json = self.client.post(suf_api, data)
+        test1 = self.assertEqual(status_code, 200)
+
+
+    def test_post_instances_id_suspend(self):
+        """挂起云主机"""
+        suf_api = '/host-aggregates'
+        data = {"rating": False}
+        status_code, response_json = self.client.post(suf_api, data)
+        test1 = self.assertEqual(status_code, 200)
+
+
+    def test_post_instances_id_unpause(self):
+        """取消暂停云主机"""
+        suf_api = '/host-aggregates'
+        data = {"rating": False}
+        status_code, response_json = self.client.post(suf_api, data)
+        test1 = self.assertEqual(status_code, 200)
+
+
+    def test_get_instances_id_volumes(self):
+        """获取云主机硬盘列表"""
+        suf_api = '/host-aggregates'
+        data = {"rating": False}
+        status_code, response_json = self.client.post(suf_api, data)
+        test1 = self.assertEqual(status_code, 200)
+
+
+    def test_post_instances_id_volumes(self):
+        """云主机添加硬盘"""
+        suf_api = '/host-aggregates'
+        data = {"rating": False}
+        status_code, response_json = self.client.post(suf_api, data)
+        test1 = self.assertEqual(status_code, 200)
+
+
+    def test_delete_instances_id_volumes_volumeId(self):
+        """云主机移除硬盘"""
+        suf_api = '/host-aggregates'
+        data = {"rating": False}
+        status_code, response_json = self.client.post(suf_api, data)
+        test1 = self.assertEqual(status_code, 200)
+
+
+    def test_get_instances_config(self):
+        """获取云主机配置"""
+        suf_api = '/host-aggregates'
+        data = {"rating": False}
+        status_code, response_json = self.client.post(suf_api, data)
+        test1 = self.assertEqual(status_code, 200)
+
+
+    def test_delete_instances_reclaim(self):
+        """删除云主机(批量删除，不立刻删除，进入资源回收区。后台择机删除)"""
+        suf_api = '/host-aggregates'
+        data = {"rating": False}
+        status_code, response_json = self.client.post(suf_api, data)
+        test1 = self.assertEqual(status_code, 200)
+
+
+    def test_post_instances_startHA(self):
+        """开启云主机HA(批量)"""
+        suf_api = '/host-aggregates'
+        data = {"rating": False}
+        status_code, response_json = self.client.post(suf_api, data)
+        test1 = self.assertEqual(status_code, 200)
+
+
+    def test_post_instances_stopHA(self):
+        """关闭云主机HA(批量)"""
+        suf_api = '/host-aggregates'
+        data = {"rating": False}
+        status_code, response_json = self.client.post(suf_api, data)
+        test1 = self.assertEqual(status_code, 200)
+
+
+    def test_put_instances_unDelete(self):
+        """取消删除云主机"""
