@@ -26,8 +26,15 @@ def deal_case_body(datas):
     :return: str
     """
     case_method_context = ''
+    content = set()
     for data in datas:
-        mname = data[0].lower() + data[1].replace('{', '').replace('}', '').replace('/', '_').replace('-', '_')
+        # 取接口url的前缀
+        headline = data[1].split('/')[1]
+        if headline not in content:
+            # case_method_context += '    # %s\n' % data[1]
+            content.add(headline)
+            data.append(headline)
+        mname = data[0].lower() + re.sub('[{}]', '', re.sub('[-/]', '_', data[1]))
         line1 = "        suf_api = '%s'\n" % data[1]
         line2 = ''
         if data[0] == 'POST':
@@ -41,8 +48,10 @@ def deal_case_body(datas):
         data.append(method_def)
         data.append(method_body)
         case_method_context += (method_def + method_body)
-        return data, case_method_context
+    return datas, case_method_context
 
 
 _, method_context = deal_case_body(ret)
 write_file('case_method.txt', method_context)
+
+print('generate code success')

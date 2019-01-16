@@ -249,6 +249,12 @@
         status_code, response_json = self.client.delete(suf_api)
         self.assertEqual(status_code, 200)
 
+    def test_options_instances_id_os_getVNCConsole(self):
+        """获取vnc控制台"""
+        suf_api = '/instances/{id}/os-getVNCConsole'
+        status_code, response_json = self.client.options(suf_api)
+        self.assertEqual(status_code, 200)
+
     def test_patch_instances_id_os_getVNCConsole(self):
         """获取vnc控制台"""
         suf_api = '/instances/{id}/os-getVNCConsole'
@@ -1321,6 +1327,12 @@
         """注册用户"""
         suf_api = '/auth/sign-up'
         status_code, response_json = self.client.delete(suf_api)
+        self.assertEqual(status_code, 200)
+
+    def test_options_auth_sign_up(self):
+        """注册用户"""
+        suf_api = '/auth/sign-up'
+        status_code, response_json = self.client.options(suf_api)
         self.assertEqual(status_code, 200)
 
     def test_patch_auth_sign_up(self):

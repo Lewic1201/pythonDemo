@@ -1,6 +1,6 @@
 import re
 
-pattern = '(PUT\n|GET\n|POST\n|OPTION\n|DELETE\n|PATCH\n)(.*\n)(.*\n)'
+pattern = '(PUT\n|GET\n|POST\n|OPTIONS\n|DELETE\n|PATCH\n)(.*\n)(.*\n)'
 
 ss = '''Swagger UI
 swagger
@@ -1418,4 +1418,4 @@ for data in apiList:
             tmp = j
         itfc.append(tmp)
     ret.append(itfc)
-print(ret)
+# print(ret)
