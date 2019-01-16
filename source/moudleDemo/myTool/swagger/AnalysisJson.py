@@ -11,12 +11,15 @@ class AnalysisJson:
 
     def __init__(self):
         # url_json = 'http://xxx.com/v2/api-docs?group=sign-api'  # json swagger url地址
-        url_json = 'http://192.168.199.143:18080/api/swagger-ui.html#/'
-        r = requests.get(url_json).json()
+        # url_json = 'http://192.168.199.143:18080/api/swagger-ui.html#/'
+        # r = requests.get(url_json).json()
+
+        with open("./sw.json", 'r',encoding='utf-8') as load_f:
+            r = json.load(load_f)
         self.json_path = os.path.abspath(
-            os.path.dirname(os.path.dirname(__file__))) + '\\case_generate' + '\\data' + '\\data.json'  # json file path
+            os.path.dirname(__file__)) + '\\case_generate' + '\\data' + '\\data.json'  # json file path
         self.excel_path = os.path.abspath(
-            os.path.dirname(os.path.dirname(__file__))) + '\\case_generate' + '\\data' + '\\demo_api.xlsx'  # case path
+            os.path.dirname(__file__)) + '\\case_generate' + '\\data' + '\\demo_api.xlsx'  # case path
         self.interface_params = {}
         self.log = Log()
         self.row = 2  # 写入excel起始行数
@@ -39,7 +42,7 @@ class AnalysisJson:
             method_list = []
             for _k, _v in v.items():
                 interface = {}
-                if not _v['deprecated']:  # 接口是否被弃用
+                if not _v.get('deprecated'):  # 接口是否被弃用
                     method_list.append(_k)
                     api = k  # api地址
                     if len(method_list) > 1:  # api地址下的请求方式不止一个的情况
@@ -59,13 +62,13 @@ class AnalysisJson:
     def retrieve_excel(self, _v, interface, api):
         """解析参数，拼接为dict--准备完成写入excel的数据"""
         parameters = _v.get('parameters')  # 未解析的参数字典
-        case_name = _v['description']  # 接口名称
+        case_name = _v.get('description')  # 接口名称
         tags = _v['tags'][0]  # 标签名称
         if tags != '运维工具':  # 去除运维相关接口
             params_dict = self.retrieve_params(parameters)  # 处理接口参数，拼成dict形式
             params_list = list(params_dict.keys())  # 接口参数存到list中
             if params_dict:  # 单个或多个参数
-                for i in range(self.case.get(str(len(params_dict)))):  # 根据接口参数数量，生成异常用例
+                for i in range(self.case.get(str(len(params_dict)),0)):  # 根据接口参数数量，生成异常用例
                     body_name_all = body_name + str(i)  # 重新拼接body_name
                     interface['row_num'] = self.row  # 写入excel时的所在行
                     interface['id'] = 'test_' + str(self.num)  # case id
@@ -104,6 +107,8 @@ class AnalysisJson:
         """处理参数，转为dict"""
         params = ''
         _in = ''
+        if not parameters:
+            return {}
         for each in parameters:
             _in += each.get('in') + '\n'  # 参数传递位置
             params += each.get('name') + '\n'  # 参数
@@ -139,6 +144,8 @@ class AnalysisJson:
     def rewrite_case_name(self, i, case_name, params_list):
         """使case更加易读，给异常用例补全名称"""
         global case_name_except
+        if not case_name:
+            case_name = ''
         if i == 0:
             case_name_except = case_name + '-正常传参'
         if i == 1:
