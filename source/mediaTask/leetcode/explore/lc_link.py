@@ -183,28 +183,48 @@ class Solution:
         #         part
         pass
 
+    @prints
     def oddEvenList(self, head):
         """
         :type head: ListNode
         :rtype: ListNode
         """
-        tmp0 = head.val
-        tmp1 = head.next.val
-        index = 0
-        while True:
-            if head:
-                if index % 2 == 0:
-                    ret0 = tmp0
-                    ret0.next = ListNode(head.val)
-                    tmp0 = ret0
-                else:
-                    ret1 = tmp1
-                    ret1.next = ListNode(head.val)
-                    tmp1 = ret1
-                head = head.next
+        # ret0 = []
+        # ret1 = []
+        # index = 0
+        # while True:
+        #     if head:
+        #         if index % 2 == 0:
+        #             ret0.append(head.val)
+        #         else:
+        #             ret1.append(head.val)
+        #         head = head.next
+        #         index += 1
+        #     else:
+        #         ret0.extend(ret1)
+        #         break
+        # ret = None
+        # for i in ret0[::-1]:
+        #     tmp = ret
+        #     ret = ListNode(i)
+        #     ret.next = tmp
+        # return ret
+        if not head:
+            return head
+        oh = head
+        ot = oh
+        eh = head.next
+        et = eh
+        while ot.next and ot.next.next:
+            ot.next = et.next
+            ot = ot.next
+            if ot.next:
+                et.next = ot.next
+                et = et.next
             else:
-                pass
-            index += 1
+                et.next = None
+        ot.next = eh
+        return oh
 
 
 if __name__ == '__main__':
@@ -240,3 +260,5 @@ if __name__ == '__main__':
     # link2list(q)
     # link2list(w)
     # link2list(e)
+    linkC = list2link([1, 2, 3, 4, 5])
+    ss.oddEvenList(linkC)
