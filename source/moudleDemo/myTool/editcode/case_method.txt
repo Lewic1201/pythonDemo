@@ -7,7 +7,8 @@
     def test_post_ikepolicies(self):
         """创建IKE策略"""
         suf_api = '/ikepolicies'
-        data={}
+        method_name = sys._getframe().f_code.co_name
+        data = self.case_conf.get_req_data(method_name, 'req_body')
         status_code, response_json = self.client.post(suf_api, data)
         self.assertEqual(status_code, 200)
 
@@ -26,7 +27,8 @@
     def test_post_ipsec_connections(self):
         """创建VPN服务连接"""
         suf_api = '/ipsec-connections'
-        data={}
+        method_name = sys._getframe().f_code.co_name
+        data = self.case_conf.get_req_data(method_name, 'req_body')
         status_code, response_json = self.client.post(suf_api, data)
         self.assertEqual(status_code, 200)
 
@@ -45,7 +47,8 @@
     def test_post_ipsecpolicies(self):
         """创建IPSEC策略"""
         suf_api = '/ipsecpolicies'
-        data={}
+        method_name = sys._getframe().f_code.co_name
+        data = self.case_conf.get_req_data(method_name, 'req_body')
         status_code, response_json = self.client.post(suf_api, data)
         self.assertEqual(status_code, 200)
 
@@ -64,7 +67,8 @@
     def test_post_vpns(self):
         """创建VPN"""
         suf_api = '/vpns'
-        data={}
+        method_name = sys._getframe().f_code.co_name
+        data = self.case_conf.get_req_data(method_name, 'req_body')
         status_code, response_json = self.client.post(suf_api, data)
         self.assertEqual(status_code, 200)
 
@@ -95,7 +99,8 @@
     def test_post_host_aggregates(self):
         """创建主机集群"""
         suf_api = '/host-aggregates'
-        data={}
+        method_name = sys._getframe().f_code.co_name
+        data = self.case_conf.get_req_data(method_name, 'req_body')
         status_code, response_json = self.client.post(suf_api, data)
         self.assertEqual(status_code, 200)
 
@@ -150,7 +155,8 @@
     def test_post_instances(self):
         """创建云主机"""
         suf_api = '/instances'
-        data={}
+        method_name = sys._getframe().f_code.co_name
+        data = self.case_conf.get_req_data(method_name, 'req_body')
         status_code, response_json = self.client.post(suf_api, data)
         self.assertEqual(status_code, 200)
 
@@ -181,28 +187,32 @@
     def test_post_instances_id_backup(self):
         """创建云主机备份"""
         suf_api = '/instances/{id}/backup'
-        data={}
+        method_name = sys._getframe().f_code.co_name
+        data = self.case_conf.get_req_data(method_name, 'req_body')
         status_code, response_json = self.client.post(suf_api, data)
         self.assertEqual(status_code, 200)
 
     def test_post_instances_id_forceRestart(self):
         """硬重启云主机"""
         suf_api = '/instances/{id}/forceRestart'
-        data={}
+        method_name = sys._getframe().f_code.co_name
+        data = self.case_conf.get_req_data(method_name, 'req_body')
         status_code, response_json = self.client.post(suf_api, data)
         self.assertEqual(status_code, 200)
 
     def test_post_instances_id_image_imageName_type_type(self):
         """创建主机镜像"""
         suf_api = '/instances/{id}/image/{imageName}/type/{type}'
-        data={}
+        method_name = sys._getframe().f_code.co_name
+        data = self.case_conf.get_req_data(method_name, 'req_body')
         status_code, response_json = self.client.post(suf_api, data)
         self.assertEqual(status_code, 200)
 
     def test_post_instances_id_liveMigration_hostName(self):
         """迁移云主机"""
         suf_api = '/instances/{id}/liveMigration/{hostName}'
-        data={}
+        method_name = sys._getframe().f_code.co_name
+        data = self.case_conf.get_req_data(method_name, 'req_body')
         status_code, response_json = self.client.post(suf_api, data)
         self.assertEqual(status_code, 200)
 
@@ -233,7 +243,8 @@
     def test_post_instances_id_os_getVNCConsole(self):
         """获取vnc控制台"""
         suf_api = '/instances/{id}/os-getVNCConsole'
-        data={}
+        method_name = sys._getframe().f_code.co_name
+        data = self.case_conf.get_req_data(method_name, 'req_body')
         status_code, response_json = self.client.post(suf_api, data)
         self.assertEqual(status_code, 200)
 
@@ -264,14 +275,16 @@
     def test_post_instances_id_pause(self):
         """暂停云主机"""
         suf_api = '/instances/{id}/pause'
-        data={}
+        method_name = sys._getframe().f_code.co_name
+        data = self.case_conf.get_req_data(method_name, 'req_body')
         status_code, response_json = self.client.post(suf_api, data)
         self.assertEqual(status_code, 200)
 
     def test_post_instances_id_ports(self):
         """云主机添加端口"""
         suf_api = '/instances/{id}/ports'
-        data={}
+        method_name = sys._getframe().f_code.co_name
+        data = self.case_conf.get_req_data(method_name, 'req_body')
         status_code, response_json = self.client.post(suf_api, data)
         self.assertEqual(status_code, 200)
 
@@ -284,63 +297,72 @@
     def test_post_instances_id_reset_password(self):
         """云主机重置密码"""
         suf_api = '/instances/{id}/reset-password'
-        data={}
+        method_name = sys._getframe().f_code.co_name
+        data = self.case_conf.get_req_data(method_name, 'req_body')
         status_code, response_json = self.client.post(suf_api, data)
         self.assertEqual(status_code, 200)
 
     def test_post_instances_id_resize_flavorId(self):
         """调整云主机规格"""
         suf_api = '/instances/{id}/resize/{flavorId}'
-        data={}
+        method_name = sys._getframe().f_code.co_name
+        data = self.case_conf.get_req_data(method_name, 'req_body')
         status_code, response_json = self.client.post(suf_api, data)
         self.assertEqual(status_code, 200)
 
     def test_post_instances_id_restart(self):
         """软重启云主机"""
         suf_api = '/instances/{id}/restart'
-        data={}
+        method_name = sys._getframe().f_code.co_name
+        data = self.case_conf.get_req_data(method_name, 'req_body')
         status_code, response_json = self.client.post(suf_api, data)
         self.assertEqual(status_code, 200)
 
     def test_post_instances_id_resume(self):
         """恢复云主机"""
         suf_api = '/instances/{id}/resume'
-        data={}
+        method_name = sys._getframe().f_code.co_name
+        data = self.case_conf.get_req_data(method_name, 'req_body')
         status_code, response_json = self.client.post(suf_api, data)
         self.assertEqual(status_code, 200)
 
     def test_post_instances_id_snapshots(self):
         """创建云主机快照"""
         suf_api = '/instances/{id}/snapshots'
-        data={}
+        method_name = sys._getframe().f_code.co_name
+        data = self.case_conf.get_req_data(method_name, 'req_body')
         status_code, response_json = self.client.post(suf_api, data)
         self.assertEqual(status_code, 200)
 
     def test_post_instances_id_start(self):
         """开启云主机"""
         suf_api = '/instances/{id}/start'
-        data={}
+        method_name = sys._getframe().f_code.co_name
+        data = self.case_conf.get_req_data(method_name, 'req_body')
         status_code, response_json = self.client.post(suf_api, data)
         self.assertEqual(status_code, 200)
 
     def test_post_instances_id_stop(self):
         """关闭云主机"""
         suf_api = '/instances/{id}/stop'
-        data={}
+        method_name = sys._getframe().f_code.co_name
+        data = self.case_conf.get_req_data(method_name, 'req_body')
         status_code, response_json = self.client.post(suf_api, data)
         self.assertEqual(status_code, 200)
 
     def test_post_instances_id_suspend(self):
         """挂起云主机"""
         suf_api = '/instances/{id}/suspend'
-        data={}
+        method_name = sys._getframe().f_code.co_name
+        data = self.case_conf.get_req_data(method_name, 'req_body')
         status_code, response_json = self.client.post(suf_api, data)
         self.assertEqual(status_code, 200)
 
     def test_post_instances_id_unpause(self):
         """取消暂停云主机"""
         suf_api = '/instances/{id}/unpause'
-        data={}
+        method_name = sys._getframe().f_code.co_name
+        data = self.case_conf.get_req_data(method_name, 'req_body')
         status_code, response_json = self.client.post(suf_api, data)
         self.assertEqual(status_code, 200)
 
@@ -353,7 +375,8 @@
     def test_post_instances_id_volumes(self):
         """云主机添加硬盘"""
         suf_api = '/instances/{id}/volumes'
-        data={}
+        method_name = sys._getframe().f_code.co_name
+        data = self.case_conf.get_req_data(method_name, 'req_body')
         status_code, response_json = self.client.post(suf_api, data)
         self.assertEqual(status_code, 200)
 
@@ -378,14 +401,16 @@
     def test_post_instances_startHA(self):
         """开启云主机HA(批量)"""
         suf_api = '/instances/startHA'
-        data={}
+        method_name = sys._getframe().f_code.co_name
+        data = self.case_conf.get_req_data(method_name, 'req_body')
         status_code, response_json = self.client.post(suf_api, data)
         self.assertEqual(status_code, 200)
 
     def test_post_instances_stopHA(self):
         """关闭云主机HA(批量)"""
         suf_api = '/instances/stopHA'
-        data={}
+        method_name = sys._getframe().f_code.co_name
+        data = self.case_conf.get_req_data(method_name, 'req_body')
         status_code, response_json = self.client.post(suf_api, data)
         self.assertEqual(status_code, 200)
 
@@ -404,7 +429,8 @@
     def test_post_vdi_instances(self):
         """创建云桌面"""
         suf_api = '/vdi-instances'
-        data={}
+        method_name = sys._getframe().f_code.co_name
+        data = self.case_conf.get_req_data(method_name, 'req_body')
         status_code, response_json = self.client.post(suf_api, data)
         self.assertEqual(status_code, 200)
 
@@ -429,7 +455,8 @@
     def test_post_volumeQos(self):
         """创建云硬盘QoS"""
         suf_api = '/volumeQos'
-        data={}
+        method_name = sys._getframe().f_code.co_name
+        data = self.case_conf.get_req_data(method_name, 'req_body')
         status_code, response_json = self.client.post(suf_api, data)
         self.assertEqual(status_code, 200)
 
@@ -466,7 +493,8 @@
     def test_post_volumes(self):
         """创建云硬盘"""
         suf_api = '/volumes'
-        data={}
+        method_name = sys._getframe().f_code.co_name
+        data = self.case_conf.get_req_data(method_name, 'req_body')
         status_code, response_json = self.client.post(suf_api, data)
         self.assertEqual(status_code, 200)
 
@@ -521,7 +549,8 @@
     def test_post_volumes_type(self):
         """创建云硬盘类型"""
         suf_api = '/volumes-type'
-        data={}
+        method_name = sys._getframe().f_code.co_name
+        data = self.case_conf.get_req_data(method_name, 'req_body')
         status_code, response_json = self.client.post(suf_api, data)
         self.assertEqual(status_code, 200)
 
@@ -558,14 +587,16 @@
     def test_post_rating_init(self):
         """初始化计费信息"""
         suf_api = '/rating-init'
-        data={}
+        method_name = sys._getframe().f_code.co_name
+        data = self.case_conf.get_req_data(method_name, 'req_body')
         status_code, response_json = self.client.post(suf_api, data)
         self.assertEqual(status_code, 200)
 
     def test_post_rating_policies_id(self):
         """创建计费策略"""
         suf_api = '/rating-policies/{id}'
-        data={}
+        method_name = sys._getframe().f_code.co_name
+        data = self.case_conf.get_req_data(method_name, 'req_body')
         status_code, response_json = self.client.post(suf_api, data)
         self.assertEqual(status_code, 200)
 
@@ -584,7 +615,8 @@
     def test_post_rating_services(self):
         """创建可计费的服务"""
         suf_api = '/rating-services'
-        data={}
+        method_name = sys._getframe().f_code.co_name
+        data = self.case_conf.get_req_data(method_name, 'req_body')
         status_code, response_json = self.client.post(suf_api, data)
         self.assertEqual(status_code, 200)
 
@@ -603,7 +635,8 @@
     def test_post_rating_tenants(self):
         """适用单价模板"""
         suf_api = '/rating-tenants'
-        data={}
+        method_name = sys._getframe().f_code.co_name
+        data = self.case_conf.get_req_data(method_name, 'req_body')
         status_code, response_json = self.client.post(suf_api, data)
         self.assertEqual(status_code, 200)
 
@@ -658,7 +691,8 @@
     def test_post_templates(self):
         """创建单价模板"""
         suf_api = '/templates'
-        data={}
+        method_name = sys._getframe().f_code.co_name
+        data = self.case_conf.get_req_data(method_name, 'req_body')
         status_code, response_json = self.client.post(suf_api, data)
         self.assertEqual(status_code, 200)
 
@@ -689,7 +723,8 @@
     def test_post_k8scontainers(self):
         """开启容器服务"""
         suf_api = '/k8scontainers'
-        data={}
+        method_name = sys._getframe().f_code.co_name
+        data = self.case_conf.get_req_data(method_name, 'req_body')
         status_code, response_json = self.client.post(suf_api, data)
         self.assertEqual(status_code, 200)
 
@@ -708,7 +743,8 @@
     def test_post_k8scontainers_containers(self):
         """创建容器"""
         suf_api = '/k8scontainers/containers'
-        data={}
+        method_name = sys._getframe().f_code.co_name
+        data = self.case_conf.get_req_data(method_name, 'req_body')
         status_code, response_json = self.client.post(suf_api, data)
         self.assertEqual(status_code, 200)
 
@@ -745,7 +781,8 @@
     def test_post_k8scontainers_volumes(self):
         """创建容器磁盘"""
         suf_api = '/k8scontainers/volumes'
-        data={}
+        method_name = sys._getframe().f_code.co_name
+        data = self.case_conf.get_req_data(method_name, 'req_body')
         status_code, response_json = self.client.post(suf_api, data)
         self.assertEqual(status_code, 200)
 
@@ -782,7 +819,8 @@
     def test_post_containerimages(self):
         """创建容器镜像"""
         suf_api = '/containerimages'
-        data={}
+        method_name = sys._getframe().f_code.co_name
+        data = self.case_conf.get_req_data(method_name, 'req_body')
         status_code, response_json = self.client.post(suf_api, data)
         self.assertEqual(status_code, 200)
 
@@ -807,7 +845,8 @@
     def test_post_containerimages_id_file(self):
         """上传镜像"""
         suf_api = '/containerimages/{id}/file'
-        data={}
+        method_name = sys._getframe().f_code.co_name
+        data = self.case_conf.get_req_data(method_name, 'req_body')
         status_code, response_json = self.client.post(suf_api, data)
         self.assertEqual(status_code, 200)
 
@@ -868,7 +907,8 @@
     def test_post_workflow_steps(self):
         """新建流程步骤信息"""
         suf_api = '/workflow/steps'
-        data={}
+        method_name = sys._getframe().f_code.co_name
+        data = self.case_conf.get_req_data(method_name, 'req_body')
         status_code, response_json = self.client.post(suf_api, data)
         self.assertEqual(status_code, 200)
 
@@ -953,7 +993,8 @@
     def test_post_dbinstances(self):
         """创建数据库主机"""
         suf_api = '/dbinstances'
-        data={}
+        method_name = sys._getframe().f_code.co_name
+        data = self.case_conf.get_req_data(method_name, 'req_body')
         status_code, response_json = self.client.post(suf_api, data)
         self.assertEqual(status_code, 200)
 
@@ -978,7 +1019,8 @@
     def test_post_dbinstances_id_restart(self):
         """重启数据库主机"""
         suf_api = '/dbinstances/{id}/restart'
-        data={}
+        method_name = sys._getframe().f_code.co_name
+        data = self.case_conf.get_req_data(method_name, 'req_body')
         status_code, response_json = self.client.post(suf_api, data)
         self.assertEqual(status_code, 200)
 
@@ -991,7 +1033,8 @@
     def test_post_dbinstances_id_users(self):
         """添加数据库用户"""
         suf_api = '/dbinstances/{id}/users'
-        data={}
+        method_name = sys._getframe().f_code.co_name
+        data = self.case_conf.get_req_data(method_name, 'req_body')
         status_code, response_json = self.client.post(suf_api, data)
         self.assertEqual(status_code, 200)
 
@@ -1004,7 +1047,8 @@
     def test_post_dbinstances_id_users_userId_databases(self):
         """给予用户访问权限"""
         suf_api = '/dbinstances/{id}/users/{userId}/databases'
-        data={}
+        method_name = sys._getframe().f_code.co_name
+        data = self.case_conf.get_req_data(method_name, 'req_body')
         status_code, response_json = self.client.post(suf_api, data)
         self.assertEqual(status_code, 200)
 
@@ -1023,7 +1067,8 @@
     def test_post_dbinstances_instanceId_dbs(self):
         """创建数据库"""
         suf_api = '/dbinstances/{instanceId}/dbs'
-        data={}
+        method_name = sys._getframe().f_code.co_name
+        data = self.case_conf.get_req_data(method_name, 'req_body')
         status_code, response_json = self.client.post(suf_api, data)
         self.assertEqual(status_code, 200)
 
@@ -1078,7 +1123,8 @@
     def test_post_chassis(self):
         """创建机架"""
         suf_api = '/chassis'
-        data={}
+        method_name = sys._getframe().f_code.co_name
+        data = self.case_conf.get_req_data(method_name, 'req_body')
         status_code, response_json = self.client.post(suf_api, data)
         self.assertEqual(status_code, 200)
 
@@ -1133,7 +1179,8 @@
     def test_post_workflow_task_id_action(self):
         """审批流程"""
         suf_api = '/workflow/task/{id}/{action}'
-        data={}
+        method_name = sys._getframe().f_code.co_name
+        data = self.case_conf.get_req_data(method_name, 'req_body')
         status_code, response_json = self.client.post(suf_api, data)
         self.assertEqual(status_code, 200)
 
@@ -1146,7 +1193,8 @@
     def test_post_workflow_role_origUserAccount_delegateRole_targetUserAccount(self):
         """将审批权限赋予其他人"""
         suf_api = '/workflow/role/{origUserAccount}/delegateRole/{targetUserAccount}'
-        data={}
+        method_name = sys._getframe().f_code.co_name
+        data = self.case_conf.get_req_data(method_name, 'req_body')
         status_code, response_json = self.client.post(suf_api, data)
         self.assertEqual(status_code, 200)
 
@@ -1165,7 +1213,8 @@
     def test_post_workflow_roles(self):
         """批量绑定权限"""
         suf_api = '/workflow/roles'
-        data={}
+        method_name = sys._getframe().f_code.co_name
+        data = self.case_conf.get_req_data(method_name, 'req_body')
         status_code, response_json = self.client.post(suf_api, data)
         self.assertEqual(status_code, 200)
 
@@ -1184,7 +1233,8 @@
     def test_post_floating_ips(self):
         """创建浮动IP"""
         suf_api = '/floating-ips'
-        data={}
+        method_name = sys._getframe().f_code.co_name
+        data = self.case_conf.get_req_data(method_name, 'req_body')
         status_code, response_json = self.client.post(suf_api, data)
         self.assertEqual(status_code, 200)
 
@@ -1233,7 +1283,8 @@
     def test_post_bare_metals(self):
         """创建物理节点"""
         suf_api = '/bare-metals'
-        data={}
+        method_name = sys._getframe().f_code.co_name
+        data = self.case_conf.get_req_data(method_name, 'req_body')
         status_code, response_json = self.client.post(suf_api, data)
         self.assertEqual(status_code, 200)
 
@@ -1288,7 +1339,8 @@
     def test_post_bare_metals_instances(self):
         """创建物理机"""
         suf_api = '/bare-metals/instances'
-        data={}
+        method_name = sys._getframe().f_code.co_name
+        data = self.case_conf.get_req_data(method_name, 'req_body')
         status_code, response_json = self.client.post(suf_api, data)
         self.assertEqual(status_code, 200)
 
@@ -1313,7 +1365,8 @@
     def test_post_auth_sign_up(self):
         """注册用户"""
         suf_api = '/auth/sign-up'
-        data={}
+        method_name = sys._getframe().f_code.co_name
+        data = self.case_conf.get_req_data(method_name, 'req_body')
         status_code, response_json = self.client.post(suf_api, data)
         self.assertEqual(status_code, 200)
 
@@ -1362,7 +1415,8 @@
     def test_post_users(self):
         """创建用户"""
         suf_api = '/users'
-        data={}
+        method_name = sys._getframe().f_code.co_name
+        data = self.case_conf.get_req_data(method_name, 'req_body')
         status_code, response_json = self.client.post(suf_api, data)
         self.assertEqual(status_code, 200)
 
@@ -1411,7 +1465,8 @@
     def test_post_skins(self):
         """创建皮肤"""
         suf_api = '/skins'
-        data={}
+        method_name = sys._getframe().f_code.co_name
+        data = self.case_conf.get_req_data(method_name, 'req_body')
         status_code, response_json = self.client.post(suf_api, data)
         self.assertEqual(status_code, 200)
 
@@ -1424,7 +1479,8 @@
     def test_post_alarms(self):
         """创建监控"""
         suf_api = '/alarms'
-        data={}
+        method_name = sys._getframe().f_code.co_name
+        data = self.case_conf.get_req_data(method_name, 'req_body')
         status_code, response_json = self.client.post(suf_api, data)
         self.assertEqual(status_code, 200)
 
@@ -1455,7 +1511,8 @@
     def test_post_alarms_id_resources(self):
         """添加监控对象"""
         suf_api = '/alarms/{id}/resources'
-        data={}
+        method_name = sys._getframe().f_code.co_name
+        data = self.case_conf.get_req_data(method_name, 'req_body')
         status_code, response_json = self.client.post(suf_api, data)
         self.assertEqual(status_code, 200)
 
@@ -1468,7 +1525,8 @@
     def test_post_alarms_id_rules(self):
         """添加监控规则"""
         suf_api = '/alarms/{id}/rules'
-        data={}
+        method_name = sys._getframe().f_code.co_name
+        data = self.case_conf.get_req_data(method_name, 'req_body')
         status_code, response_json = self.client.post(suf_api, data)
         self.assertEqual(status_code, 200)
 
@@ -1511,7 +1569,8 @@
     def test_post_monitors(self):
         """创建监控模板"""
         suf_api = '/monitors'
-        data={}
+        method_name = sys._getframe().f_code.co_name
+        data = self.case_conf.get_req_data(method_name, 'req_body')
         status_code, response_json = self.client.post(suf_api, data)
         self.assertEqual(status_code, 200)
 
@@ -1584,7 +1643,8 @@
     def test_post_snapshots(self):
         """创建云硬盘快照"""
         suf_api = '/snapshots'
-        data={}
+        method_name = sys._getframe().f_code.co_name
+        data = self.case_conf.get_req_data(method_name, 'req_body')
         status_code, response_json = self.client.post(suf_api, data)
         self.assertEqual(status_code, 200)
 
@@ -1615,7 +1675,8 @@
     def test_post_ports(self):
         """创建端口"""
         suf_api = '/ports'
-        data={}
+        method_name = sys._getframe().f_code.co_name
+        data = self.case_conf.get_req_data(method_name, 'req_body')
         status_code, response_json = self.client.post(suf_api, data)
         self.assertEqual(status_code, 200)
 
@@ -1658,7 +1719,8 @@
     def test_post_tenants(self):
         """创建组织"""
         suf_api = '/tenants'
-        data={}
+        method_name = sys._getframe().f_code.co_name
+        data = self.case_conf.get_req_data(method_name, 'req_body')
         status_code, response_json = self.client.post(suf_api, data)
         self.assertEqual(status_code, 200)
 
@@ -1707,7 +1769,8 @@
     def test_post_networkQos(self):
         """创建网络QoS"""
         suf_api = '/networkQos'
-        data={}
+        method_name = sys._getframe().f_code.co_name
+        data = self.case_conf.get_req_data(method_name, 'req_body')
         status_code, response_json = self.client.post(suf_api, data)
         self.assertEqual(status_code, 200)
 
@@ -1726,7 +1789,8 @@
     def test_post_networks(self):
         """创建网络"""
         suf_api = '/networks'
-        data={}
+        method_name = sys._getframe().f_code.co_name
+        data = self.case_conf.get_req_data(method_name, 'req_body')
         status_code, response_json = self.client.post(suf_api, data)
         self.assertEqual(status_code, 200)
 
@@ -1763,7 +1827,8 @@
     def test_post_networks_basic(self):
         """创建基础网络"""
         suf_api = '/networks/basic'
-        data={}
+        method_name = sys._getframe().f_code.co_name
+        data = self.case_conf.get_req_data(method_name, 'req_body')
         status_code, response_json = self.client.post(suf_api, data)
         self.assertEqual(status_code, 200)
 
@@ -1782,7 +1847,8 @@
     def test_post_roles(self):
         """创建角色"""
         suf_api = '/roles'
-        data={}
+        method_name = sys._getframe().f_code.co_name
+        data = self.case_conf.get_req_data(method_name, 'req_body')
         status_code, response_json = self.client.post(suf_api, data)
         self.assertEqual(status_code, 200)
 
@@ -1813,7 +1879,8 @@
     def test_post_currencies(self):
         """创建计费货币"""
         suf_api = '/currencies'
-        data={}
+        method_name = sys._getframe().f_code.co_name
+        data = self.case_conf.get_req_data(method_name, 'req_body')
         status_code, response_json = self.client.post(suf_api, data)
         self.assertEqual(status_code, 200)
 
@@ -1832,7 +1899,8 @@
     def test_post_auth_checkOldPass(self):
         """检查密码"""
         suf_api = '/auth/checkOldPass'
-        data={}
+        method_name = sys._getframe().f_code.co_name
+        data = self.case_conf.get_req_data(method_name, 'req_body')
         status_code, response_json = self.client.post(suf_api, data)
         self.assertEqual(status_code, 200)
 
@@ -1845,14 +1913,16 @@
     def test_post_auth_modify(self):
         """修改用户密码"""
         suf_api = '/auth/modify'
-        data={}
+        method_name = sys._getframe().f_code.co_name
+        data = self.case_conf.get_req_data(method_name, 'req_body')
         status_code, response_json = self.client.post(suf_api, data)
         self.assertEqual(status_code, 200)
 
     def test_post_auth_tokens(self):
         """登录"""
         suf_api = '/auth/tokens'
-        data={}
+        method_name = sys._getframe().f_code.co_name
+        data = self.case_conf.get_req_data(method_name, 'req_body')
         status_code, response_json = self.client.post(suf_api, data)
         self.assertEqual(status_code, 200)
 
@@ -1865,7 +1935,8 @@
     def test_post_loadbalances(self):
         """创建负载均衡"""
         suf_api = '/loadbalances'
-        data={}
+        method_name = sys._getframe().f_code.co_name
+        data = self.case_conf.get_req_data(method_name, 'req_body')
         status_code, response_json = self.client.post(suf_api, data)
         self.assertEqual(status_code, 200)
 
@@ -1890,7 +1961,8 @@
     def test_post_loadbalances_id_posts(self):
         """负载均衡添加端口"""
         suf_api = '/loadbalances/{id}/posts'
-        data={}
+        method_name = sys._getframe().f_code.co_name
+        data = self.case_conf.get_req_data(method_name, 'req_body')
         status_code, response_json = self.client.post(suf_api, data)
         self.assertEqual(status_code, 200)
 
@@ -1939,7 +2011,8 @@
     def test_post_billings(self):
         """创建开票账户"""
         suf_api = '/billings'
-        data={}
+        method_name = sys._getframe().f_code.co_name
+        data = self.case_conf.get_req_data(method_name, 'req_body')
         status_code, response_json = self.client.post(suf_api, data)
         self.assertEqual(status_code, 200)
 
@@ -1970,7 +2043,8 @@
     def test_post_pools(self):
         """创建资源池"""
         suf_api = '/pools'
-        data={}
+        method_name = sys._getframe().f_code.co_name
+        data = self.case_conf.get_req_data(method_name, 'req_body')
         status_code, response_json = self.client.post(suf_api, data)
         self.assertEqual(status_code, 200)
 
@@ -2007,7 +2081,8 @@
     def test_post_stacks(self):
         """创建资源模板"""
         suf_api = '/stacks'
-        data={}
+        method_name = sys._getframe().f_code.co_name
+        data = self.case_conf.get_req_data(method_name, 'req_body')
         status_code, response_json = self.client.post(suf_api, data)
         self.assertEqual(status_code, 200)
 
@@ -2044,7 +2119,8 @@
     def test_post_flavors(self):
         """创建资源规格"""
         suf_api = '/flavors'
-        data={}
+        method_name = sys._getframe().f_code.co_name
+        data = self.case_conf.get_req_data(method_name, 'req_body')
         status_code, response_json = self.client.post(suf_api, data)
         self.assertEqual(status_code, 200)
 
@@ -2069,7 +2145,8 @@
     def test_post_flavors_id_extraspecs(self):
         """设置额外规格"""
         suf_api = '/flavors/{id}/extraspecs'
-        data={}
+        method_name = sys._getframe().f_code.co_name
+        data = self.case_conf.get_req_data(method_name, 'req_body')
         status_code, response_json = self.client.post(suf_api, data)
         self.assertEqual(status_code, 200)
 
@@ -2088,7 +2165,8 @@
     def test_post_routers(self):
         """创建路由"""
         suf_api = '/routers'
-        data={}
+        method_name = sys._getframe().f_code.co_name
+        data = self.case_conf.get_req_data(method_name, 'req_body')
         status_code, response_json = self.client.post(suf_api, data)
         self.assertEqual(status_code, 200)
 
@@ -2155,7 +2233,8 @@
     def test_post_notification_lists(self):
         """创建通知列表"""
         suf_api = '/notification-lists'
-        data={}
+        method_name = sys._getframe().f_code.co_name
+        data = self.case_conf.get_req_data(method_name, 'req_body')
         status_code, response_json = self.client.post(suf_api, data)
         self.assertEqual(status_code, 200)
 
@@ -2180,7 +2259,8 @@
     def test_post_notification_lists_id_terminals(self):
         """创建终端"""
         suf_api = '/notification-lists/{id}/terminals'
-        data={}
+        method_name = sys._getframe().f_code.co_name
+        data = self.case_conf.get_req_data(method_name, 'req_body')
         status_code, response_json = self.client.post(suf_api, data)
         self.assertEqual(status_code, 200)
 
@@ -2193,7 +2273,8 @@
     def test_post_notification_lists_terminals_id_verify(self):
         """确认终端"""
         suf_api = '/notification-lists/terminals/{id}/verify'
-        data={}
+        method_name = sys._getframe().f_code.co_name
+        data = self.case_conf.get_req_data(method_name, 'req_body')
         status_code, response_json = self.client.post(suf_api, data)
         self.assertEqual(status_code, 200)
 
@@ -2248,7 +2329,8 @@
     def test_post_quota_templates(self):
         """创建配额模板"""
         suf_api = '/quota-templates'
-        data={}
+        method_name = sys._getframe().f_code.co_name
+        data = self.case_conf.get_req_data(method_name, 'req_body')
         status_code, response_json = self.client.post(suf_api, data)
         self.assertEqual(status_code, 200)
 
@@ -2303,7 +2385,8 @@
     def test_post_images(self):
         """创建镜像"""
         suf_api = '/images'
-        data={}
+        method_name = sys._getframe().f_code.co_name
+        data = self.case_conf.get_req_data(method_name, 'req_body')
         status_code, response_json = self.client.post(suf_api, data)
         self.assertEqual(status_code, 200)
 
@@ -2328,7 +2411,8 @@
     def test_post_images_id_file(self):
         """上传镜像文件"""
         suf_api = '/images/{id}/file'
-        data={}
+        method_name = sys._getframe().f_code.co_name
+        data = self.case_conf.get_req_data(method_name, 'req_body')
         status_code, response_json = self.client.post(suf_api, data)
         self.assertEqual(status_code, 200)
 
@@ -2383,7 +2467,8 @@
     def test_post_firewalls(self):
         """创建防火墙"""
         suf_api = '/firewalls'
-        data={}
+        method_name = sys._getframe().f_code.co_name
+        data = self.case_conf.get_req_data(method_name, 'req_body')
         status_code, response_json = self.client.post(suf_api, data)
         self.assertEqual(status_code, 200)
 
@@ -2408,7 +2493,8 @@
     def test_post_firewalls_id_ports(self):
         """防火墙添加端口"""
         suf_api = '/firewalls/{id}/ports'
-        data={}
+        method_name = sys._getframe().f_code.co_name
+        data = self.case_conf.get_req_data(method_name, 'req_body')
         status_code, response_json = self.client.post(suf_api, data)
         self.assertEqual(status_code, 200)
 
@@ -2421,14 +2507,16 @@
     def test_post_firewalls_id_start(self):
         """开启防火墙"""
         suf_api = '/firewalls/{id}/start'
-        data={}
+        method_name = sys._getframe().f_code.co_name
+        data = self.case_conf.get_req_data(method_name, 'req_body')
         status_code, response_json = self.client.post(suf_api, data)
         self.assertEqual(status_code, 200)
 
     def test_post_firewalls_id_stop(self):
         """关闭防火墙"""
         suf_api = '/firewalls/{id}/stop'
-        data={}
+        method_name = sys._getframe().f_code.co_name
+        data = self.case_conf.get_req_data(method_name, 'req_body')
         status_code, response_json = self.client.post(suf_api, data)
         self.assertEqual(status_code, 200)
 

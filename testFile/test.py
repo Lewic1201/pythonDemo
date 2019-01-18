@@ -1,4 +1,17 @@
 import re
+import sys
 
-test2 = "['GET', '/ikepolicies/{id}', '获取IKE策略详情']"
-print(re.sub('[{}]', '', re.sub('[-/]', '_', test2)))
+
+def a():
+    """
+    test
+    :return:
+    """
+    pass
+
+    print(sys._getframe().f_code.co_name)
+
+a()
+# print(a.__name__)
+
+# getattr(a, '__name__')
