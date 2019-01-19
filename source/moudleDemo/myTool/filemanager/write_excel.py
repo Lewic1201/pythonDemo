@@ -34,7 +34,7 @@ class EditExcel:
             filename += '.xls'
         self.filename = filename
         # 读取Excel对象
-        self.rb = xlrd.open_workbook(filename,formatting_info=True)
+        self.rb = xlrd.open_workbook(filename, formatting_info=True)
         # 写入Excel的workbook对象
         self.wb = copy(self.rb)
         self.workbook = self.wb
@@ -62,12 +62,12 @@ class EditExcel:
                         continue
                     worksheet.write(row, col, data[col])
         except Exception as err:
-            print(row, col, err)
+            # print(row, col, err)
             raise
 
     def save(self):
         self.workbook.save(self.filename)
-        print('save success')
+        print('SAVE SUCCESS')
 
 
 class WriteExcel:
@@ -104,12 +104,12 @@ class WriteExcel:
                         continue
                     worksheet.write(row, col, data[col])
         except Exception as err:
-            print(row, col, err)
+            # print(row, col, err)
             raise
 
     def save(self):
         self.workbook.save(self.filename)
-        print('save success')
+        print('SAVE SUCCESS')
 
 
 def save_info(file_name, sheet_name, datas):

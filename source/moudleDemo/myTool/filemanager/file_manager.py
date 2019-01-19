@@ -7,18 +7,21 @@
 # @context :
 
 import datetime
-import os
 import os.path as op
-import pprint
 import re
 import time
-from source.utils.decorators import print_cls
+
+# from source.utils.logs import logger
+from source.application.pingyin.pinyin import PinYin
+from source.application.translate.trans import Trans
 from source.moudleDemo.myTool.filemanager.write_excel import *
+from source.utils.decorators import print_cls
 
 """[正则表达式,表达式说明]"""
 RE_ALL = [r'.*', '所有文件']
-RE_SUFFIX = [r'\.mp3', '设置文件后缀']
-RE_PREFIX = [r'ABC123', '设置文件前缀']
+RE_SUFFIX = [r'.*\.mp3', '匹配文件后缀']
+RE_PREFIX = [r'ABC123.*', '匹配文件前缀']
+RE_HAS_CHINESE = [u".*[\u4e00-\u9fa5]+.*", '包含中文']
 
 
 def get_now_time(format='%Y-%m-%d %H:%M:%S'):
@@ -92,7 +95,7 @@ class FileManage:
         pattern = re.compile(re_expression)
         result = []
         for f in file_list:
-            if op.isdir(filename):
+            if op.isdir(f):
                 continue
             if re.match(pattern, f):
                 filename = op.join(f)
@@ -117,8 +120,9 @@ class FileManage:
     @print_cls
     def change_name(self, file_name, file_new_name=''):
         """
-        批量修改文件名
+        修改文件名
         :param file_name: 文件名(绝对路径)
+        :param file_new_name: 新的文件名
         :return:
         """
 
@@ -127,13 +131,15 @@ class FileManage:
 
         # 是否改为默认的新名字
         if not file_new_name:
-            # 修改规则
-            new_name = self.get_format_name(name)
+            # 修改规则为get_format2_name,可以通过改这行修改规则
+            # new_name = self.get_format1_name(name)
+            # new_name = self.get_format2_name(name)
+            new_name = self.get_format3_name(name)
+
             file_new_name = op.join(file_path, new_name)
         else:
             new_name = op.split(file_new_name)[1]
         if name != new_name:
-            print(op.abspath(file_name))
             try:
                 os.rename(file_name, file_new_name)
                 message = 'info: ' + '\033[5;33;0m' + name + '\033[5;34;0m' + ' ---->>>> ' + '\033[5;33;0m' \
@@ -144,20 +150,18 @@ class FileManage:
                 err_message = 'warning: ' + '\033[5;31;0m' + 'file "' + file_name + '" not found' + '\033[0m'
                 print(err_message)
                 raise
-            return False
-        return True
+        return False
 
     def get_format1_name(self, name):
         """
-        获取新的文件名:
+        改名1规则: 将(A001)(    )(ABC-123asdf)(.mp3)文件中空格等距
         :param name: 仅文件名
         :return: 新文件名
         :rtype: str
         """
         # 将文件名分成四部分(A001)(    )(ABC-123asdf)(.mp3)
         pattern_01 = re.compile(r'^(\w\d{3})(\s{3,})(.*)(\.\w{2,4})$')
-        #
-        pattern_02 = re.compile(r'^.*(阳光电影www\.ygdy8\.com\.).*$')
+        # pattern_02 = re.compile(r'^.*(阳光电影www\.ygdy8\.com\.).*$')
         check_result = re.match(pattern_01, name)
 
         new_name = name
@@ -170,6 +174,48 @@ class FileManage:
             new_name = prefix + '                       ' + name_content + suffix
             return new_name
 
+        return new_name
+
+    def get_format2_name(self, name):
+        """
+        改名2规则: 一种文件名的修改规则
+        :param name: 仅文件名
+        :return: 新文件名
+        :rtype: str
+        """
+        # 将文件名分成四部分(A001)(    )(ABC-123asdf)(.mp3)
+        # 如微信打不开请输入www.kmyy.tv继续观看(9)
+        # 西柚酱制作-猜猜猜8@小密圈特别
+        new_name = name
+        if '西柚酱制作-猜猜猜' in name:
+            new_name = name.replace('西柚酱制作-猜猜猜', 'guessWho-').replace('@小密圈特别资源', '')
+        return new_name
+
+    def get_format3_name(self, name):
+        """
+        改名3规则: 将所有汉字转为拼音
+        :param name: 仅文件名
+        :return: 新文件名
+        :rtype: str
+        """
+        # 过滤出带汉字的name
+        pattern = RE_HAS_CHINESE[0]
+        check_result = re.match(pattern, name)
+        new_name = name
+        if check_result:
+            py = PinYin()
+            # 汉字转拼音
+            new_name = py.hanzi2pinyin_split(name)
+        return new_name
+
+    def get_format4_name(self, name):
+        """
+        改名4规则: 将所有文字翻译
+        :param name: 仅文件名
+        :return: 新文件名
+        :rtype: str
+        """
+        new_name = Trans().translate(name)
         return new_name
 
     def change_queue_name(self):
@@ -260,16 +306,16 @@ class FileManage:
 
     def save_all(self, save_file):
         """
-        保存所有子文件信息到指定文件
-        :param save_file: 全路径
+        保存所有子文件信息到指定Excel文件
+        :param save_file: 绝对路径
         :return:
         """
 
         file_list = self.get_all_filelist()
-        # 过滤文件夹
-        for i in range(len(file_list)):
-            if os.path.isdir(file_list[i]):
-                file_list.pop(i)
+        # # 过滤文件夹
+        # for i in range(len(file_list)):
+        #     if os.path.isdir(file_list[i]):
+        #         file_list.pop(i)
 
         # 获取所有文件信息
         file_info = []
@@ -286,12 +332,45 @@ class FileManage:
         now = get_now_time('%Y%m%d%H%M%S')
         save_info(save_file, now, file_info)
 
+    @print_cls
+    def save_name_map(self, save_file):
+        """
+        保存文件名及文件翻译到指定Excel文件
+        :param save_file: 绝对路径
+        :return:
+        """
+        file_list = self.get_all_filelist()
+        datas = []
+        header = ['path', 'name', 'type', 'pinyin', 'trans']
+        datas.append(header)
+        for file_name in file_list:
+            print(file_name)
+            path = os.path.split(file_name)[0]
+            name = os.path.split(file_name)[1]
+            types = os.path.splitext(file_name)[1][1:]
+            pinyin = self.get_format3_name(name)
+
+            no_expend_name = op.split(op.splitext(file_name)[0])[1]
+            # 去掉文件扩展名
+            trans = Trans().translate(no_expend_name)
+            data = [path, name, types, pinyin, trans]
+            datas.append(data)
+        # 保存文件
+        now = get_now_time('%Y%m%d%H%M%S')
+        save_info(save_file, now, datas)
+
 
 if __name__ == '__main__':
     path1 = 'G:\\Lenovo Limited Warranty_V1.2_UHD\\config\\new190113\\ShareCircle'
     path2 = 'G:\\Lenovo Limited Warranty_V1.2_UHD\\config'
     path3 = 'E:\\import_file\\disk_file'
+    path5 = 'E:\\import_file\\name_map_file'
+    path4 = 'G:\\Lenovo Limited Warranty_V1.2_UHD\\config\\English\\alllllllllll\\李宗瑞系列\\'
     fm = FileManage(path2)
     # fm.change_queue_name()
     # pprint.pprint(fm.get_all_file_params())
-    fm.save_all(path3)
+    # for ff in fm.get_all_filelist():
+    #     # 批量修改文件名
+    #     fm.change_name(ff)
+    # fm.save_all(path3)
+    fm.save_name_map(path5)
