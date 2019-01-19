@@ -6,23 +6,11 @@
 # @Software: PyCharm
 # @context :
 
-def prints(func):
-    def wrapper(self, *args, **kwargs):
-        try:
-            print('-' * 100)
-            print("[METHOD]: {}()".format(func.__name__))
-            print("[INPUT]: ", *args)
-            ret = func(self, *args, **kwargs)
-            print("[RESULT]: ", ret)
-            return ret
-        except Exception as err:
-            print(err)
-
-    return wrapper
+from source.utils.decorators import *
 
 
 class Solution:
-    @prints
+    @print_cls
     def removeDuplicates(self, nums):
         """
         :type nums: List[int]
@@ -34,7 +22,7 @@ class Solution:
                 nums.pop(i)
         return len(nums)
 
-    @prints
+    @print_cls
     def maxProfit(self, prices):
         """
         :type prices: List[int]
@@ -56,7 +44,7 @@ class Solution:
                 profit += differ
         return profit
 
-    @prints
+    @print_cls
     def plusOne(self, digits):
         """
         :type digits: List[int]
@@ -77,7 +65,7 @@ class Solution:
                 digits[dlen - k - 1] += 1
                 return digits
 
-    @prints
+    @print_cls
     def intersect(self, nums1, nums2):
         """
         :type nums1: List[int]
@@ -98,7 +86,7 @@ class Solution:
                     nums1.remove(i)
         return nums1
 
-    @prints
+    @print_cls
     def subsets(self, nums):
         """
         :type nums: List[int]
@@ -115,7 +103,7 @@ class Solution:
         ret.append([])
         return ret
 
-    @prints
+    @print_cls
     # Definition for singly-linked list.
     # class ListNode:
     #     def __init__(self, x):
@@ -129,7 +117,7 @@ class Solution:
         """
         pass
 
-    @prints
+    @print_cls
     def longestCommonPrefix(self, strs):
         """
         :type strs: List[str]
@@ -142,7 +130,7 @@ class Solution:
                 if not j.startswith(prefix_str):
                     return prefix_str[:-1]
 
-    @prints
+    @print_cls
     def moveZeroes(self, nums):
         """
         :type nums: List[int]
@@ -162,7 +150,7 @@ class Solution:
             nums[k] = 0
         return nums
 
-    @prints
+    @print_cls
     def isValidSudoku(self, board):
         """
         :type board: List[List[str]]
@@ -216,7 +204,7 @@ class Solution:
                 return False
         return True
 
-    @prints
+    @print_cls
     def plusOne(self, digits):
         """
         :type digits: List[int]
@@ -234,7 +222,7 @@ class Solution:
                 digits[dlen - k - 1] += 1
                 return digits
 
-    @prints
+    @print_cls
     def containsDuplicate(self, nums):
         """
         :type nums: List[int]
@@ -251,7 +239,7 @@ class Solution:
         else:
             return True
 
-    @prints
+    @print_cls
     def singleNumber(self, nums):
         """
         :type nums: List[int]
@@ -269,7 +257,7 @@ class Solution:
             res ^= i
         return res
 
-    @prints
+    @print_cls
     def merge(self, nums1, m, nums2, n):
         """
         :type nums1: List[int]
@@ -302,7 +290,7 @@ class Solution:
         return nums1
 
     # ----------------------------------error-------------------------------------
-    @prints
+    @print_cls
     def threeSum(self, nums):
         """
         :type nums: List[int]
@@ -341,7 +329,7 @@ class Solution:
 
         return ret
 
-    @prints
+    @print_cls
     def removeElement(self, nums, val):
         """
         :type nums: List[int]
@@ -359,6 +347,44 @@ class Solution:
             nums[i] = nums[i + count]
             i += 1
         return count, nums
+
+    @print_cls
+    def groupAnagrams(self, strs):
+        """
+        :type strs: List[str]
+        :rtype: List[List[str]]
+        """
+
+        # diffs = []
+        # ret = []
+        # for word in strs:
+        #     word_set = sorted(word)
+        #     if word_set not in diffs:
+        #         diffs.append(word_set)
+        # for word_set in diffs:
+        #     group = []
+        #     for word in strs:
+        #         if sorted(word) == word_set:
+        #             group.append(word)
+        #     ret.append(group)
+        # return ret
+        def prod(astr):
+            res = 1
+            for i in range(len(astr)):
+                res *= hfunc[astr[i]]
+            return res
+
+        hfunc = {'a': 2, 'b': 3, 'c': 5, 'd': 7, 'e': 11, 'f': 13, 'g': 17, 'h': 19, 'i': 23, 'j': 29, 'k': 31, 'l': 37,
+                 'm': 41, 'n': 43, 'o': 47, 'p': 53, 'q': 59, 'r': 61, 's': 67, 't': 71, 'u': 73, 'v': 79, 'w': 83,
+                 'x': 89, 'y': 97, 'z': 101}
+        pattern = {}
+        for s in strs:
+            tmp = prod(s)
+            if not tmp in pattern.keys():
+                pattern[tmp] = [s]
+            else:
+                pattern[tmp].append(s)
+        return [pattern[i] for i in pattern.keys()]
 
 
 if __name__ == '__main__':
@@ -394,6 +420,7 @@ if __name__ == '__main__':
     # ss.merge([1, 2, 3, 0, 0, 0], 3, [0, 5, 6], 3)
     # ss.merge([1, 2, 3, 0, 0, 0], 3, [1, 5, 6], 3)
     # ss.threeSum([-1, 0, 1, 2, -1, -4])
-    ss.removeElement([3, 2, 2, 3], 3)
-    ss.removeElement([0, 1, 2, 2, 3, 0, 4, 2], 2)
-    ss.removeElement([0, 1, 2, 2, 3, 0, 4, 2], 2)
+    # ss.removeElement([3, 2, 2, 3], 3)
+    # ss.removeElement([0, 1, 2, 2, 3, 0, 4, 2], 2)
+    # ss.removeElement([0, 1, 2, 2, 3, 0, 4, 2], 2)
+    ss.groupAnagrams(["eat", "tea", "tan", "ate", "nat", "bat"])
