@@ -6,25 +6,12 @@
 # @Software: PyCharm
 # @context :
 
-
-def prints(func):
-    def wrapper(self, *args, **kwargs):
-        try:
-            print('-' * 100)
-            print("[METHOD]: {}()".format(func.__name__))
-            print("[INPUT]: ", *args)
-            ret = func(self, *args, **kwargs)
-            print("[RESULT]: ", ret)
-            return ret
-        except Exception as err:
-            print(err)
-
-    return wrapper
+from source.utils.decorators import print_cls
 
 
 class Solution:
 
-    @prints
+    @print_cls
     def fullJustify(self, words, maxWidth):
         """
         文本左右对齐
@@ -65,9 +52,27 @@ class Solution:
             for word in data:
                 retStr += (word + ' ')
             else:
-                retStr += ((maxWidth - len(retStr)+1) * ' ')
+                retStr += ((maxWidth - len(retStr) + 1) * ' ')
                 ret.append(retStr[:-1])
         return ret
+
+    @print_cls
+    def judgePoint24(self, nums):
+        """
+        24点游戏
+        eg:
+            输入: [4, 1, 8, 7]
+            输出: True
+            解释: (8-4) * (7-1) = 24
+        :type nums: List[int]
+        :rtype: bool
+        """
+        """
+        a+b+c+d
+        a+b+c-d
+        a+b-c-d
+        """
+        pass
 
 
 if __name__ == '__main__':
