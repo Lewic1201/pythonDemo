@@ -3,6 +3,8 @@ class A(object):
         print('init', a)
 
     def foo1(self):
+        # self.foo2()
+        # self.foo3()
         print("Hello", self)
 
     @staticmethod
@@ -30,5 +32,3 @@ if __name__ == '__main__':
     b = A
     b.foo3()
     a.foo1()
-
-
