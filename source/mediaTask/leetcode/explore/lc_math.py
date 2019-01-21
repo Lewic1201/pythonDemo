@@ -6,23 +6,11 @@
 # @Software: PyCharm
 # @context :
 
-def prints(func):
-    def wrapper(self, *args, **kwargs):
-        try:
-            print('-' * 100)
-            print("[METHOD]: {}()".format(func.__name__))
-            print("[INPUT]: ", *args)
-            ret = func(self, *args, **kwargs)
-            print("[RESULT]: ", ret)
-            return ret
-        except Exception as err:
-            print(err)
-
-    return wrapper
+from source.utils.decorators import print_cls
 
 
 class Solution:
-    @prints
+    @print_cls
     def isPowerOfThree(self, n):
         """
         :type n: int
@@ -40,7 +28,7 @@ class Solution:
         else:
             return False
 
-    @prints
+    @print_cls
     def countPrimes(self, n):
         """
         :type n: int
@@ -60,10 +48,33 @@ class Solution:
                     break
                 elif i > sq:
                     primes.append(k)
-                    count+=1
+                    count += 1
                     break
         # print(primes)
         return count
+
+    @print_cls
+    def fizzBuzz(self, n):
+        """
+        Fizz Buzz:
+            写一个程序，输出从 1 到 n 数字的字符串表示。
+            1. 如果 n 是3的倍数，输出“Fizz”；
+            2. 如果 n 是5的倍数，输出“Buzz”；
+            3.如果 n 同时是3和5的倍数，输出 “FizzBuzz”。
+        :type n: int
+        :rtype: List[str]
+        """
+        ret = []
+        for i in range(1, n + 1):
+            if i % 15 == 0:
+                ret.append("FizzBuzz")
+            elif i % 3 == 0:
+                ret.append('Fizz')
+            elif i % 5 == 0:
+                ret.append('Buzz')
+            else:
+                ret.append(str(i))
+        return ret
 
 
 if __name__ == '__main__':
@@ -80,5 +91,6 @@ if __name__ == '__main__':
     # ss.countPrimes(200)
     # ss.countPrimes(2000)
     # ss.countPrimes(10000)
-    ss.countPrimes(999983)
-    ss.countPrimes(1500000)
+    # ss.countPrimes(999983)
+    # ss.countPrimes(1500000)
+    ss.fizzBuzz(15)

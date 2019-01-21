@@ -12,14 +12,15 @@ import os.path as op
 import pprint
 import re
 
-file_path = u'H:\Lenovo Limited Warranty_V1.2_UHD\config\java'
-os.chdir(file_path)
+FILE_PATH = u'G:\Lenovo Limited Warranty_V1.2_UHD\config'
+os.chdir(FILE_PATH)
 
 
 def change_name(file_abspath):
+    """批量修改文件名"""
     file_up_path = op.split(file_abspath)[0]
     file_name = op.split(file_abspath)[1]
-    new_name = deal_file_name(file_name)
+    new_name = get_new_name(file_name)
     os.chdir(file_up_path)
     if file_name != new_name:
         print(op.abspath(file_name))
@@ -34,11 +35,16 @@ def change_name(file_abspath):
     # print(file_up_path)
 
 
-def deal_file_name(file_name):
+def get_new_name(file_name):
+    """
+    获取新的文件名:
+    :param file_name:
+    :return: str
+    """
     pattern_01 = re.compile(r'^(\w\d{3})(\s{3,})(.*)(\.\w{2,4})$')
-    pattern_02 = re.compile(r'^.*(阳光电影www\.ygdy8\.com\.).*$')
+    # pattern_02 = re.compile(r'^.*(阳光电影www\.ygdy8\.com\.).*$')
     check_result = pattern_01.match(file_name)
-    check_result_2 = pattern_02.match(file_name)
+    # check_result_2 = pattern_02.match(file_name)
     new_name = file_name
 
     if check_result:  # 查找头部，没有匹配
@@ -51,12 +57,12 @@ def deal_file_name(file_name):
         new_name = prefix + '                       ' + file_name_content + suffix
         return new_name
 
-    if check_result_2:
-        # print(check_result_2.group(0))
-        extra = check_result_2.group(1)
-
-        new_name = file_name.replace(extra, '')
-        return new_name
+    # if check_result_2:
+    #     # print(check_result_2.group(0))
+    #     extra = check_result_2.group(1)
+    #
+    #     new_name = file_name.replace(extra, '')
+    #     return new_name
     return new_name
 
 
