@@ -386,6 +386,29 @@ class Solution:
                 pattern[tmp].append(s)
         return [pattern[i] for i in pattern.keys()]
 
+    @print_cls
+    def isIsomorphic(self, s, t):
+        """
+        同构字符串
+        eg:
+            输入: s = "paper", t = "title"
+            输出: true
+        :type s: str
+        :type t: str
+        :rtype: bool
+        """
+        # 位置的映射表
+        # map = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67]
+        # slen = len(s)
+        # for i in range(slen):
+        #     s = s.replace(s[i], t[i])
+        # if s == t:
+        #     return True
+        # else:
+        #     return False
+
+        return len(set(zip(s, t))) == len(set(s)) == len(set(t))
+
 
 if __name__ == '__main__':
     ss = Solution()
@@ -423,4 +446,11 @@ if __name__ == '__main__':
     # ss.removeElement([3, 2, 2, 3], 3)
     # ss.removeElement([0, 1, 2, 2, 3, 0, 4, 2], 2)
     # ss.removeElement([0, 1, 2, 2, 3, 0, 4, 2], 2)
-    ss.groupAnagrams(["eat", "tea", "tan", "ate", "nat", "bat"])
+    # ss.groupAnagrams(["eat", "tea", "tan", "ate", "nat", "bat"])
+    # s = "egg"
+    # t = "add"
+    # s = "foo"
+    # t = "bar"
+    s = "paper"
+    t = "title"
+    ss.isIsomorphic(s, t)
