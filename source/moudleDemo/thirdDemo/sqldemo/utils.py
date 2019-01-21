@@ -1,5 +1,7 @@
 import pymysql
-from src.sqldemo.config import Config
+from source.moudleDemo.thirdDemo.sqldemo.config import Config
+from source.utils.decorators import print_cls
+from source.utils.logs import logger
 
 
 class Sql():
@@ -13,7 +15,8 @@ class Sql():
         self.conn = self.sql_connect()
 
     def sql_connect(self):
-        return pymysql.connect(host=self.host, port=self.port, user=self.user, passwd=self.password, db=self.db)
+        logger.info("%s %s %s %s %s" % (self.host, self.port, self.user, self.password, self.db))
+        return pymysql.connect(self.host, self.user, self.password, self.db)
 
     def sql_execute(self, sql_str):
         try:
@@ -28,3 +31,15 @@ class Sql():
 
     def sql_close(self):
         self.conn.close()
+
+
+if __name__ == '__main__':
+    try:
+        sql = Sql()
+    except Exception:
+        raise
+    try:
+        ret = sql.sql_execute('select * from user_info')
+        print(ret)
+    finally:
+        sql.sql_close()

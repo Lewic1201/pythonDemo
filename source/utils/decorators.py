@@ -69,7 +69,7 @@ def print_def(func):
             print('\033[5;33;0m' + "[RESULT]:", ret, '\033[0m')
             return ret
         except Exception as err:
-            print('\033[5;31;0m' + err + '\033[0m')
+            print('\033[5;31;0m' + str(err) + '\033[0m')
 
     return wrapper
 
@@ -87,6 +87,6 @@ def print_cls(func):
             print('\033[5;33;0m' + "[RESULT]:", ret, '\033[0m')
             return ret
         except Exception as err:
-            print('\033[5;31;0m' + err + '\033[0m')
+            print('\033[5;31;0m' + str(err) + '\033[0m')
 
     return wrapper
