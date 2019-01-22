@@ -439,6 +439,29 @@ class Solution:
         matrix[::] = zip(*matrix[::-1])
         return matrix
 
+    @print_cls
+    def isIsomorphic(self, s, t):
+        """
+        同构字符串
+        eg:
+            输入: s = "paper", t = "title"
+            输出: true
+        :type s: str
+        :type t: str
+        :rtype: bool
+        """
+        # 位置的映射表
+        # map = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67]
+        # slen = len(s)
+        # for i in range(slen):
+        #     s = s.replace(s[i], t[i])
+        # if s == t:
+        #     return True
+        # else:
+        #     return False
+
+        return len(set(zip(s, t))) == len(set(s)) == len(set(t))
+
 
 if __name__ == '__main__':
     ss = Solution()
@@ -490,3 +513,10 @@ if __name__ == '__main__':
     ]
     ss.rotate(rr)
     ss.rotate(rr2)
+    # s = "egg"
+    # t = "add"
+    # s = "foo"
+    # t = "bar"
+    s = "paper"
+    t = "title"
+    ss.isIsomorphic(s, t)

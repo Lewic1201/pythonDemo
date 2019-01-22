@@ -91,11 +91,11 @@ class Solution:
         # else:
         #     return False
         slen = len(s)
-        if len(t)!=slen:
+        if len(t) != slen:
             return False
         sset = set(s)
         for i in sset:
-            if s.count(i)!=t.count(i):
+            if s.count(i) != t.count(i):
                 return False
         else:
             return True
@@ -115,11 +115,44 @@ class Solution:
         #     return haystack.index(needle)
 
         needle_len = len(needle)
-        for i in range(len(haystack)-needle_len):
-            if haystack[i:i+needle_len] == needle:
+        for i in range(len(haystack) - needle_len):
+            if haystack[i:i + needle_len] == needle:
                 return i
         else:
             return -1
+
+    @prints
+    def countAndSay(self, n):
+        """
+        报数
+            1
+            11
+            21
+            1211
+            111221
+        :type n: int
+        :rtype: str
+        """
+        index = 1
+        ret = ['1']
+        while index < n:
+            now_str = ret[-1]
+            tmp = 0
+            newstr = ''
+            for i in range(len(now_str)):
+                before = now_str[i - 1] if i >= 1 else ''
+                if now_str[i] == before:
+                    tmp += 1
+                else:
+                    if before:
+                        newstr += (str(tmp) + before)
+                    before = now_str[i]
+                    tmp = 1
+                if i == len(now_str) - 1:
+                    newstr += (str(tmp) + before)
+            ret.append(newstr)
+            index += 1
+        return ret[-1]
 
 
 if __name__ == '__main__':
@@ -134,6 +167,9 @@ if __name__ == '__main__':
     # ss.firstUniqChar("lleetcotdocdees")
     # ss.isAnagram("anagram", "nagaram")
     # ss.isAnagram("rat", "car")
-    ss.strStr('hello','ll')
-    ss.strStr('aaaaa','bba')
-    ss.strStr('aaaaa','')
+    # ss.strStr('hello', 'll')
+    # ss.strStr('aaaaa', 'bba')
+    # ss.strStr('aaaaa', '')
+    ss.countAndSay(4)
+    ss.countAndSay(3)
+    ss.countAndSay(5)
