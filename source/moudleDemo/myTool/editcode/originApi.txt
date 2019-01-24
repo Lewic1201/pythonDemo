@@ -275,6 +275,12 @@ PUT
 GET
 /volumes/config
 获取云硬盘配置
+DELETE
+/volumes/reclaim
+删除云硬盘(批量删除，不立刻删除，进入资源回收区。后台择机删除)
+PUT
+/volumes/unDelete
+取消删除云硬盘()
 云硬盘类型接口
 Volume Type Controller
 
@@ -375,22 +381,124 @@ DELETE
 Backup Task Controller
 
 
+GET
+/backup-tasks
+获取云硬盘备份任务列表
+POST
+/backup-tasks
+创建云硬盘备份任务
+GET
+/backup-tasks/{id}
+获取云硬盘备份任务详细
+PUT
+/backup-tasks/{id}
+更新云硬盘备份任务
+DELETE
+/backup-tasks/{id}
+删除云硬盘备份任务
 备份接口
 Backup Controller
 
 
+GET
+/backups
+获取备份列表
+POST
+/backups
+创建备份
+GET
+/backups/{id}
+获取备份详情
+DELETE
+/backups/{id}
+删除备份
+POST
+/backups/{id}/{volumeId}
+恢复备份
 子网接口
 Subnet Controller
 
 
+GET
+/subnets
+获取子网列表
+POST
+/subnets
+创建子网
+GET
+/subnets/{id}
+获取子网详情
+PUT
+/subnets/{id}
+更新子网
+DELETE
+/subnets/{id}
+删除子网
+GET
+/subnets/{id}/ip/{ip}
+校验ip是否合法
+POST
+/subnets/batch
+批量创建子网
+GET
+/subnets/special-networks
+获取特殊网络的子网
 安全组接口
 Security Group Controller
 
 
+GET
+/security-groups
+获取安全组列表
+POST
+/security-groups
+创建安全组
+GET
+/security-groups/{id}
+获取安全组详情
+PUT
+/security-groups/{id}
+更新安全组
+DELETE
+/security-groups/{id}
+删除安全组
+PUT
+/security-groups/{id}/addPort
+端口添加安全组
+PUT
+/security-groups/{id}/port/{portId}
+端口添加安全组
+DELETE
+/security-groups/{id}/port/{portId}
+端口移除安全组
+PUT
+/security-groups/{id}/removePort
+端口移除安全组
+DELETE
+/security-groups/{id}/removePort
+端口移除安全组
+PUT
+/security-groups/{id}/rules
+添加安全组规则
+DELETE
+/security-groups/{id}/rules/{ruleId}
+删除安全组规则
 安全组规则接口
 Security Group Rule Controller
 
 
+GET
+/security-group-rules
+安全组规则一览
+POST
+/security-group-rules
+创建安全组规则
+GET
+/security-group-rules/{id}
+安全组规则详细
+DELETE
+/security-group-rules/{id}
+删除安全组规则
 容器操作接口
 Container Controller
 
@@ -479,6 +587,27 @@ PUT
 Keypair Controller
 
 
+GET
+/keypairs
+获取密钥对列表
+POST
+/keypairs
+创建密钥对
+PUT
+/keypairs
+创建密钥对
+DELETE
+/keypairs
+批量删除密钥对
+GET
+/keypairs/{name}
+获取密钥对详情
+DELETE
+/keypairs/{name}
+删除密钥对
+GET
+/keypairs/download/{name}
+下载密钥对
 工作流定义操作接口
 Process Def Controller
 
@@ -508,6 +637,12 @@ POST
 Cloud Service Controller
 
 
+GET
+/service-types
+获取平台的服务类型列表
+GET
+/services
+获取平台的服务列表
 平台资源操作接口
 Resource Manager Controller
 
@@ -867,6 +1002,9 @@ GET
 GET
 /alarms/export-vm-history
 导出监控数据
+GET
+/alarms/getNodeStatics
+获取物理机监控数据
 GET
 /alarms/getVMStatics
 获取云主机监控数据
@@ -1272,6 +1410,9 @@ Notification Controller
 GET
 /notifications
 获取通知消息列表
+POST
+/notifications
+发动邮件
 DELETE
 /notifications
 删除通知消息
@@ -1383,6 +1524,9 @@ PUT
 DELETE
 /firewalls/{id}
 删除防火墙
+GET
+/firewalls/{id}/os-getVNCConsole
+获取vnc控制台
 POST
 /firewalls/{id}/ports
 防火墙添加端口
