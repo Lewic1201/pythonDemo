@@ -206,6 +206,14 @@ req_body =
 req_body =
 
 
+[test_delete_volumes_reclaim]
+req_body =
+
+
+[test_put_volumes_unDelete]
+req_body =
+
+
 [test_post_volumes_type]
 req_body =
 
@@ -266,6 +274,94 @@ req_body =
 req_body =
 
 
+[test_post_backup_tasks]
+req_body =
+
+
+[test_put_backup_tasks_id]
+req_body =
+
+
+[test_delete_backup_tasks_id]
+req_body =
+
+
+[test_post_backups]
+req_body =
+
+
+[test_delete_backups_id]
+req_body =
+
+
+[test_post_backups_id_volumeId]
+req_body =
+
+
+[test_post_subnets]
+req_body =
+
+
+[test_put_subnets_id]
+req_body =
+
+
+[test_delete_subnets_id]
+req_body =
+
+
+[test_post_subnets_batch]
+req_body =
+
+
+[test_post_security_groups]
+req_body =
+
+
+[test_put_security_groups_id]
+req_body =
+
+
+[test_delete_security_groups_id]
+req_body =
+
+
+[test_put_security_groups_id_addPort]
+req_body =
+
+
+[test_put_security_groups_id_port_portId]
+req_body =
+
+
+[test_delete_security_groups_id_port_portId]
+req_body =
+
+
+[test_put_security_groups_id_removePort]
+req_body =
+
+
+[test_delete_security_groups_id_removePort]
+req_body =
+
+
+[test_put_security_groups_id_rules]
+req_body =
+
+
+[test_delete_security_groups_id_rules_ruleId]
+req_body =
+
+
+[test_post_security_group_rules]
+req_body =
+
+
+[test_delete_security_group_rules_id]
+req_body =
+
+
 [test_post_k8scontainers]
 req_body =
 
@@ -319,6 +415,22 @@ req_body =
 
 
 [test_put_containerimages_id_status_status]
+req_body =
+
+
+[test_post_keypairs]
+req_body =
+
+
+[test_put_keypairs]
+req_body =
+
+
+[test_delete_keypairs]
+req_body =
+
+
+[test_delete_keypairs_name]
 req_body =
 
 
@@ -819,6 +931,10 @@ req_body =
 
 
 [test_post_notification_lists_terminals_id_verify]
+req_body =
+
+
+[test_post_notifications]
 req_body =
 
 

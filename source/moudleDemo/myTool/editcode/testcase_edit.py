@@ -49,6 +49,27 @@ def deal_case_body(datas):
         method_name = 'test_{}'.format(mname)
         method_def = '    def test_{}(self):\n        """{}"""\n'.format(mname, data[2])
         method_body = '{}{}{}{}\n'.format(line1, line2, line3, line4)
+
+        # 过滤掉的方法类型,并添加#注解,可以注掉
+        # ================================================================================
+        if data[0] in ['POST', 'DELETE', 'PUT', 'PATCH', 'OPTION']:
+            tmp = ''
+            for def_line in method_def.split('\n'):
+                if not def_line:
+                    continue
+                else:
+                    tmp += ('    #' + def_line[3:] + '\n')
+            method_def = tmp
+
+            tmp = ''
+            for lines in method_body.split('\n'):
+                if not lines:
+                    tmp += '\n'
+                else:
+                    tmp += ('    #' + lines[3:] + '\n')
+            method_body = tmp[:-1]
+        # ================================================================================
+
         data.append(method_name)
         data.append(method_def)
         data.append(method_body)
@@ -66,8 +87,9 @@ def deal_case_conf(datas):
     return conf_context
 
 
-datas, method_context = deal_case_body(ret)
-write_file('case_method.txt', method_context)
-write_file('case_conf.txt', deal_case_conf(datas))
+if __name__ == '__main__':
+    datas, method_context = deal_case_body(ret)
+    write_file('case_method.txt', method_context)
+    write_file('case_conf.txt', deal_case_conf(datas))
 
-print('generate code success')
+    print('generate code success')
