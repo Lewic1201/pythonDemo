@@ -24,8 +24,8 @@ RE_PREFIX = [r'ABC123.*', '匹配文件前缀']
 RE_HAS_CHINESE = [u".*[\u4e00-\u9fa5]+.*", '包含中文']
 
 
-def get_now_time(format='%Y-%m-%d %H:%M:%S'):
-    now_time = datetime.datetime.now().strftime(format)
+def get_now_time(formats='%Y-%m-%d %H:%M:%S'):
+    now_time = datetime.datetime.now().strftime(formats)
     return now_time
 
 
@@ -42,7 +42,6 @@ class FileManage:
     def get_dir_structure(self):
         """
         获取当前目录文件结构
-        :param rootdir: 根目录
         :return: 每个文件夹下的文件
         :rtype: [(文件夹路径,路径下的文件夹,路径下的文件),...]
         """
@@ -268,11 +267,13 @@ class FileManage:
         new_name = Trans().translate(name)
         return new_name
 
-    def change_queue_name(self):
+    def change_queue_name(self, file_list=''):
         """批量修改为序列文件名"""
 
         # 传入过滤条件,可修改
-        file_path = self.filter_current_dir_file(RE_ALL[0])
+        if not file_list:
+            file_list = os.listdir(self.path)
+        file_path = self.get_file_by_re(RE_ALL[0], file_list)
 
         queue_name = self.get_queue_name(len(file_path), 'ShareCircle-', '.mp4')
         maker = (name for name in queue_name)
@@ -457,7 +458,7 @@ if __name__ == '__main__':
     # fm.get_same_file()
 
     special_file = ['.*\.git.*', '.*__init__.py', '.*\.pyc']
-    file_list = fm.filter_file(special_file, nameorpath=False)
+    file_lists = fm.filter_file(special_file, nameorpath=False)
     # fm.get_file_by_re(special_file, nameorpath=False)
 
-    fm.get_same_file(file_list)
+    fm.get_same_file(file_lists)
