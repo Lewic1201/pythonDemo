@@ -58,7 +58,6 @@ class FileManage:
     def get_all_filelist(self):
         """
         获取当前目录下所有文件路径
-        :param rootdir: 根目录
         :return: 路径列表
         :rtype: list
         """
@@ -85,37 +84,88 @@ class FileManage:
                 result.pop(i)
         return result
 
-    @staticmethod
-    def filter_file(file_list, re_expression):
-        """按指定规则过滤文件列表所有文件
+    # @print_cls
+    def filter_file(self, re_expressions, file_list='', nameorpath=True):
+        """按正则过滤掉file_list下符合条件的文件
         :param file_list 文件列表(绝对路径)
-        :param re_expression 正则表达式
+        :param re_expressions 正则表达式 或 正则表达式列表
+        :param nameorpath 通过文件名过滤,或者通过文件路径过滤
+        :return [绝对路径]
         :rtype list
         """
-        pattern = re.compile(re_expression)
-        result = []
-        for f in file_list:
-            if op.isdir(f):
-                continue
-            if re.match(pattern, f):
-                filename = op.join(f)
-                result.append(filename)
-            pass
-        return result
 
-    def filter_current_dir_file(self, re_expression):
-        """按指定规则过滤当前目录所有文件
-        :param re_expression 正则表达式
+        # 按正则表达式过滤file_list
+        def filter_inner(re_expression, files):
+            pattern = re.compile(re_expression)
+            result = []
+            for f in files:
+                fn = os.path.basename(f)
+                if op.isdir(f):
+                    continue
+                if nameorpath:
+                    if not re.match(pattern, fn):
+                        result.append(f)
+                else:
+                    if not re.match(pattern, f):
+                        result.append(f)
+                pass
+            return result
+
+        if not file_list:
+            file_list = self.get_all_filelist()
+        if isinstance(re_expressions, str):
+            # 传入一条正则表达式
+            ret = filter_inner(re_expressions, file_list)
+        elif isinstance(re_expressions, list):
+            # 传入为正则表达式列表,那么递归过滤
+            ret = file_list
+            for re_ex in re_expressions:
+                ret = filter_inner(re_ex, ret)
+        else:
+            # 其它类型不过滤
+            ret = file_list
+
+        return ret
+
+    @print_cls
+    def get_file_by_re(self, re_expressions, file_list='', nameorpath=True):
+        """按正则获取file_list下符合条件的文件
+        :param file_list 文件列表(绝对路径)
+        :param re_expressions 正则表达式 或 正则表达式列表
+        :param nameorpath 通过文件名过滤,或者通过文件路径过滤
+        :rtype list
         """
-        file_list = os.listdir(self.path)
-        pattern = re.compile(re_expression)
-        result = []
-        for f in file_list:
-            if re.match(pattern, f):
-                filename = op.join(self.path, f)
-                if not op.isdir(filename):
-                    result.append(filename)
-        return result
+
+        # 按正则表达式获取file_list
+        def get_inner(re_expression, files):
+            pattern = re.compile(re_expression)
+            result = []
+            for f in files:
+                fn = os.path.basename(f)
+                if op.isdir(f):
+                    continue
+                if nameorpath:
+                    if re.match(pattern, fn):
+                        result.append(f)
+                else:
+                    if re.match(pattern, f):
+                        result.append(f)
+                pass
+            return result
+
+        ret = []
+        if not file_list:
+            file_list = self.get_all_filelist()
+        if isinstance(re_expressions, str):
+            # 传入一条正则表达式
+            ret = get_inner(re_expressions, file_list)
+        elif isinstance(re_expressions, list):
+            # 传入为正则表达式列表,获取每一种规则的文件
+            for re_ex in re_expressions:
+                a_ret = get_inner(re_ex, file_list)
+                ret.extend(a_ret)
+
+        return ret
 
     @print_cls
     def change_name(self, file_name, file_new_name=''):
@@ -278,7 +328,7 @@ class FileManage:
         """
         获取文件所有参数
         :param file_name:
-        :return:
+        :return: {path:,name:,type,size:,createTime:,modifyTime:}
         """
         try:
             context = {'path': os.path.split(file_name)[0],
@@ -293,11 +343,15 @@ class FileManage:
             print(file_name, e)
             raise
 
-    @print_cls
-    def get_all_file_params(self, file_list=[]):
-        """获取当前文件夹下所有的文件参数"""
+    # @print_cls
+    def get_all_file_params(self, file_list=''):
+        """
+        获取当前文件夹下所有的文件参数
+        :param file_list: 文件绝对路径列表
+        :return: [{},...]
+        """
         if not file_list:
-            file_list = self.filter_current_dir_file(RE_ALL[0])
+            file_list = self.get_all_filelist()
         result = []
         for f in file_list:
             file_params = self.get_file_params(f)
@@ -359,18 +413,51 @@ class FileManage:
         now = get_now_time('%Y%m%d%H%M%S')
         save_info(save_file, now, datas)
 
+    @print_cls
+    def get_same_file(self, file_list=''):
+        """
+        获取大小相同的文件,方便去重
+        :param file_list: 文件绝对路径列表
+        :return: {size:[more file_path],...}
+        :rtype: {int:list}
+        """
+        file_params = self.get_all_file_params(file_list)
+        flen = len(file_params)
+        repeats = {}
+        group = {}
+        for i in range(flen):
+            # 添加文件绝对路径
+            file_name = os.path.join(file_params[i].get('path'), file_params[i].get('name'))
+            file_size = file_params[i].get('size')
+            if file_size not in group:
+                group[file_size] = [file_name]
+            else:
+                group[file_size].append(file_name)
+        for j in group:
+            if len(group[j]) > 1:
+                repeats[j] = group[j]
+        return repeats
+
 
 if __name__ == '__main__':
+    rootDir = os.path.abspath(os.path.join(__file__, '../../../../../'))
     path1 = 'G:\\Lenovo Limited Warranty_V1.2_UHD\\config\\new190113\\ShareCircle'
     path2 = 'G:\\Lenovo Limited Warranty_V1.2_UHD\\config'
     path3 = 'E:\\import_file\\disk_file'
     path5 = 'E:\\import_file\\name_map_file'
-    path4 = 'G:\\Lenovo Limited Warranty_V1.2_UHD\\config\\English\\alllllllllll\\李宗瑞系列\\'
-    fm = FileManage(path2)
+    path6 = r'E:\lewic\gitRepository\tmp'
+    fm = FileManage(rootDir)
     # fm.change_queue_name()
     # pprint.pprint(fm.get_all_file_params())
     # for ff in fm.get_all_filelist():
     #     # 批量修改文件名
     #     fm.change_name(ff)
     # fm.save_all(path3)
-    fm.save_name_map(path5)
+    # fm.save_name_map(path5)
+    # fm.get_same_file()
+
+    special_file = ['.*\.git.*', '.*__init__.py', '.*\.pyc']
+    file_list = fm.filter_file(special_file, nameorpath=False)
+    # fm.get_file_by_re(special_file, nameorpath=False)
+
+    fm.get_same_file(file_list)

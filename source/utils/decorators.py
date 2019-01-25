@@ -4,6 +4,7 @@ Some common decorator tools
 import logging
 import traceback
 import os
+import pprint
 from functools import wraps
 from logging.handlers import TimedRotatingFileHandler
 from source.utils.logs import logger as logs
@@ -66,7 +67,11 @@ def print_def(func):
             print('\033[5;35;0m' + "[METHOD]: {}()".format(func.__name__) + '\033[0m')
             print('\033[5;34;0m' + "[INPUT]: ", *args, '\033[0m')
             ret = func(*args, **kwargs)
-            print('\033[5;33;0m' + "[RESULT]:", ret, '\033[0m')
+            if len(str(ret)) > 200:
+                print('\033[5;33;0m' + "[RESULT]:", '\033[0m')
+                pprint.pprint(ret)
+            else:
+                print('\033[5;33;0m' + "[RESULT]:", ret, '\033[0m')
             return ret
         except Exception as err:
             print('\033[5;31;0m' + str(err) + '\033[0m')
@@ -84,7 +89,11 @@ def print_cls(func):
             print('\033[5;35;0m' + "[METHOD]: {}()".format(func.__name__) + '\033[0m')
             print('\033[5;34;0m' + "[INPUT]: ", *args, '\033[0m')
             ret = func(self, *args, **kwargs)
-            print('\033[5;33;0m' + "[RESULT]:", ret, '\033[0m')
+            if len(str(ret)) > 200:
+                print('\033[5;33;0m' + "[RESULT]:", '\033[0m')
+                pprint.pprint(ret)
+            else:
+                print('\033[5;33;0m' + "[RESULT]:", ret, '\033[0m')
             return ret
         except Exception as err:
             print('\033[5;31;0m' + str(err) + '\033[0m')

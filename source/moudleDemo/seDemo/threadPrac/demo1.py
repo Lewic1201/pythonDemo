@@ -19,7 +19,7 @@ def prac1():
 
 # prac1()
 class Sayhi(threading.Thread):
-    def __init__(self,name):
+    def __init__(self, name):
         super().__init__()
         self.name = name
 

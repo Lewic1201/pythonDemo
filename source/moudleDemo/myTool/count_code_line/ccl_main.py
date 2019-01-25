@@ -7,6 +7,7 @@ import pprint
 from source.moudleDemo.myTool.get_all_file_by_path import *
 
 ROOT_DIR = os.path.abspath(os.path.join(__file__, '..\\..\\..\\..\\..\\'))
+# 获取的文件列表, 可追加
 FILE_TYPE = ['.py']
 
 
@@ -21,7 +22,7 @@ def get_py_files(rootDir):
     return files_path
 
 
-def count(files):
+def countpy(files):
     """
     统计文件代码行数
     :param files: 文件绝对路径列表
@@ -41,6 +42,11 @@ def count(files):
         return (line_of_code, blank, comments)
     except Exception as err:
         print(err)
+        raise
+
+
+# def countall(files):
+#     return countpy(files)[0], 0, 0
 
 
 def record(lines, file='linenum.log'):
@@ -56,5 +62,5 @@ def record(lines, file='linenum.log'):
 if __name__ == '__main__':
     files = get_py_files(ROOT_DIR)
     # pprint.pprint(files)
-    lines = count(files)
+    lines = countpy(files)
     record(lines)
