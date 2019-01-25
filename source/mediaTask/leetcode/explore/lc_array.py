@@ -462,6 +462,39 @@ class Solution:
 
         return len(set(zip(s, t))) == len(set(s)) == len(set(t))
 
+    @print_cls
+    def findMedianSortedArrays(self, nums1, nums2):
+        """
+        寻找两个有序数组的中位数
+        :type nums1: List[int]
+        :type nums2: List[int]
+        :rtype: float
+        """
+        m = len(nums1)
+        n = len(nums2)
+        p, q = 0, 0
+        # 获取中位数的索引
+        mid = ((m + n) // 2 - 1, (m + n) // 2) if (m + n) % 2 == 0 else ((m + n) // 2, (m + n) // 2)
+        all = []
+        while p < m and q < n:
+            if nums1[p] <= nums2[q]:
+                all.append(nums1[p])
+                p += 1
+            else:
+                all.append(nums2[q])
+                q += 1
+        else:
+            if p >= m:
+                while q < n:
+                    all.append(nums2[q])
+                    q += 1
+            else:
+                while p < m:
+                    all.append(nums1[p])
+                    p += 1
+        ret = (all[mid[0]] + all[mid[1]]) / 2
+        return ret
+
 
 if __name__ == '__main__':
     ss = Solution()
@@ -500,23 +533,25 @@ if __name__ == '__main__':
     # ss.removeElement([0, 1, 2, 2, 3, 0, 4, 2], 2)
     # ss.removeElement([0, 1, 2, 2, 3, 0, 4, 2], 2)
     # ss.groupAnagrams(["eat", "tea", "tan", "ate", "nat", "bat"])
-    rr = [
-        [1, 2, 3],
-        [4, 5, 6],
-        [7, 8, 9]
-    ]
-    rr2 = [
-        [5, 1, 9, 11],
-        [2, 4, 8, 10],
-        [13, 3, 6, 7],
-        [15, 14, 12, 16]
-    ]
-    ss.rotate(rr)
-    ss.rotate(rr2)
+    # rr = [
+    #     [1, 2, 3],
+    #     [4, 5, 6],
+    #     [7, 8, 9]
+    # ]
+    # rr2 = [
+    #     [5, 1, 9, 11],
+    #     [2, 4, 8, 10],
+    #     [13, 3, 6, 7],
+    #     [15, 14, 12, 16]
+    # ]
+    # ss.rotate(rr)
+    # ss.rotate(rr2)
     # s = "egg"
     # t = "add"
     # s = "foo"
     # t = "bar"
-    s = "paper"
-    t = "title"
-    ss.isIsomorphic(s, t)
+    # s = "paper"
+    # t = "title"
+    # ss.isIsomorphic(s, t)
+    ss.findMedianSortedArrays([1, 2], [3, 4])
+    ss.findMedianSortedArrays([1, 3, 4, 12], [3, 4, 5])
