@@ -1,8 +1,13 @@
 """
 统计代码行数
 """
+import datetime
 import os
+import pprint
 from source.moudleDemo.myTool.get_all_file_by_path import *
+
+ROOT_DIR = os.path.abspath(os.path.join(__file__, '..\\..\\..\\..\\..\\'))
+FILE_TYPE = ['.py']
 
 
 def get_py_files(rootDir):
@@ -10,7 +15,8 @@ def get_py_files(rootDir):
     all_file = get_all_filelist(rootDir)
     files_path = []
     for i in all_file:
-        if os.path.splitext(i)[1] == '.py':
+        # 过滤出所有py文件
+        if os.path.splitext(i)[1] in FILE_TYPE:
             files_path.append(i)
     return files_path
 
@@ -37,12 +43,18 @@ def count(files):
         print(err)
 
 
+def record(lines, file='linenum.log'):
+    """追加记录日志"""
+    now = datetime.datetime.now().strftime('[%Y-%m-%d %H:%M:%S]')
+    data = '\n{}type:{:<20} line(s):{:<8} black line(s):{:<8} comments line(s):{:<8}' \
+        .format(now, str(FILE_TYPE), lines[0], lines[1], lines[2])
+    with open(file, 'a') as ff:
+        ff.write(data)
+    print(data)
+
+
 if __name__ == '__main__':
-    rootDir = 'E:\\lewic\\pycharm\\workspace\\myCode\\pythonDemo\\'
-    files = get_py_files(rootDir)
-    import pprint
-
-    pprint.pprint(files)
-
+    files = get_py_files(ROOT_DIR)
+    # pprint.pprint(files)
     lines = count(files)
-    print('Line(s):%d,black line(s):%d,comments line(s):%d' % (lines[0], lines[1], lines[2]))
+    record(lines)
