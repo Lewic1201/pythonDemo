@@ -7,7 +7,6 @@
 
 sum = 0
 for i in range(100):
-    sum+=i
+    sum += i
 
-print('sum is '+ str(sum))
-
+print('sum is ' + str(sum))

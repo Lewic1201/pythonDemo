@@ -21,17 +21,17 @@ class Solution:
         """
         mlen = len(M)
         group = set()
+
         # ret = []
         # for i in range(mlen):
         #     if M[0][i]:
         #         group.add(i)
         #     for i in group
-        def find_mb(M,i,group):
+        def find_mb(M, i, group):
             tmp = M[i]
             for p in range(mlen):
-                if M[i][p]==1:
+                if M[i][p] == 1:
                     group.add(p)
-
 
 
 if __name__ == '__main__':
