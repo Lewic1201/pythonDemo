@@ -173,6 +173,31 @@ class Solution:
 
         return -1
 
+    @staticmethod
+    def isBadVersion(version):
+        err_version = 1702766719
+        return version >= err_version
+
+    @print_cls
+    def firstBadVersion(self, n):
+        """
+        :type n: int
+        :rtype: int
+        """
+
+        left, right = 1, n
+        while left <= right:
+            mid = (left + right) // 2
+            if self.isBadVersion(mid):
+                if not self.isBadVersion(mid - 1):
+                    return mid
+                else:
+                    right = mid - 1
+            else:
+                left = mid + 1
+
+        return -1
+
 
 if __name__ == '__main__':
     ss = Solution()
@@ -180,5 +205,10 @@ if __name__ == '__main__':
     # ss.findDuplicate([1, 3, 4, 2, 2])
     # ss.findDuplicate([3, 1, 3, 4, 2, 5])
     # ss.mySqrt(3)
-    ss.search2([4, 5, 6, 7, 0, 1, 2], 0)
-    ss.search2([3, 1], 3)
+    # ss.search2([4, 5, 6, 7, 0, 1, 2], 0)
+    # ss.search2([3, 1], 3)
+    # ss.firstBadVersion(10)
+    # ss.firstBadVersion(5)
+    # ss.firstBadVersion(7)
+    # ss.firstBadVersion(15)
+    ss.firstBadVersion(2126753390)
