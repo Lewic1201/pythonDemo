@@ -175,7 +175,7 @@ class Solution:
 
     @staticmethod
     def isBadVersion(version):
-        err_version = 1702766719
+        err_version = 2
         return version >= err_version
 
     @print_cls
@@ -198,6 +198,26 @@ class Solution:
 
         return -1
 
+    @print_cls
+    def findPeakElement(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        # left, right = 1, len(nums) - 2findMin
+        # while left <= right:
+        #     mid = (left + right) // 2
+        #     if self.isBadVersion(mid):
+        #         if not self.isBadVersion(mid - 1):
+        #             return mid
+        #         else:
+        #             right = mid - 1
+        #     else:
+        #         left = mid + 1
+        #
+        # return -1
+        pass
+
 
 if __name__ == '__main__':
     ss = Solution()
@@ -207,8 +227,8 @@ if __name__ == '__main__':
     # ss.mySqrt(3)
     # ss.search2([4, 5, 6, 7, 0, 1, 2], 0)
     # ss.search2([3, 1], 3)
-    # ss.firstBadVersion(10)
-    # ss.firstBadVersion(5)
-    # ss.firstBadVersion(7)
-    # ss.firstBadVersion(15)
+    ss.firstBadVersion(10)
+    ss.firstBadVersion(5)
+    ss.firstBadVersion(7)
+    ss.firstBadVersion(15)
     ss.firstBadVersion(2126753390)

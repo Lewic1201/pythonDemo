@@ -7,7 +7,7 @@
 
 import os
 from flask import Flask, request, render_template
-from source.application.flaskDemo.messageboard.message import MessageManage
+from messageboard.message import MessageManage
 
 app = Flask(__name__)
 
@@ -39,5 +39,9 @@ def message():
     return render_template('board.html', datas=mm.datas[::-1])
 
 
+def main():
+    app.run("0.0.0.0", 5001)
+
+
 if __name__ == '__main__':
-    app.run("0.0.0.0", 5002)
+    app.run("0.0.0.0", 5001)
