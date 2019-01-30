@@ -1,8 +1,8 @@
 body {
 margin: 0;
 padding: 0;
-color: #000E41;
-background-color: #004080;
+color: #551A8B;
+background-color: #E0E0E0;
 }
 h1 {
 padding: 0 1em;
@@ -10,16 +10,16 @@ color: #FFFFFF;
 }
 form {
 padding: 0.5em 2em;
-background-color: #78B8F8;
+background-color: #F5FFFA;
 }
 .main {
 padding: 0;
 }
 .entries-area {
 padding: 0.5em 2em;
-background-color: #FFFFFF;
+background-color: #F4F4F4;
 }
 .entries-area p {
 padding: 0.5em 1em;
-background-color: #DBDBFF;
+background-color: #F0F8FF;
 }
