@@ -8,11 +8,14 @@
 
 import json
 import requests
-from wxpy import *
 
 
-# 调用图灵机器人API，发送消息并获得机器人的回复
 def auto_reply(text):
+    """
+    调用图灵机器人API，发送消息并获得机器人的回复
+    :param text:
+    :return:
+    """
     url = "http://www.tuling123.com/openapi/api"
     api_key = "343bad09638b4d799bd876a77fca084b"
     payload = {
@@ -25,12 +28,17 @@ def auto_reply(text):
     return "[tuling] " + result["text"]
 
 
-bot = Bot(console_qr=True, cache_path=True)
+def console():
+    """
+    控制台测试
+    :return:
+    """
+    while True:
+        send = input("YOU: ")
+        if send == 'exit':
+            break
+        req = auto_reply(send)
+        print("HE:", req)
 
-
-@bot.register(mp)
-def forward_message(msg):
-    return auto_reply(msg.text)
-
-
-embed()
+if __name__ == '__main__':
+    console()

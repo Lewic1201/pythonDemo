@@ -6,11 +6,14 @@
 # @Software: PyCharm Community Edition
 
 from wxpy import *
+
 bot = Bot(cache_path=True)
+
 
 def login():
     bot = Bot(cache_path=True)
     return bot
+
 
 def ftp_file(bot):
     bot.file_helper.send("hello")
@@ -20,5 +23,6 @@ def ftp_file(bot):
 def print_message(msg):
     print(msg.text)
     return msg.text
+
 
 embed()
