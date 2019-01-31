@@ -218,6 +218,24 @@ class Solution:
         # return -1
         pass
 
+    @print_cls
+    def findMin(self, nums):
+        """
+        寻找旋转排序数组中的最小值
+        :type nums: List[int]
+        :rtype: int
+        """
+        n = len(nums) - 1
+        l = 0
+        r = n
+        while (l < r):
+            mid = (l + r) // 2
+            if (nums[mid] <= nums[-1]):
+                r = mid
+            else:
+                l = mid + 1
+        return nums[l]
+
 
 if __name__ == '__main__':
     ss = Solution()
@@ -227,8 +245,12 @@ if __name__ == '__main__':
     # ss.mySqrt(3)
     # ss.search2([4, 5, 6, 7, 0, 1, 2], 0)
     # ss.search2([3, 1], 3)
-    ss.firstBadVersion(10)
-    ss.firstBadVersion(5)
-    ss.firstBadVersion(7)
-    ss.firstBadVersion(15)
-    ss.firstBadVersion(2126753390)
+    # ss.firstBadVersion(10)
+    # ss.firstBadVersion(5)
+    # ss.firstBadVersion(7)
+    # ss.firstBadVersion(15)
+    # ss.firstBadVersion(2126753390)
+    ss.findMin([4, 5, 6, 7, 8, 0, 1, 2, 3])
+    ss.findMin([2, 3, 4, 5, 6, 7, 8, 0, 1])
+    ss.findMin([8, 0, 1, 2, 3, 4, 5, 6, 7])
+    ss.findMin([0, 1, 2, 3, 4])

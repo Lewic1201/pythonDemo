@@ -495,6 +495,42 @@ class Solution:
         ret = (all[mid[0]] + all[mid[1]]) / 2
         return ret
 
+    @print_cls
+    def pivotIndex(self, nums):
+        """
+        寻找数组的中心索引
+        :type nums: List[int]
+        :rtype: int
+        """
+        if not nums:
+            return -1
+        sums = 0
+        left_sum = 0
+        for n in nums:
+            sums += n
+        for i in range(len(nums)):
+            if sums - nums[i] == left_sum * 2:
+                return i
+            left_sum += nums[i]
+        return -1
+
+    @print_cls
+    def dominantIndex(self, nums):
+        """
+        至少是其他数字两倍的最大数
+        :type nums: List[int]
+        :rtype: int
+        """
+        maxi = 0
+        for i in range(1, len(nums)):
+            if nums[i] > nums[maxi]:
+                maxi = i
+        for j in range(len(nums)):
+            if j != maxi and nums[maxi] < nums[j] * 2:
+                return -1
+        else:
+            return maxi
+
 
 if __name__ == '__main__':
     ss = Solution()
@@ -553,5 +589,8 @@ if __name__ == '__main__':
     # s = "paper"
     # t = "title"
     # ss.isIsomorphic(s, t)
-    ss.findMedianSortedArrays([1, 2], [3, 4])
-    ss.findMedianSortedArrays([1, 3, 4, 12], [3, 4, 5])
+    # ss.findMedianSortedArrays([1, 2], [3, 4])
+    # ss.findMedianSortedArrays([1, 3, 4, 12], [3, 4, 5])
+    # ss.pivotIndex([-1, -1, -1, -1, -1, 0])
+    ss.dominantIndex([3, 6, 1, 0])
+    ss.dominantIndex([1, 2, 3, 4])
