@@ -201,22 +201,17 @@ class Solution:
     @print_cls
     def findPeakElement(self, nums):
         """
+        寻找峰值
         :type nums: List[int]
         :rtype: int
         """
-        # left, right = 1, len(nums) - 2findMin
-        # while left <= right:
-        #     mid = (left + right) // 2
-        #     if self.isBadVersion(mid):
-        #         if not self.isBadVersion(mid - 1):
-        #             return mid
-        #         else:
-        #             right = mid - 1
-        #     else:
-        #         left = mid + 1
-        #
-        # return -1
-        pass
+        left,right = 0,len(nums)-1
+        while left < right:
+            mid = (right+left)//2
+            if nums[mid] > nums[mid+1]: right = mid
+            else: left = mid+1
+        return left
+
 
     @print_cls
     def findMin(self, nums):
