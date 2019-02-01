@@ -4,9 +4,10 @@
 # @Author  : Administrator
 # @File    : save_info.py
 # @Software: PyCharm
-# @context :
+# @context : 操作Excel
 
 import os
+import time
 import xlrd
 import xlwt
 import xlutils
@@ -25,6 +26,8 @@ wb = copy(rb)
 wb.get_sheet(0).write(0,0,'changed')
 wb.save(join(temp_dir,'output.xls'))
 """
+
+STYLES = ["font:colour_index red;"]
 
 
 class EditExcel:
@@ -46,6 +49,34 @@ class EditExcel:
         self.worksheets.append(worksheet)
         return worksheet
 
+    def set_col_width(self, datas, worksheet):
+        """
+        自动设置列宽
+
+        :param datas:
+        :param worksheet:
+        :return:
+        """
+        width_list = []
+
+        # 获取每列最大数据宽度
+        for data in zip(*datas):
+            # 2340默认宽度
+            max_len = 2340
+            for txt in data:
+                # width = 256 * 20    # 256为衡量单位，20表示20个字符宽度
+                if max_len < len(str(txt)) * 256:
+                    max_len = len(str(txt)) * 256
+            width_list.append(max_len)
+
+        # 设置列宽
+        for i in range(0, len(width_list)):
+            worksheet.col(i).width = width_list[i]
+
+    def set_style(self):
+        # TODO
+        pass
+
     def write_data(self, datas, worksheet):
         """
         写入数据
@@ -61,13 +92,22 @@ class EditExcel:
                     if data is None:
                         continue
                     worksheet.write(row, col, data[col])
+
+            # 设置列宽
+            self.set_col_width(datas, worksheet)
         except Exception as err:
             # print(row, col, err)
             raise
 
     def save(self):
-        self.workbook.save(self.filename)
-        print('SAVE SUCCESS')
+        while True:
+            try:
+                self.workbook.save(self.filename)
+                print('SAVE SUCCESS')
+                break
+            except PermissionError:
+                print('其它程序正在使用此文件，进程无法访问，请关闭。')
+                time.sleep(2)
 
 
 class WriteExcel:
@@ -108,18 +148,37 @@ class WriteExcel:
             raise
 
     def save(self):
-        self.workbook.save(self.filename)
-        print('SAVE SUCCESS')
+        """
+        保存文件,如果文件存在,覆盖
+        :return:
+        """
+        # 防止文件被其它程序占用,不能删除文件,导致不能生成新的文件
+        while True:
+            try:
+                self.workbook.save(self.filename)
+                break
+            except PermissionError:
+                print('其它程序正在使用此文件，进程无法访问，请关闭。')
+                time.sleep(2)
+        if os.path.exists(self.filename):
+            print('SAVE SUCCESS IN %s' % self.filename)
+            return True
+        return False
 
 
 def save_info(file_name, sheet_name, datas):
     """
-    保存数据到Excel表,如果文件存在,则在文件里新增一个表
+    保存数据到Excel表,如果文件存在,则在文件里新增一个表(表名不能重复)
+
     :param file_name: 文件名
     :param sheet_name: 表名
     :param datas: 数据[[]]
-    :return:
+    :return: 文件名
     """
+    # 防止检测不到文件是否存在
+    if not file_name[-4:] == '.xls':
+        file_name += '.xls'
+
     if os.path.exists(file_name):
         ew = EditExcel(file_name)
         sheet = ew.add_a_sheet(sheet_name)
@@ -129,11 +188,17 @@ def save_info(file_name, sheet_name, datas):
         we = WriteExcel(file_name, sheet_name)
         we.write_data(datas)
         we.save()
+    return file_name
 
-# save_info('G:\\Lenovo Limited Warranty_V1.2_UHD\\files', 'test', [[12, 3, 4], [53]])
 
-# path3 = 'E:\\import_file\\disk_file'
-# ew = EditExcel(path3)
-# sheet = ew.add_a_sheet('1234')
-# ew.write_data([[123, 43, 5, 45],[1, 23]], sheet)
-# ew.save()
+if __name__ == '__main__':
+    file0 = r'E:\tmp.xls'
+    datas = [[123, 43, 5, 45], [1, 23]]
+    # save_info('G:\\Lenovo Limited Warranty_V1.2_UHD\\files', 'test', [[12, 3, 4], [53]])
+
+    # path3 = 'E:\\import_file\\disk_file'
+    # ew = EditExcel(path3)
+    # sheet = ew.add_a_sheet('1234')
+    # ew.write_data([[123, 43, 5, 45],[1, 23]], sheet)
+    # ew.save()
+    save_info(file0, 'test2', datas)

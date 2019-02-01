@@ -37,7 +37,7 @@ def TimeStampToTime(timestamp, format='%Y-%m-%d %H:%M:%S'):
 
 class FileManage:
     def __init__(self, path):
-        self.path = path
+        self.root_dir = path
 
     def get_dir_structure(self):
         """
@@ -45,7 +45,7 @@ class FileManage:
         :return: 每个文件夹下的文件
         :rtype: [(文件夹路径,路径下的文件夹,路径下的文件),...]
         """
-        rootdir = self.path
+        rootdir = self.root_dir
         ret = []
         if not rootdir or not os.path.exists(rootdir):
             return []
@@ -53,14 +53,14 @@ class FileManage:
             ret.append(i)
         return ret
 
-    # @print_def
+    # @print_cls
     def get_all_filelist(self):
         """
         获取当前目录下所有文件路径
         :return: 路径列表
         :rtype: list
         """
-        rootdir = self.path
+        rootdir = self.root_dir
         if not rootdir or not os.path.exists(rootdir):
             return []
 
@@ -85,7 +85,9 @@ class FileManage:
 
     # @print_cls
     def filter_file(self, re_expressions, file_list='', nameorpath=True):
-        """按正则过滤掉file_list下符合条件的文件
+        """
+        按正则过滤掉file_list下符合条件的文件
+
         :param file_list 文件列表(绝对路径)
         :param re_expressions 正则表达式 或 正则表达式列表
         :param nameorpath 通过文件名过滤,或者通过文件路径过滤
@@ -272,7 +274,7 @@ class FileManage:
 
         # 传入过滤条件,可修改
         if not file_list:
-            file_list = os.listdir(self.path)
+            file_list = os.listdir(self.root_dir)
         file_path = self.get_file_by_re(RE_ALL[0], file_list)
 
         queue_name = self.get_queue_name(len(file_path), 'ShareCircle-', '.mp4')
@@ -359,14 +361,15 @@ class FileManage:
             result.append(file_params)
         return result
 
-    def save_all(self, save_file):
+    def save_all(self, save_file, file_list=None):
         """
         保存所有子文件信息到指定Excel文件
-        :param save_file: 绝对路径
+        :param save_file: 生成文件的绝对路径
+        :param file_list: 要保存的文件绝对路径(默认根目录下全部)
         :return:
         """
-
-        file_list = self.get_all_filelist()
+        if not file_list:
+            file_list = self.get_all_filelist()
         # # 过滤文件夹
         # for i in range(len(file_list)):
         #     if os.path.isdir(file_list[i]):
@@ -385,7 +388,9 @@ class FileManage:
 
         # 保存信息
         now = get_now_time('%Y%m%d%H%M%S')
-        save_info(save_file, now, file_info)
+        file = save_info(save_file, now, file_info)
+        # 打开文件
+        os.system(file)
 
     @print_cls
     def save_name_map(self, save_file):
@@ -458,7 +463,10 @@ if __name__ == '__main__':
     # fm.get_same_file()
 
     special_file = ['.*\.git.*', '.*__init__.py', '.*\.pyc']
-    file_lists = fm.filter_file(special_file, nameorpath=False)
+    # file_lists = fm.filter_file(special_file, nameorpath=False)
     # fm.get_file_by_re(special_file, nameorpath=False)
 
-    fm.get_same_file(file_lists)
+    # fm.get_same_file(file_lists)
+
+    ff = fm.filter_file(special_file, nameorpath=False)
+    fm.save_all(r'E:\tmp', ff)
