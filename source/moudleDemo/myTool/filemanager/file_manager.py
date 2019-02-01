@@ -7,6 +7,7 @@
 # @context :
 
 import datetime
+import os
 import os.path as op
 import re
 import time
@@ -14,7 +15,7 @@ import time
 # from source.utils.logs import logger
 from source.application.pingyin.pinyin import PinYin
 from source.application.translate.trans import Trans
-from source.moudleDemo.myTool.filemanager.write_excel import *
+from source.moudleDemo.myTool.filemanager.excel_manage import save_info
 from source.utils.decorators import print_cls
 
 """[正则表达式,表达式说明]"""
@@ -395,7 +396,7 @@ class FileManage:
     @print_cls
     def save_name_map(self, save_file):
         """
-        保存文件名及文件翻译到指定Excel文件
+        保存文件名及文件名翻译 到指定Excel文件
         :param save_file: 绝对路径
         :return:
         """

@@ -85,11 +85,11 @@ class EditExcel:
         """
         try:
             for row in range(len(datas)):
-                if row is None:
+                if datas[row] is None:
                     continue
                 data = datas[row]
                 for col in range(len(data)):
-                    if data is None:
+                    if data[col] is None:
                         continue
                     worksheet.write(row, col, data[col])
 
@@ -193,7 +193,7 @@ def save_info(file_name, sheet_name, datas):
 
 if __name__ == '__main__':
     file0 = r'E:\tmp.xls'
-    datas = [[123, 43, 5, 45], [1, 23]]
+    datas = [[12000000000000000000000000003, 43, 5, 45], [1, 23]]
     # save_info('G:\\Lenovo Limited Warranty_V1.2_UHD\\files', 'test', [[12, 3, 4], [53]])
 
     # path3 = 'E:\\import_file\\disk_file'
@@ -201,4 +201,4 @@ if __name__ == '__main__':
     # sheet = ew.add_a_sheet('1234')
     # ew.write_data([[123, 43, 5, 45],[1, 23]], sheet)
     # ew.save()
-    save_info(file0, 'test2', datas)
+    save_info(file0, 'test13', datas)
