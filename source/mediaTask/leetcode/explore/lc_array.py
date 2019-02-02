@@ -592,5 +592,5 @@ if __name__ == '__main__':
     # ss.findMedianSortedArrays([1, 2], [3, 4])
     # ss.findMedianSortedArrays([1, 3, 4, 12], [3, 4, 5])
     # ss.pivotIndex([-1, -1, -1, -1, -1, 0])
-    ss.dominantIndex([3, 6, 1, 0])
-    ss.dominantIndex([1, 2, 3, 4])
+    # ss.dominantIndex([3, 6, 1, 0])
+    # ss.dominantIndex([1, 2, 3, 4])
