@@ -531,6 +531,19 @@ class Solution:
         else:
             return maxi
 
+    @print_cls
+    def removeElement(self, nums, val):
+        """
+        :type nums: List[int]
+        :type val: int
+        :rtype: int
+        """
+        for i in range(len(nums)-1, -1, -1):
+            if nums[i] == val:
+                nums.pop(i)
+        else:
+            return len(nums)
+
 
 if __name__ == '__main__':
     ss = Solution()
@@ -592,5 +605,6 @@ if __name__ == '__main__':
     # ss.findMedianSortedArrays([1, 2], [3, 4])
     # ss.findMedianSortedArrays([1, 3, 4, 12], [3, 4, 5])
     # ss.pivotIndex([-1, -1, -1, -1, -1, 0])
-    ss.dominantIndex([3, 6, 1, 0])
-    ss.dominantIndex([1, 2, 3, 4])
+    # ss.dominantIndex([3, 6, 1, 0])
+    # ss.dominantIndex([1, 2, 3, 4])
+    ss.removeElement([0, 1, 2, 2, 3, 0, 4, 2], 2)

@@ -178,7 +178,7 @@ if __name__ == '__main__':
     #     if '陕西' in i[2]:
     #         print(i)
 
-    cm.get_now_msg()
+    print(cm.get_now_msg())
 
     # 堵塞线程 进入Python 命令行 让程序保持运行
     embed()
