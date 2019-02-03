@@ -538,11 +538,25 @@ class Solution:
         :type val: int
         :rtype: int
         """
-        for i in range(len(nums)-1, -1, -1):
+        for i in range(len(nums) - 1, -1, -1):
             if nums[i] == val:
                 nums.pop(i)
         else:
             return len(nums)
+
+    @print_cls
+    def twoSum(self, numbers, target):
+        """
+        :type numbers: List[int]
+        :type target: int
+        :rtype: List[int]
+        """
+        s = {}
+        for i in range(len(numbers)):
+            if numbers[i] not in s:
+                s[target - numbers[i]] = i
+            else:
+                return [s[numbers[i]] + 1, i + 1]
 
 
 if __name__ == '__main__':
@@ -607,4 +621,7 @@ if __name__ == '__main__':
     # ss.pivotIndex([-1, -1, -1, -1, -1, 0])
     # ss.dominantIndex([3, 6, 1, 0])
     # ss.dominantIndex([1, 2, 3, 4])
-    ss.removeElement([0, 1, 2, 2, 3, 0, 4, 2], 2)
+    # ss.removeElement([0, 1, 2, 2, 3, 0, 4, 2], 2)
+    ss.twoSum([2, 7, 11, 15], 9)
+    ss.twoSum([2, 3, 4], 6)
+    ss.twoSum([1, 2, 3, 4, 4, 9, 56, 90], 8)
