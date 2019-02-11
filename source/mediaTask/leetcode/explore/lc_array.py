@@ -304,30 +304,64 @@ class Solution:
           [-1, -1, 2]
         ]
         """
-        min0 = []
-        max0 = []
-        ret = []
+        # lnums = len(nums)
+        #
+        # ret = []
+        # ret2 = []
+        # for i in range(lnums - 2):
+        #     for j in range(i + 1, lnums - 1):
+        #         for k in range(j + 1, lnums):
+        #             if nums[i] + nums[j] + nums[k] == 0:
+        #                 tmp = [nums[i], nums[j], nums[k]]
+        #                 ret.append(set(tmp))
+        #                 ret2.append(tmp)
+        #
+        # for i in range(len(ret))[::-1]:
+        #     if ret[i] in ret[:i]:
+        #         ret2.pop(i)
+        #
+        # return ret2
+        dic = {}
+        for ele in nums:
+            if ele not in dic:
+                dic[ele] = 0
+            dic[ele] += 1
+
+        if 0 in dic and dic[0] > 2:
+            rst = [[0, 0, 0]]
+        else:
+            rst = []
+
+        pos = [p for p in dic if p > 0]
+        neg = [n for n in dic if n < 0]
+
+        for p in pos:
+            for n in neg:
+                inverse = -(p + n)
+                if inverse in dic:
+                    if inverse == p and dic[p] > 1:
+                        rst.append([n, p, p])
+                    elif inverse == n and dic[n] > 1:
+                        rst.append([n, n, p])
+                    elif inverse < n or inverse > p or inverse == 0:
+                        rst.append([n, inverse, p])
+
+        return rst
+
+    @print_cls
+    def fourSum(self, nums, target):
+        """
+        :type nums: List[int]
+        :type target: int
+        :rtype: List[List[int]]
+        """
+        dic = dict()
         for i in nums:
-            if i < 0:
-                min0.append(i)
+            if i in dic:
+                dic[i] += 1
             else:
-                max0.append(i)
-
-        for j in set(min0):
-            for k in set(max0):
-                m = -j - k
-                if m in nums:
-                    if m < 0:
-                        group = [m, j, k]
-                    elif m > 0:
-                        group = [j, k, m]
-                    else:
-                        group = [j, m, k]
-
-                    if group not in ret:
-                        ret.append(group)
-
-        return ret
+                dic[i] = 0
+        
 
     @print_cls
     def removeElement(self, nums, val):
@@ -622,6 +656,7 @@ if __name__ == '__main__':
     # ss.dominantIndex([3, 6, 1, 0])
     # ss.dominantIndex([1, 2, 3, 4])
     # ss.removeElement([0, 1, 2, 2, 3, 0, 4, 2], 2)
-    ss.twoSum([2, 7, 11, 15], 9)
-    ss.twoSum([2, 3, 4], 6)
-    ss.twoSum([1, 2, 3, 4, 4, 9, 56, 90], 8)
+    # ss.twoSum([2, 7, 11, 15], 9)
+    # ss.twoSum([2, 3, 4], 6)
+    # ss.twoSum([1, 2, 3, 4, 4, 9, 56, 90], 8)
+    ss.threeSum([-1, 0, 1, 2, -1, -4])
