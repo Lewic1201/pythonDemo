@@ -361,7 +361,6 @@ class Solution:
                 dic[i] += 1
             else:
                 dic[i] = 0
-        
 
     @print_cls
     def removeElement(self, nums, val):
@@ -592,6 +591,31 @@ class Solution:
             else:
                 return [s[numbers[i]] + 1, i + 1]
 
+    @print_cls
+    def frequencySort(self, s):
+        """
+        根据字符出现频率排序
+        :type s: str
+        :rtype: str
+        """
+        dic = dict()
+        for i in s:
+            if i in dic:
+                dic[i] += 1
+            else:
+                dic[i] = 1
+        dic2 = dict()
+        for j in dic:
+            if dic[j] in dic2:
+                dic2[dic[j]].append(j)
+            else:
+                dic2[dic[j]] = [j]
+        ret = ''
+        for k in sorted(dic2.keys(), reverse=True):
+            for m in dic2[k]:
+                ret += (m * k)
+        return ret
+
 
 if __name__ == '__main__':
     ss = Solution()
@@ -659,4 +683,5 @@ if __name__ == '__main__':
     # ss.twoSum([2, 7, 11, 15], 9)
     # ss.twoSum([2, 3, 4], 6)
     # ss.twoSum([1, 2, 3, 4, 4, 9, 56, 90], 8)
-    ss.threeSum([-1, 0, 1, 2, -1, -4])
+    # ss.threeSum([-1, 0, 1, 2, -1, -4])
+    ss.frequencySort("Aabb")
