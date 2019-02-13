@@ -96,5 +96,5 @@ class Trans(object):
 
 if __name__ == '__main__':
     ss = Trans()
-    print(ss.translate('test'))
+    print(ss.translate('测试'))
     # print(ss.get_translate_split('asd','_'))
