@@ -11,6 +11,7 @@ import os
 import os.path as op
 import re
 import time
+import winshell
 
 # from source.utils.logs import logger
 from source.application.pingyin.pinyin import PinYin
@@ -36,7 +37,45 @@ def TimeStampToTime(timestamp, format='%Y-%m-%d %H:%M:%S'):
     return time.strftime(format, timeStruct)
 
 
+def create_lnk(target, lnkdir=None, filename=None, description="", is_desk=False):
+    """
+    创建快捷方式
+
+    :param target: 指向路径
+    :param lnkdir: lnk保存路径 默认与target同目录
+    :param filename: 快捷方式名称 默认target
+    :param description: 备注
+    :param is_desk: 是否为创建桌面快捷方式
+    :return:
+    """
+    try:
+        if is_desk:
+            # 桌面快捷
+            lnkdir = winshell.desktop()
+        elif not lnkdir:
+            # 当前路径
+            lnkdir = os.path.dirname(target)
+
+        # 默认原文件名
+        filename = filename if filename else os.path.basename(target)
+        # 文件全路径
+        file_name = os.path.join(lnkdir, os.path.basename(filename) + ".lnk")
+
+        winshell.CreateShortcut(
+            Path=file_name,
+            Target=target,
+            Icon=(target, 0),
+            # 文件备注
+            Description=description)
+
+        print('create lnk success, path: %s' % file_name)
+    except Exception:
+        raise
+
+
 class FileManage:
+    """文件管理系统"""
+
     def __init__(self, path):
         self.root_dir = path
 
@@ -444,6 +483,19 @@ class FileManage:
             if len(group[j]) > 1:
                 repeats[j] = group[j]
         return repeats
+
+    def create_desktop_lnk(self):
+        """为根目录创建桌面快捷方式"""
+
+        destDir = winshell.desktop()
+        target = self.root_dir
+        file_name = os.path.join(destDir, os.path.basename(target) + ".lnk")
+
+        winshell.CreateShortcut(
+            Path=file_name,
+            Target=target,
+            Icon=(target, 0),
+            Description="root_dir")
 
 
 if __name__ == '__main__':
