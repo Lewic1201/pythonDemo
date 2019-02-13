@@ -168,7 +168,7 @@ class FileManage:
 
         return ret
 
-    @print_cls
+    # @print_cls
     def get_file_by_re(self, re_expressions, file_list='', nameorpath=True):
         """按正则获取file_list下符合条件的文件
         :param file_list 文件列表(绝对路径)
@@ -497,6 +497,15 @@ class FileManage:
             Icon=(target, 0),
             Description="root_dir")
 
+    def create_lnk(self, lnkdir, file_list=None):
+        """"""
+        file_list = file_list if file_list else self.get_all_filelist()
+
+        if not os.path.exists(lnkdir):
+            os.mkdir(lnkdir)
+        for ff in file_list:
+            create_lnk(ff, lnkdir=lnkdir)
+
 
 if __name__ == '__main__':
     rootDir = os.path.abspath(os.path.join(__file__, '../../../../../'))
@@ -505,7 +514,7 @@ if __name__ == '__main__':
     path3 = 'E:\\import_file\\disk_file'
     path5 = 'E:\\import_file\\name_map_file'
     path6 = r'E:\lewic\gitRepository\tmp'
-    fm = FileManage(rootDir)
+    fm = FileManage(path2)
     # fm.change_queue_name()
     # pprint.pprint(fm.get_all_file_params())
     # for ff in fm.get_all_filelist():
@@ -515,11 +524,14 @@ if __name__ == '__main__':
     # fm.save_name_map(path5)
     # fm.get_same_file()
 
-    special_file = ['.*\.git.*', '.*__init__.py', '.*\.pyc']
+    # special_file = ['.*\.git.*', '.*__init__.py', '.*\.pyc']
     # file_lists = fm.filter_file(special_file, nameorpath=False)
     # fm.get_file_by_re(special_file, nameorpath=False)
 
     # fm.get_same_file(file_lists)
 
-    ff = fm.filter_file(special_file, nameorpath=False)
-    fm.save_all(r'E:\tmp', ff)
+    # ff = fm.filter_file(special_file, nameorpath=False)
+    # fm.save_all(r'E:\tmp', ff)
+
+    fl = fm.get_file_by_re(r'.*\\pre\\.*', nameorpath=False)
+    fm.create_lnk(r'F:\tmp2\lnk_pre', fl)
