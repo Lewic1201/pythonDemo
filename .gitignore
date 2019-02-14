@@ -6,3 +6,7 @@
 *.pyc
 *.log
 *.pkl
+*.csv
+*.mp4
+*.avi
+*.rmvb
