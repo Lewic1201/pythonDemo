@@ -498,7 +498,7 @@ class FileManage:
             Description="root_dir")
 
     def create_lnk(self, lnkdir, file_list=None):
-        """"""
+        """批量创建文件快捷方式到指定目录"""
         file_list = file_list if file_list else self.get_all_filelist()
 
         if not os.path.exists(lnkdir):
@@ -514,7 +514,9 @@ if __name__ == '__main__':
     path3 = 'E:\\import_file\\disk_file'
     path5 = 'E:\\import_file\\name_map_file'
     path6 = r'E:\lewic\gitRepository\tmp'
-    fm = FileManage(path2)
+    path7 = r'E:\bak\testlnk'
+    path8 = r'E:\lewic\pycharm\workspace\myCode\pythonDemo'
+    fm = FileManage(path8)
     # fm.change_queue_name()
     # pprint.pprint(fm.get_all_file_params())
     # for ff in fm.get_all_filelist():
@@ -533,5 +535,6 @@ if __name__ == '__main__':
     # ff = fm.filter_file(special_file, nameorpath=False)
     # fm.save_all(r'E:\tmp', ff)
 
-    fl = fm.get_file_by_re(r'.*\\pre\\.*', nameorpath=False)
-    fm.create_lnk(r'F:\tmp2\lnk_pre', fl)
+    # fl = fm.get_file_by_re(r'.*\\pre\\.*', nameorpath=False)
+    # fm.create_lnk(r'F:\tmp2\lnk_pre', fl)
+    fm.create_lnk(path7)

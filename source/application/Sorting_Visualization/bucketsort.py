@@ -2,6 +2,7 @@ import copy
 
 from data import DataSeq
 
+
 def BucketSort(ds):
     """
         桶排序只适用于整数排序，且最大元素不能比数组元素大太多的情况
@@ -13,17 +14,17 @@ def BucketSort(ds):
     bucket = [0 for _ in range(Length)]
     for i in range(Length):
         bucket[ds.data[i]] += 1
-    j=0
+    j = 0
     for i in range(Length):
         tmp = bucket[i]
-        while tmp>0:
+        while tmp > 0:
             ds.SetVal(j, i)
-            tmp-=1
-            j+=1
+            tmp -= 1
+            j += 1
 
 
 if __name__ == "__main__":
-    ds=DataSeq(64)
+    ds = DataSeq(64)
     ds.Visualize()
     ds.StartTimer()
     BucketSort(ds)
