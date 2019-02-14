@@ -24,6 +24,8 @@ RE_ALL = [r'.*', '所有文件']
 RE_SUFFIX = [r'.*\.mp3', '匹配文件后缀']
 RE_PREFIX = [r'ABC123.*', '匹配文件前缀']
 RE_HAS_CHINESE = [u".*[\u4e00-\u9fa5]+.*", '包含中文']
+RE_HAS_KOREAN = [u".*[\uAC00-\uD7A3]+.*", '包含韩文']
+RE_HAS_JAPAN = [u".*[\u0800-\u4e00]+.*", '包含日文']
 
 
 def get_now_time(formats='%Y-%m-%d %H:%M:%S'):
@@ -37,7 +39,7 @@ def TimeStampToTime(timestamp, format='%Y-%m-%d %H:%M:%S'):
     return time.strftime(format, timeStruct)
 
 
-def create_lnk(target, lnkdir=None, filename=None, description="", is_desk=False):
+def create_lnk(target, lnkdir=None, filename=None, description="", is_desk=False, is_cover=True):
     """
     创建快捷方式
 
@@ -46,6 +48,7 @@ def create_lnk(target, lnkdir=None, filename=None, description="", is_desk=False
     :param filename: 快捷方式名称 默认target
     :param description: 备注
     :param is_desk: 是否为创建桌面快捷方式
+    :param is_cover: 是否覆盖同名快捷方式
     :return:
     """
     try:
@@ -60,6 +63,12 @@ def create_lnk(target, lnkdir=None, filename=None, description="", is_desk=False
         filename = filename if filename else os.path.basename(target)
         # 文件全路径
         file_name = os.path.join(lnkdir, os.path.basename(filename) + ".lnk")
+        if not is_cover:
+            # 快捷方式已存在时,文件名添加下标
+            serial = 1
+            while os.path.exists(file_name):
+                file_name = os.path.join(lnkdir, os.path.basename(filename) + '__' + str(serial) + ".lnk")
+                serial += 1
 
         winshell.CreateShortcut(
             Path=file_name,
@@ -123,8 +132,11 @@ class FileManage:
                 result.pop(i)
         return result
 
+    def sort_file_list(self, file_list):
+        pass
+
     # @print_cls
-    def filter_file(self, re_expressions, file_list='', nameorpath=True):
+    def filter_files_by_name(self, re_expressions, file_list=None, nameorpath=True):
         """
         按正则过滤掉file_list下符合条件的文件
 
@@ -169,7 +181,7 @@ class FileManage:
         return ret
 
     # @print_cls
-    def get_file_by_re(self, re_expressions, file_list='', nameorpath=True):
+    def get_files_by_name(self, re_expressions, file_list=None, nameorpath=True):
         """按正则获取file_list下符合条件的文件
         :param file_list 文件列表(绝对路径)
         :param re_expressions 正则表达式 或 正则表达式列表
@@ -208,26 +220,71 @@ class FileManage:
 
         return ret
 
+    def get_files_by_size(self, min_size=None, max_size=None, file_list=None):
+        """
+        通过文件大小过滤出列表中符合条件的文件
+
+        :param min_size:
+        :param max_size:
+        :param file_list:
+        :return:
+        """
+        file_list = file_list if file_list else self.get_all_filelist()
+
+        ret = []
+        for ff in file_list:
+            size = self.get_size(ff)
+            if min_size and size < min_size:
+                continue
+            if max_size and size > max_size:
+                continue
+            ret.append(ff)
+        return ret
+
+    def change_names(self, file_list, flag):
+        """
+        批量按指定规则修改文件名
+
+            修改规则:1  将(A001)(    )(ABC-123asdf)(.mp3)文件中空格等距
+                    2  简单的首尾替换
+                    3  将所有汉字转为拼音
+                    4  将所有文字翻译
+        """
+        for ff in file_list:
+            self.change_name(ff, flag)
+
     @print_cls
-    def change_name(self, file_name, file_new_name=''):
+    def change_name(self, file_name, flag, file_new_name=''):
         """
         修改文件名
         :param file_name: 文件名(绝对路径)
         :param file_new_name: 新的文件名
+        :param flag: 修改规则
         :return:
+
+        修改规则:1  将(A001)(    )(ABC-123asdf)(.mp3)文件中空格等距
+                2  简单的首尾替换
+                3  将所有汉字转为拼音
+                4  将所有文字翻译
         """
 
         file_path = op.split(file_name)[0]
-        name = op.split(file_name)[1]
+        basename = op.basename(file_name)
+        name, tp = op.splitext(basename)
 
+        # 修改规则字典,可添加新方法
+        rule = {
+            1: self.get_format1_name,
+            2: self.get_format2_name,
+            3: self.get_format3_name,
+            4: self.get_format4_name,
+            5: self.get_format5_name,
+        }
         # 是否改为默认的新名字
         if not file_new_name:
-            # 修改规则为get_format2_name,可以通过改这行修改规则
-            # new_name = self.get_format1_name(name)
-            # new_name = self.get_format2_name(name)
-            new_name = self.get_format3_name(name)
+            new_name = rule[flag](name)
 
-            file_new_name = op.join(file_path, new_name)
+            file_new_name = op.join(file_path, new_name + tp)
         else:
             new_name = op.split(file_new_name)[1]
         if name != new_name:
@@ -245,7 +302,7 @@ class FileManage:
 
     def get_format1_name(self, name):
         """
-        改名1规则: 将(A001)(    )(ABC-123asdf)(.mp3)文件中空格等距
+        改名1规则: 将(A001)(    )(ABC-123asdf)(.mp3)文件中空格等距,不符合规则不修改
         :param name: 仅文件名
         :return: 新文件名
         :rtype: str
@@ -269,7 +326,7 @@ class FileManage:
 
     def get_format2_name(self, name):
         """
-        改名2规则: 一种文件名的修改规则
+        改名2规则: 文件名部分替换,不符合规则不修改
         :param name: 仅文件名
         :return: 新文件名
         :rtype: str
@@ -301,7 +358,7 @@ class FileManage:
 
     def get_format4_name(self, name):
         """
-        改名4规则: 将所有文字翻译
+        改名4规则: 将所有文字翻译,自动翻译,其它语言翻译成汉语,汉语翻译成英语
         :param name: 仅文件名
         :return: 新文件名
         :rtype: str
@@ -309,22 +366,48 @@ class FileManage:
         new_name = Trans().translate(name)
         return new_name
 
-    def change_queue_name(self, file_list=''):
-        """批量修改为序列文件名"""
+    def get_format5_name(self, name):
+        """
+        改名4规则: 将所有文字翻译成字母
+        :param name: 仅文件名
+        :return: 新文件名
+        :rtype: str
+        """
+        new_name = name
+        if re.match(RE_HAS_KOREAN[0], name) or re.match(RE_HAS_JAPAN[0], name):
+            new_name = Trans().translate(name)
+        if re.match(RE_HAS_CHINESE[0], new_name):
+            new_name = self.get_format3_name(new_name)
+
+        return new_name
+
+    def change_queue_name(self, file_list='', prefix='', suffix=''):
+        """
+        批量修改为序列文件名(并按不同类型文件分组)
+
+        :param file_list:
+        :param prefix: 文件名前缀 eg:'ShareCircle-'
+        :param suffix: 文件名后缀 eg:'.mp4'
+        :return:
+        """
 
         # 传入过滤条件,可修改
         if not file_list:
             file_list = os.listdir(self.root_dir)
-        file_path = self.get_file_by_re(RE_ALL[0], file_list)
 
-        queue_name = self.get_queue_name(len(file_path), 'ShareCircle-', '.mp4')
+        queue_name = self.get_queue_name(len(file_list), prefix, suffix)
         maker = (name for name in queue_name)
-        for i in file_path:
-            path = op.split(i)[0]
-            os.rename(i, op.join(path, next(maker)))
+
+        # 分组
+        type_map = self.group_by_type(file_list)
+
+        for tp in type_map:
+            for ff in type_map[tp]:
+                new_name = op.join(op.split(ff)[0], next(maker) + os.path.splitext(ff)[1])
+                os.rename(ff, new_name)
 
     @staticmethod
-    def get_queue_name(nums, prefix='', suffix=''):
+    def get_queue_name(nums, prefix, suffix):
         """
         生成序列化的文件名
         :param nums: 生成数量
@@ -338,6 +421,23 @@ class FileManage:
             name = "%s{0:04d}%s".format(i) % (prefix, suffix)
             name_list.append(name)
         return name_list
+
+    def group_by_type(self, file_list):
+        """
+        按文件类型分组
+
+        :param file_list:
+        :return: {str:[filename,...]}
+        """
+
+        type_map = dict()
+        for ff in file_list:
+            file_type = os.path.splitext(ff)[1]
+            if file_type in type_map:
+                type_map[file_type].append(ff)
+            else:
+                type_map[file_type] = [ff]
+        return type_map
 
     @staticmethod
     def get_size(file_name):
@@ -497,7 +597,7 @@ class FileManage:
             Icon=(target, 0),
             Description="root_dir")
 
-    def create_lnk(self, lnkdir, file_list=None):
+    def create_lnks(self, lnkdir, file_list=None):
         """批量创建文件快捷方式到指定目录"""
         file_list = file_list if file_list else self.get_all_filelist()
 
@@ -515,8 +615,10 @@ if __name__ == '__main__':
     path5 = 'E:\\import_file\\name_map_file'
     path6 = r'E:\lewic\gitRepository\tmp'
     path7 = r'E:\bak\testlnk'
+    path9 = r'E:\bak\testlnk2'
     path8 = r'E:\lewic\pycharm\workspace\myCode\pythonDemo'
-    fm = FileManage(path8)
+    path10 = r'F:\tmp2\lnk_pre'
+    fm = FileManage(path9)
     # fm.change_queue_name()
     # pprint.pprint(fm.get_all_file_params())
     # for ff in fm.get_all_filelist():
@@ -527,14 +629,27 @@ if __name__ == '__main__':
     # fm.get_same_file()
 
     # special_file = ['.*\.git.*', '.*__init__.py', '.*\.pyc']
-    # file_lists = fm.filter_file(special_file, nameorpath=False)
-    # fm.get_file_by_re(special_file, nameorpath=False)
+    # file_lists = fm.filter_files_by_name(special_file, nameorpath=False)
+    # fm.get_files_by_name(special_file, nameorpath=False)
 
     # fm.get_same_file(file_lists)
 
-    # ff = fm.filter_file(special_file, nameorpath=False)
+    # ff = fm.filter_files_by_name(special_file, nameorpath=False)
     # fm.save_all(r'E:\tmp', ff)
 
-    # fl = fm.get_file_by_re(r'.*\\pre\\.*', nameorpath=False)
-    # fm.create_lnk(r'F:\tmp2\lnk_pre', fl)
-    fm.create_lnk(path7)
+    # ffs0 = fm.get_files_by_size(min_size=5000, max_size=10000)
+    # ffs1 = fm.filter_files_by_name(['.*ShareCircle.*', '.*\.pyc'], ffs0)
+    # fm.create_lnks(path9, ffs1)
+    # fm.change_queue_name()
+
+    # 获取pre文件快捷方式
+    # fms = FileManage(path2)
+    # fm_ls = fms.get_files_by_name([r'.*\\pre\\.*', r'.*\\pre_(mp4|avi)\\.*'], nameorpath=False)
+    # fm_ls = fms.get_files_by_size(min_size=500 * 1024, file_list=fm_ls)
+    # fm.create_lnks(path10, fm_ls)
+    # fm2 = FileManage(path10)
+    # fm2_list = fm2.get_all_filelist()
+    # fm2.change_names(fm2_list, 5)
+
+    fm_list = fm.get_all_filelist()
+    fm.change_names(fm_list, 5)
