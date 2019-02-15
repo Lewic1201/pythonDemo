@@ -46,6 +46,31 @@ class Solution:
         n = len(nums)
         return n * (n + 1) // 2 - sum(nums)
 
+    def generateParenthesis(self, n):
+        """
+        括号生成
+        :type n: int
+        :rtype: List[str]
+
+        eg: n=3
+        [
+          "((()))",
+          "(()())",
+          "(())()",
+          "()(())",
+          "()()()"
+        ]
+        """
+        ret = []
+        while n:
+            tmp = n
+            str1 = ''
+
+            while tmp:
+                str1+='('
+
+
+
 
 if __name__ == '__main__':
     ss = Solution()

@@ -74,15 +74,59 @@ class Solution:
         """
         pass
 
+    @print_cls
+    def isInterleave(self, s1, s2, s3):
+        """
+        交错字符串
+        :type s1: str
+        :type s2: str
+        :type s3: str
+        :rtype: bool
+        """
+        j = 0
+        k = 0
+        priority = 1
+        if len(s3)!=len(s1)+len(s2):
+            return False
+        for i in range(len(s3)):
+            if priority == 1:
+                if j < len(s1) and s3[i] == s1[j]:
+                    j += 1
+                    priority = 1
+                elif k < len(s2) and s3[i] == s2[k]:
+                    k += 1
+                    priority = 2
+                else:
+                    return False
+            elif priority == 2:
+                if k < len(s2) and s3[i] == s2[k]:
+                    k += 1
+                    priority = 2
+                elif j < len(s1) and s3[i] == s1[j]:
+                    j += 1
+                    priority = 1
+                else:
+                    return False
+        else:
+            return True
+
 
 if __name__ == '__main__':
     ss = Solution()
-    words = ["Science", "is", "what", "we", "understand", "well", "enough", "to", "explain",
-             "to", "a", "computer.", "Art", "is", "everything", "else", "we", "do"]
-    maxWidth = 20
-    ss.fullJustify(words, maxWidth)
-    ww = ["What", "must", "be", "acknowledgment", "shall", "be"]
-    mm = 16
-    ss.fullJustify(ww, mm)
-    ww2 = ["This", "is", "an", "example", "of", "text", "justification."]
-    ss.fullJustify(ww2, mm)
+    # words = ["Science", "is", "what", "we", "understand", "well", "enough", "to", "explain",
+    #          "to", "a", "computer.", "Art", "is", "everything", "else", "we", "do"]
+    # maxWidth = 20
+    # ss.fullJustify(words, maxWidth)
+    # ww = ["What", "must", "be", "acknowledgment", "shall", "be"]
+    # mm = 16
+    # ss.fullJustify(ww, mm)
+    # ww2 = ["This", "is", "an", "example", "of", "text", "justification."]
+    # ss.fullJustify(ww2, mm)
+
+    s1 = "aabcc"
+    s2 = "dbbca"
+    s3 = "aadbbcbcac"
+    # s1 = "abbbb"
+    # s2 = "dabsdca"
+    # s3 = "dabbbabsbdca"
+    ss.isInterleave(s1, s2, s3)
