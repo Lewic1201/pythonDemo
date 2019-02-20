@@ -99,3 +99,28 @@ def print_cls(func):
             print('\033[5;31;0m' + str(err) + '\033[0m')
 
     return wrapper
+
+
+def print_classparams(obj):
+    """打印所有的类变量"""
+
+    # 添加函数属性
+    def strs(self):
+        dir_list = self.__dir__()
+        classname = self.__class__.__name__
+        ret = ''
+        for i in dir_list:
+            if i[:2] != '__':
+                value = str(getattr(obj, i))
+
+                # 不加颜色打印
+                # ret += "%s.%s: %s\\n" % (classname, i, value)
+
+                # 加颜色打印
+                ret += '\033[5;34;0m' + classname + '\033[0m' + '.'
+                ret += '\033[5;35;0m' + i + '\033[0m' + ': \n'
+                ret += '\033[5;33;0m' + value + '\033[0m' + '\n'
+        return ret
+
+    obj.__str__ = strs
+    return obj
