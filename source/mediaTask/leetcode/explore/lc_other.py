@@ -45,6 +45,7 @@ class Solution:
         n = len(nums)
         return n * (n + 1) // 2 - sum(nums)
 
+    @prints
     def generateParenthesis(self, n):
         """
         括号生成
@@ -61,12 +62,27 @@ class Solution:
         ]
         """
         ret = []
-        # while n:
-        #     tmp = n
-        #     str1 = ''
-        #
-        #     while tmp:
-        #         str1+='('
+        left = '('
+        right = ')'
+        lnum = 0
+        rnum = 0
+
+        str0 = ''
+
+        def add(str0, lnum, rnum):
+            if len(str0) == 2 * n:
+                ret.append(str0)
+                return str0
+            if lnum < n:
+                if lnum == rnum:
+                    return add(str0 + left, lnum + 1, rnum)
+                elif lnum > rnum:
+                    return add(str0 + left, lnum + 1, rnum), add(str0 + right, lnum, rnum + 1)
+            else:
+                return add(str0 + right, lnum, rnum + 1)
+
+        add(str0, lnum, rnum)
+        return ret
 
     @prints
     def hammingWeight(self, n):
@@ -95,4 +111,5 @@ if __name__ == '__main__':
     # ss.missingNumber([9, 6, 4, 2, 3, 5, 7, 0, 1])
     # ss.missingNumber([0])
     # ss.missingNumber([])
-    ss.hammingWeight(100)
+    # ss.hammingWeight(100)
+    ss.generateParenthesis(3)

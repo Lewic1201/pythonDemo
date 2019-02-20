@@ -24,7 +24,7 @@ def BucketSort(ds):
 
 
 if __name__ == "__main__":
-    ds = DataSeq(64)
+    ds = DataSeq(1024)
     ds.Visualize()
     ds.StartTimer()
     BucketSort(ds)
