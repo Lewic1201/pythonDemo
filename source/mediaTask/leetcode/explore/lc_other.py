@@ -85,24 +85,155 @@ class Solution:
         return ret
 
     @prints
-    def hammingWeight(self, n):
+    def letterCombinations(self, digits):
         """
-        :type n: int
-        :rtype: int
+        电话号码的字母组合
+        :type digits: str
+        :rtype: List[str]
         """
-        # nstr = bin(n)[2:]
-        # ret = 0
-        # print(nstr)
-        # for i in nstr:
-        #     if i is '1':
-        #         ret += 1
-        # return ret
-        temp = n
-        res = 0
-        while (temp):
-            res += temp % 2
-            temp = temp // 2
-        return res
+        if not digits:
+            return []
+
+        num_map = [' ', '', 'abc', 'def', 'ghi', 'jkl', 'mno', 'pqrs', 'tuv', 'wxyz']
+        ret = []
+        ldigits = len(digits)
+
+        def inner(str0, index):
+            # 终止条件
+            if index >= ldigits:
+                ret.append(str0)
+                return
+
+            tmp = []
+            for i in num_map[int(digits[index])]:
+                tmp.append(inner((str0 + i), index + 1))
+
+        inner('', 0)
+        return ret
+
+    @prints
+    def permute(self, nums):
+        """
+        全排列
+        :type nums: List[int]
+        :rtype: List[List[int]]
+        """
+        # import itertools
+        # return list(itertools.permutations(nums))
+
+        ret = []
+
+        def inner(list0):
+            if len(list0) == len(nums):
+                ret.append(list0)
+                return
+
+            for i in nums:
+                tmp = list0[:]
+                if i not in tmp:
+                    tmp.append(i)
+                    inner(tmp)
+
+        inner([])
+        return ret
+
+    @prints
+    def subsets(self, nums):
+        """
+        子集
+        :type nums: List[int]
+        :rtype: List[List[int]]
+        """
+        ret = []
+
+        def inner(list0, ret):
+
+            set0 = set(list0)
+            if len(list0) <= len(nums) and set0 not in ret:
+                ret.append(set0)
+
+            for i in nums:
+                tmp = list0[:]
+                if i not in tmp:
+                    tmp.append(i)
+                    inner(tmp, ret)
+
+        inner([], ret)
+
+        return [list(i) for i in ret]
+
+    @prints
+    def exist(self, board, word):
+        """
+        单词搜索
+        :type board: List[List[str]]
+        :type word: str
+        :rtype: bool
+        """
+
+        ret = []
+
+        # 下一步走法
+        def inner(x, y, index, old_path):
+            """
+            :param x: 当前x坐标
+            :param y: 当前y坐标
+            :param index: 要找的字母
+            :param old_path: 已经走过的坐标
+            :return:
+            """
+            if (x, y) in old_path:
+                return
+
+            if board[x][y] == word[index]:
+                old_path.append((x, y))
+
+                if len(old_path) == len(word):
+                    ret.append(old_path)
+                    raise Exception("True")
+
+                index += 1
+                if x - 1 >= 0:
+                    inner(x - 1, y, index, old_path[:])
+                if x + 1 < len(board):
+                    inner(x + 1, y, index, old_path[:])
+                if y - 1 >= 0:
+                    inner(x, y - 1, index, old_path[:])
+                if y + 1 < len(board[x]):
+                    inner(x, y + 1, index, old_path[:])
+
+                # 遍历每一个初始位置
+
+        for i in range(len(board)):
+            for j in range(len(board[i])):
+                try:
+                    inner(i, j, 0, [])
+                except Exception as err:
+                    if err.args[0] == "True":
+                        return True
+
+        return False
+
+
+@prints
+def hammingWeight(self, n):
+    """
+    :type n: int
+    :rtype: int
+    """
+    # nstr = bin(n)[2:]
+    # ret = 0
+    # print(nstr)
+    # for i in nstr:
+    #     if i is '1':
+    #         ret += 1
+    # return ret
+    temp = n
+    res = 0
+    while (temp):
+        res += temp % 2
+        temp = temp // 2
+    return res
 
 
 if __name__ == '__main__':
@@ -112,4 +243,82 @@ if __name__ == '__main__':
     # ss.missingNumber([0])
     # ss.missingNumber([])
     # ss.hammingWeight(100)
-    ss.generateParenthesis(3)
+    # ss.generateParenthesis(3)
+    # ss.letterCombinations('234')
+    # ss.permute([1, 2, 3])
+    # ss.subsets([1, 2, 3])
+
+    board = [
+        ['A', 'B', 'C', 'E'],
+        ['S', 'F', 'C', 'S'],
+        ['A', 'D', 'E', 'E']
+    ]
+    # ss.exist(board, 'ABCCED')
+    # ss.exist(board, 'SEE')
+    # ss.exist(board, 'ABCB')
+
+    # ss.exist([["a"]], "a")
+    ss.exist([["b", "a", "b"], ["b", "b", "a"], ["b", "b", "b"]], "ab")
+
+    bb = [["a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a",
+           "a", "a", "a", "a", "a", "a", "a", "a"],
+          ["a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a",
+           "a", "a", "a", "a", "a", "a", "a", "a"],
+          ["a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a",
+           "a", "a", "a", "a", "a", "a", "a", "a"],
+          ["a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a",
+           "a", "a", "a", "a", "a", "a", "a", "a"],
+          ["a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a",
+           "a", "a", "a", "a", "a", "a", "a", "a"],
+          ["a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a",
+           "a", "a", "a", "a", "a", "a", "a", "a"],
+          ["a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a",
+           "a", "a", "a", "a", "a", "a", "a", "a"],
+          ["a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a",
+           "a", "a", "a", "a", "a", "a", "a", "a"],
+          ["a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a",
+           "a", "a", "a", "a", "a", "a", "a", "a"],
+          ["a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a",
+           "a", "a", "a", "a", "a", "a", "a", "a"],
+          ["a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a",
+           "a", "a", "a", "a", "a", "a", "a", "a"],
+          ["a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a",
+           "a", "a", "a", "a", "a", "a", "a", "a"],
+          ["a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a",
+           "a", "a", "a", "a", "a", "a", "a", "a"],
+          ["a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a",
+           "a", "a", "a", "a", "a", "a", "a", "a"],
+          ["a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a",
+           "a", "a", "a", "a", "a", "a", "a", "a"],
+          ["a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a",
+           "a", "a", "a", "a", "a", "a", "a", "a"],
+          ["a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a",
+           "a", "a", "a", "a", "a", "a", "a", "a"],
+          ["a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a",
+           "a", "a", "a", "a", "a", "a", "a", "a"],
+          ["a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a",
+           "a", "a", "a", "a", "a", "a", "a", "a"],
+          ["a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a",
+           "a", "a", "a", "a", "a", "a", "a", "a"],
+          ["a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a",
+           "a", "a", "a", "a", "a", "a", "a", "a"],
+          ["a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a",
+           "a", "a", "a", "a", "a", "a", "a", "a"],
+          ["a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a",
+           "a", "a", "a", "a", "a", "a", "a", "a"],
+          ["a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a",
+           "a", "a", "a", "a", "a", "a", "a", "a"],
+          ["a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a",
+           "a", "a", "a", "a", "a", "a", "a", "a"],
+          ["a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a",
+           "a", "a", "a", "a", "a", "a", "a", "a"],
+          ["a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a",
+           "a", "a", "a", "a", "a", "a", "a", "a"],
+          ["a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a",
+           "a", "a", "a", "a", "a", "a", "a", "a"],
+          ["a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a",
+           "a", "a", "a", "a", "a", "a", "a", "a"],
+          ["a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a",
+           "a", "a", "a", "a", "a", "a", "a", "b"]]
+    aa = "baaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+    ss.exist(bb, aa)
