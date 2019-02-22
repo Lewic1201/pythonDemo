@@ -144,23 +144,45 @@ class Solution:
         :type nums: List[int]
         :rtype: List[List[int]]
         """
-        ret = []
+        # # 999ms
+        # ret = []
+        #
+        # def inner(list0, ret):
+        #
+        #     set0 = set(list0)
+        #     if len(list0) <= len(nums) and set0 not in ret:
+        #         ret.append(set0)
+        #
+        #     for i in nums:
+        #         tmp = list0[:]
+        #         if i not in tmp:
+        #             tmp.append(i)
+        #             inner(tmp, ret)
+        #
+        # inner([], ret)
+        #
+        # return [list(i) for i in ret]
 
-        def inner(list0, ret):
+        # # 72ms
+        # res = []
+        #
+        # def inner(start, num):  # 深度优先搜索
+        #     res.append(num)
+        #     for i in range(start, len(nums)):
+        #         inner(i + 1, num + [nums[i]])
+        #
+        # inner(0, [])
+        # return res
 
-            set0 = set(list0)
-            if len(list0) <= len(nums) and set0 not in ret:
-                ret.append(set0)
-
-            for i in nums:
-                tmp = list0[:]
-                if i not in tmp:
-                    tmp.append(i)
-                    inner(tmp, ret)
-
-        inner([], ret)
-
-        return [list(i) for i in ret]
+        # # 48ms
+        res = [[]]
+        for i in nums:
+            nres = res.copy()
+            for j in nres:
+                res.append([i] + j)
+                # 之所以要一次append [i] + j，是因为拷贝的结果会在每一次改变之后立刻传递给被拷贝的res，
+                # 如果分开的话，比如先给 j 加上一个[i]，这时候结果已经返回给res了，然后res再去append就会导致后面出现重复。
+        return res
 
     @prints
     def exist(self, board, word):
@@ -214,26 +236,49 @@ class Solution:
 
         return False
 
+    @prints
+    def hammingWeight(self, n):
+        """
+        :type n: int
+        :rtype: int
+        """
+        # nstr = bin(n)[2:]
+        # ret = 0
+        # print(nstr)
+        # for i in nstr:
+        #     if i is '1':
+        #         ret += 1
+        # return ret
+        temp = n
+        res = 0
+        while (temp):
+            res += temp % 2
+            temp = temp // 2
+        return res
 
-@prints
-def hammingWeight(self, n):
-    """
-    :type n: int
-    :rtype: int
-    """
-    # nstr = bin(n)[2:]
-    # ret = 0
-    # print(nstr)
-    # for i in nstr:
-    #     if i is '1':
-    #         ret += 1
-    # return ret
-    temp = n
-    res = 0
-    while (temp):
-        res += temp % 2
-        temp = temp // 2
-    return res
+    def getSum(self, a, b):
+        """
+        不使用运算符 + 和 - ，计算两整数 a、b 之和。
+        :type a: int
+        :type b: int
+        :rtype: int
+        """
+        pass
+
+    def partition(self, s):
+        """
+        分割回文串
+        :type s: str
+        :rtype: List[List[str]]
+
+        输入: "aab"
+        输出:
+        [
+          ["aa","b"],
+          ["a","a","b"]
+        ]
+        """
+        pass
 
 
 if __name__ == '__main__':
@@ -258,7 +303,7 @@ if __name__ == '__main__':
     # ss.exist(board, 'ABCB')
 
     # ss.exist([["a"]], "a")
-    ss.exist([["b", "a", "b"], ["b", "b", "a"], ["b", "b", "b"]], "ab")
+    # ss.exist([["b", "a", "b"], ["b", "b", "a"], ["b", "b", "b"]], "ab")
 
     bb = [["a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a",
            "a", "a", "a", "a", "a", "a", "a", "a"],
@@ -320,5 +365,15 @@ if __name__ == '__main__':
            "a", "a", "a", "a", "a", "a", "a", "a"],
           ["a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a",
            "a", "a", "a", "a", "a", "a", "a", "b"]]
-    aa = "baaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
-    ss.exist(bb, aa)
+    aa = "baaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" \
+         "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" \
+         "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" \
+         "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" \
+         "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" \
+         "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" \
+         "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" \
+         "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" \
+         "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+    # ss.exist(bb, aa)
+
+    ss.subsets([1, 2, 3, 4, 5, 6, 7, 8, 10, 0])
