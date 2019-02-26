@@ -52,3 +52,5 @@ def pipline_connect():
 
     pipe.execute()
 
+
+pipline_connect()
