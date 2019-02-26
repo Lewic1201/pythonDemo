@@ -21,7 +21,8 @@ def print_io(func):
 
 @print_io
 def test1(a):
-    print 'test1:'+str(a)
+    print('test1:' + str(a))
     return str(a)[0]
+
 
 test1(range(10))

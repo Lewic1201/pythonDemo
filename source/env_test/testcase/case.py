@@ -55,7 +55,7 @@ class SampleTest1(unittest.TestCase):
 class SampleOutputTestBase(unittest.TestCase):
     """ Base TestCase. Generates 4 test cases x different content type. """
     def test_1(self):
-        print self.MESSAGE
+        print(self.MESSAGE)
     def test_2(self):
         print >>sys.stderr, self.MESSAGE
     def test_3(self):
@@ -216,7 +216,7 @@ Total
         # check out the output
         byte_output = buf.getvalue()
         # output the main test output for debugging & demo
-        print byte_output
+        print(byte_output)
         # HTMLTestRunner pumps UTF-8 output
         output = byte_output.decode('utf-8')
         self._checkoutput(output,EXPECTED)

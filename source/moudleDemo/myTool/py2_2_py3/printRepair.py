@@ -13,17 +13,26 @@ def print_repair(filename, bak=True):
     :param bak: 是否备份
     :return:
     """
-    if filename[-3:] is not '.py':
+    if filename[-3:] != '.py':
         return False
 
-    with open(filename, 'r') as ff:
-        context = ff.readlines()
-    context_bak = context[:]
+    try:
+        # 忽略其它编码字符
+        # with open(filename, 'r', errors='ignore') as ff:
+        with open(filename, 'r') as ff:
+            context = ff.readlines()
+        context_bak = context[:]
+
+    except UnicodeDecodeError as err:
+        print(filename, err)
+        return False
+    except Exception:
+        raise
 
     # 替换
     change_count = 0
 
-    pattern = re.compile(r'^(\s*)print +(.*)$')
+    pattern = re.compile(rb'^(\s*)print +(.*)$')
     for i in range(len(context)):
         line = context[i]
         res = re.match(pattern, line)
@@ -58,9 +67,10 @@ def print_repair(filename, bak=True):
 
 if __name__ == '__main__':
     filename = __file__ + '/../test.py'
-    # print_replace(filename)
+    print_repair(filename)
 
-    rootDir = os.path.abspath(os.path.join(__file__, '../../../../../'))
-    fm = FileManage(rootDir)
-    for i in fm.get_all_filelist():
-        print_repair(filename)
+    # rootDir = os.path.abspath(os.path.join(__file__, '../../../../../'))
+    # fm = FileManage(rootDir)
+    # flist = fm.get_files_by_name(r'.*\.py')
+    # for i in flist:
+    #     print_repair(i)

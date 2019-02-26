@@ -36,4 +36,4 @@ def fibo3(n):
 
 # print [fibo(i) for i in range(1, 11)]
 
-print fibo2(6)
+print(fibo2(6))
