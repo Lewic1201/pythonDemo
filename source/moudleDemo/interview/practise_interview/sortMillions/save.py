@@ -5,7 +5,8 @@ import time
 from collections import deque
 
 # LISTNAME = 'millions'
-LISTNAME = 'mm2'
+LISTNAME = 'mm'
+# LISTNAME = 'mm2'
 
 
 def create_num():
@@ -65,11 +66,11 @@ def queue_list():
 if __name__ == '__main__':
     start = time.time()
 
-    create_num()
-    # print(get_list())
-    save_file()
+    # create_num()
+    # # print(get_list())
+    # save_file()
 
     end = time.time()
-    print(queue_list())
+    # print(queue_list())
 
     print('time:', end - start)
