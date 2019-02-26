@@ -3,14 +3,36 @@ import time
 
 from source.moudleDemo.interview.practise_interview.sortMillions.save import *
 
+
 num_list = queue_list()
+
+
+def middle_axis(array):
+    left, right = 0, len(array) - 1
+    mid = (left + right) // 2
+    if array[left] >= array[mid]:
+        if array[left] <= array[right]:
+            return array[left]
+        else:
+            if array[mid] >= array[right]:
+                return array[mid]
+            else:
+                return array[right]
+    else:
+        if array[left] <= array[right]:
+            if array[mid] < array[right]:
+                return array[mid]
+            else:
+                return array[right]
+        else:
+            return array[left]
 
 
 def quickSort(array):
     if len(array) < 2:  # 基线条件（停止递归的条件）
         return array
     else:  # 递归条件
-        baseValue = array[0]  # 选择基准值
+        baseValue = middle_axis(array)  # 选择基准值
         less, equal, greater = [], [baseValue], []
         flag = False
         for m in array:
@@ -39,11 +61,13 @@ def save_ret(datas):
 if __name__ == '__main__':
     start = time.time()
 
-    # array = [2, 3, 5, 7, 1, 4, 6, 15, 5, 2, 7, 9, 10, 15, 9, 17, 12]
+    # num_list = [2, 3, 5, 7, 1, 4, 6, 15, 5, 2, 7, 9, 10, 15, 9, 17, 12]
     ret = quickSort(num_list)
 
     end = time.time()
 
-    save_ret(ret)
+    # save_ret(ret)
     print(ret)
     print(end - start)
+
+    # print(middle_axis([122, 34, 75]))
