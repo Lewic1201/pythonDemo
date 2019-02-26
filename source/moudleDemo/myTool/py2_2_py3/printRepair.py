@@ -13,6 +13,8 @@ def print_repair(filename, bak=True):
     :param bak: 是否备份
     :return:
     """
+    if filename[-3:] is not '.py':
+        return False
 
     with open(filename, 'r') as ff:
         context = ff.readlines()
