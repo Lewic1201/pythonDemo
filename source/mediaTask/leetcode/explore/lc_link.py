@@ -180,12 +180,7 @@ class Solution:
         node.next = node.next.next
 
     @prints
-    def removeNthFromEnd(self, head, n):
-        """
-        :type head: ListNode
-        :type n: int
-        :rtype: ListNode
-        """
+    def removeNthFromEnd(self, head: ListNode, n: int) -> ListNode:
         tmp = head
         llen = 0
         while tmp:
@@ -198,13 +193,15 @@ class Solution:
         tmp = head
 
         while tmp:
-            if n == 1 and tmp.next.next is None:
-                tmp.next = None
-                return head
+            if n == 1:
+                if llen == 1:
+                    return None
+                elif tmp.next.next is None:
+                    tmp.next = None
+                    return head
             if index == 0:
-                if tmp.next is None:
-                    tmp.val = tmp.next.val
-                    tmp.next = tmp.next.next
+                tmp.val = tmp.next.val
+                tmp.next = tmp.next.next
                 return head
             tmp = tmp.next
             index -= 1
@@ -296,3 +293,5 @@ if __name__ == '__main__':
     # ss.deleteNode(links.next.next)
 
     ss.removeNthFromEnd(links, 1)
+    ss.removeNthFromEnd(links, 2)
+    getattr(ss,'1',0)
