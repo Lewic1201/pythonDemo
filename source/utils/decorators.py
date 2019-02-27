@@ -5,6 +5,8 @@ import logging
 import traceback
 import os
 import pprint
+import time
+
 from functools import wraps
 from logging.handlers import TimedRotatingFileHandler
 from source.utils.logs import logger as logs
@@ -124,3 +126,25 @@ def print_classparams(obj):
 
     obj.__str__ = strs
     return obj
+
+
+def times(func):
+    """计算函数花费的时间"""
+
+    @wraps(func)
+    def wrapper(*args, **kwargs):
+        try:
+            start_str = '=' * 50 + ' RUN ' + func.__name__ + '() ' + '=' * 180
+
+            print('\033[5;35;0m' + start_str + '\033[0m')
+            start = time.time()
+            ret = func(*args, **kwargs)
+            end = time.time()
+
+            print('\033[5;33;0m' + "[RUN TIME]:", end - start, '\033[0m')
+            return ret
+        except Exception as err:
+            print('\033[5;31;0m' + str(err) + '\033[0m')
+            raise
+
+    return wrapper
