@@ -1,6 +1,11 @@
+
 import time
 import re
 from selenium import webdriver
+
+"""
+自动填入留言板,需要先启动app里面留言板的flasks
+"""
 
 browser = webdriver.Chrome()
 try:

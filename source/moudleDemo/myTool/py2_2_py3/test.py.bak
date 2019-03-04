@@ -1,0 +1,17 @@
+
+
+print 123
+print(12333)
+
+print 12312,3123,12,4,4
+
+print(123,1142,5,end='')
+def a():
+    print 12312
+    if True:
+        print 'ewrwer'
+
+    a = "print 123414"
+    b = 'print 12431'
+    print a,b
+    print 'print asdf'

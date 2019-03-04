@@ -76,6 +76,15 @@ class Solution:
                 ret.append(str(i))
         return ret
 
+    def isPalindrome(self, x):
+        """
+        回文数
+        :type x: int
+        :rtype: bool
+        """
+        s = str(x)
+        return s==s[::-1]
+
 
 if __name__ == '__main__':
     ss = Solution()

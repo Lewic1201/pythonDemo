@@ -62,6 +62,8 @@ class ListNode:
         self.next = None
 
     def __str__(self):
+        if self.next is None:
+            return '%s' % self.val
         return '%s->%s' % (self.val, self.next)
 
 
@@ -162,26 +164,47 @@ class Solution:
 
     def deleteNode(self, node):
         """
-        :type node: ListNode
+        删除链表中的节点
+        :type node:
         :rtype: void Do not return anything, modify node in-place instead.
         """
-        pass
-
-    def removeNthFromEnd(self, head, n):
-        """
-        :type head: ListNode
-        :type n: int
-        :rtype: ListNode
-        """
-        # part = None
         # tmp = head
-        # while True:
-        #     if tmp:
-        #         tmp=tmp.next
-        #         n-=1
-        #     if n<0:
-        #         part
-        pass
+        # while tmp:
+        #     tmp = tmp.next
+        #     if tmp.val == node:
+        #         tmp.val = tmp.next.val
+        #         tmp.next = tmp.next.next
+        #         break
+
+        node.val = node.next.val
+        node.next = node.next.next
+
+    @prints
+    def removeNthFromEnd(self, head: ListNode, n: int) -> ListNode:
+        tmp = head
+        llen = 0
+        while tmp:
+            tmp = tmp.next
+            llen += 1
+            if tmp is None:
+                break
+
+        index = llen - n
+        tmp = head
+
+        while tmp:
+            if n == 1:
+                if llen == 1:
+                    return None
+                elif tmp.next.next is None:
+                    tmp.next = None
+                    return head
+            if index == 0:
+                tmp.val = tmp.next.val
+                tmp.next = tmp.next.next
+                return head
+            tmp = tmp.next
+            index -= 1
 
     @prints
     def oddEvenList(self, head):
@@ -226,6 +249,26 @@ class Solution:
         ot.next = eh
         return oh
 
+    @prints
+    def removeElements(self, head: ListNode, val: int) -> ListNode:
+        while head:
+            if head.val == val:
+                head = head.next
+            else:
+                break
+        tmp = head
+        if tmp is None:
+            return tmp
+        while True:
+            if tmp.next is not None:
+                if val == tmp.next.val:
+                    tmp.next = tmp.next.next
+                else:
+                    tmp = tmp.next
+            else:
+                break
+        return head
+
 
 if __name__ == '__main__':
     ss = Solution()
@@ -260,5 +303,25 @@ if __name__ == '__main__':
     # link2list(q)
     # link2list(w)
     # link2list(e)
-    linkC = list2link([1, 2, 3, 4, 5])
-    ss.oddEvenList(linkC)
+    # linkC = list2link([1, 2, 3, 4, 5])
+    # ss.oddEvenList(linkC)
+
+    links = list2link([4, 5, 1, 9])
+    # ss.deleteNode(links.next)
+    #
+    # links = list2link([4, 5, 1, 9])
+    # ss.deleteNode(links.next.next)
+
+    # ss.removeNthFromEnd(links, 1)
+    # ss.removeNthFromEnd(links, 2)
+    # getattr(ss, '1', 0)
+
+    ss.removeElements(links, 3)
+    links2 = list2link([1, 2, 6, 3, 4, 5, 6])
+    ss.removeElements(links2, 6)
+    # ss.removeElements(links2, 5)
+
+    links3 = list2link([])
+    links4 = list2link([1])
+    ss.removeElements(links3, 4)
+    ss.removeElements(links4, 1)

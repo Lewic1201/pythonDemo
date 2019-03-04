@@ -30,4 +30,5 @@ class NumpyDemo:
 
 if __name__ == '__main__':
     npdo = NumpyDemo()
+    print(npdo.__class__.__name__)
     print(npdo)

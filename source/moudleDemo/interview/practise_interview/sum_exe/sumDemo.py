@@ -10,7 +10,7 @@ num = input('请输入数据:')
 while True:
     if isinstance(num, float) or isinstance(num, int):
         num_list.append(num)
-        print "和为" + str(sum(num_list))
+        print("和为" + str(sum(num_list)))
     else:
-        print '输入格式有误,请重新输入'
+        print('输入格式有误,请重新输入')
     num = input('请再次输入数据:')

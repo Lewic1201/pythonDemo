@@ -12,6 +12,10 @@ form {
 padding: 0.5em 2em;
 background-color: #F5FFFA;
 }
+textarea {
+background-color: #F5FFFA;
+white-space: pre-wrap;
+}
 .main {
 padding: 0;
 }

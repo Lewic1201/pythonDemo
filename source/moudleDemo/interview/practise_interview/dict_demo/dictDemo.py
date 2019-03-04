@@ -6,4 +6,4 @@
 # @Software: PyCharm Community Edition
 
 d = {"k": 1, "v": 2}
-print d.items()
+print(d.items())

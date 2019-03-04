@@ -25,3 +25,5 @@ winshell
 pywin32
 numpy
 opencv-python
+pandas
+redis

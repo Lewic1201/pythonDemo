@@ -97,4 +97,12 @@ class Trans(object):
 if __name__ == '__main__':
     ss = Trans()
     print(ss.translate('测试'))
+    print(ss.translate('知りたいのですが'))
+    print(ss.translate('사랑해요'))
+    print(ss.translate('administrator'))
+
+    print(ss.translate('我是administrator'))
+    print(ss.translate('administrator是我'))
+    print(ss.translate('知りたいのですが,and you'))
+    print(ss.translate('hehe知りたいのですが'))
     # print(ss.get_translate_split('asd','_'))
