@@ -249,6 +249,26 @@ class Solution:
         ot.next = eh
         return oh
 
+    @prints
+    def removeElements(self, head: ListNode, val: int) -> ListNode:
+        while head:
+            if head.val == val:
+                head = head.next
+            else:
+                break
+        tmp = head
+        if tmp is None:
+            return tmp
+        while True:
+            if tmp.next is not None:
+                if val == tmp.next.val:
+                    tmp.next = tmp.next.next
+                else:
+                    tmp = tmp.next
+            else:
+                break
+        return head
+
 
 if __name__ == '__main__':
     ss = Solution()
@@ -292,6 +312,16 @@ if __name__ == '__main__':
     # links = list2link([4, 5, 1, 9])
     # ss.deleteNode(links.next.next)
 
-    ss.removeNthFromEnd(links, 1)
-    ss.removeNthFromEnd(links, 2)
-    getattr(ss,'1',0)
+    # ss.removeNthFromEnd(links, 1)
+    # ss.removeNthFromEnd(links, 2)
+    # getattr(ss, '1', 0)
+
+    ss.removeElements(links, 3)
+    links2 = list2link([1, 2, 6, 3, 4, 5, 6])
+    ss.removeElements(links2, 6)
+    # ss.removeElements(links2, 5)
+
+    links3 = list2link([])
+    links4 = list2link([1])
+    ss.removeElements(links3, 4)
+    ss.removeElements(links4, 1)
