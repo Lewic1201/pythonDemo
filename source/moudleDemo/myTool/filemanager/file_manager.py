@@ -13,7 +13,7 @@ import re
 import time
 import winshell
 
-# from source.utils.logs import logger
+from source.utils.logs import logger
 from source.application.pingyin.pinyin import PinYin
 from source.application.translate.trans import Trans
 from source.moudleDemo.myTool.filemanager.excel_manage import save_info
@@ -250,8 +250,11 @@ class FileManage:
                     3  将所有汉字转为拼音
                     4  将所有文字翻译
         """
-        for ff in file_list:
-            self.change_name(ff, flag)
+        try:
+            for ff in file_list:
+                self.change_name(ff, flag)
+        except Exception:
+            raise
 
     @print_cls
     def change_name(self, file_name, flag, file_new_name=''):
@@ -289,9 +292,14 @@ class FileManage:
             new_name = op.split(file_new_name)[1]
         if name != new_name:
             try:
-                os.rename(file_name, file_new_name)
                 message = 'info: ' + '\033[5;33;0m' + name + '\033[5;34;0m' + ' ---->>>> ' + '\033[5;33;0m' \
                           + new_name + '\033[0m'
+                # 文件已存在跳过
+                if os.path.exists(file_new_name):
+                    logger.error('error:' + message[5:])
+                    logger.error('文件已存在,不能修改文件名')
+                else:
+                    os.rename(file_name, file_new_name)
                 print(message)
                 return True
             except FileNotFoundError:
@@ -505,7 +513,7 @@ class FileManage:
         """
         保存所有子文件信息到指定Excel文件
         :param save_file: 生成文件的绝对路径
-        :param file_list: 要保存的文件绝对路径(默认根目录下全部)
+        :param file_list: 要保存的文件名绝对路径(默认根目录下全部)
         :return:
         """
         if not file_list:
@@ -530,7 +538,7 @@ class FileManage:
         now = get_now_time('%Y%m%d%H%M%S')
         file = save_info(save_file, now, file_info)
         # 打开文件
-        os.system(file)
+        os.system('"%s"' % file)
 
     @print_cls
     def save_name_map(self, save_file):
@@ -617,8 +625,8 @@ if __name__ == '__main__':
     path7 = r'E:\bak\testlnk'
     path9 = r'E:\bak\testlnk2'
     path8 = r'E:\lewic\pycharm\workspace\myCode\pythonDemo'
-    path10 = r'F:\tmp2\lnk_pre'
-    fm = FileManage(path9)
+    path10 = r'F:\tmp\lnk_pre3'
+    fm = FileManage(path2)
     # fm.change_queue_name()
     # pprint.pprint(fm.get_all_file_params())
     # for ff in fm.get_all_filelist():
@@ -643,13 +651,19 @@ if __name__ == '__main__':
     # fm.change_queue_name()
 
     # 获取pre文件快捷方式
-    # fms = FileManage(path2)
-    # fm_ls = fms.get_files_by_name([r'.*\\pre\\.*', r'.*\\pre_(mp4|avi)\\.*'], nameorpath=False)
-    # fm_ls = fms.get_files_by_size(min_size=500 * 1024, file_list=fm_ls)
-    # fm.create_lnks(path10, fm_ls)
-    # fm2 = FileManage(path10)
-    # fm2_list = fm2.get_all_filelist()
-    # fm2.change_names(fm2_list, 5)
+    fms = FileManage(path2)
+    fm_ls = fms.get_files_by_name([r'.*\\pre\\.*', r'.*\\pre_(mp4|avi)\\.*', r'.*\\java\\.*'], nameorpath=False)
+    fm_ls = fms.get_files_by_size(min_size=500 * 1024, file_list=fm_ls)
+    fm.create_lnks(path10, fm_ls)
+    fm2 = FileManage(path10)
+    fm2_list = fm2.get_all_filelist()
+    fm2.change_names(fm2_list, 5)
 
-    fm_list = fm.get_all_filelist()
-    fm.change_names(fm_list, 5)
+    # fm_list = fm.get_all_filelist()
+    # fm.change_names(fm_list, 5)
+
+    # flist = fm.get_all_filelist()
+    # fm.change_names(flist, 2)
+    #
+    # fm.save_all(path2 + '\\..\\files')
+

@@ -75,6 +75,7 @@ def print_def(func):
             return ret
         except Exception as err:
             print('\033[5;31;0m' + str(err) + '\033[0m')
+            raise
 
     return wrapper
 
@@ -97,5 +98,6 @@ def print_cls(func):
             return ret
         except Exception as err:
             print('\033[5;31;0m' + str(err) + '\033[0m')
+            raise
 
     return wrapper
