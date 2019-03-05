@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>文件管理</title>
+</head>
+<body>
+<h3>
+    当前设备:{{data.device}}<br>
+    当前目录:{{data.rootDir}}
+</h3>
+<hr>
+<table class="">
+    <thead>
+    <tr>
+        {% for i in data.tableHead %}
+        <td><h4>{{ i }}</h4></td>
+        {% endfor %}
+    </tr>
+    </thead>
+    <tbody>
+    {% for file in data.tableFile %}
+    <tr>
+        <!--<td>{{file.name}}</td>-->
+        <!--<td>{{file.size}}</td>-->
+        <!--<td>{{file.type}}</td>-->
+        <!--<td>{{file.createtime}}</td>-->
+
+        {% if file.1=="DIR" %}
+        <td><a href="/filelist?currentDir={{data.rootDir}}&dirName={{ file.name }}">{{ file.name }}</a></td>
+
+        {% else %}
+        <td>{{ file.name }}</td>
+        {% endif %}
+        <td>{{ file.type }}</td>
+        <td>{{ file.size }}</td>
+        <td>{{ file.modifyTime }}</td>
+        <td><a href="/manage?currentDir={{data.rootDir}}&dirName={{ file.name }}">manage</a></td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+</body>
+</html>

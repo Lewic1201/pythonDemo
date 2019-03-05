@@ -77,7 +77,7 @@ def print_manage(description='', ifdoc=False, iftime=False):
                     print('\033[5;33;0m' + "[RESULT]:" + '\033[0m')
                     pprint.pprint(ret)
                 else:
-                    print('\033[5;33;0m' + "[RESULT]:", ret + '\033[0m')
+                    print('\033[5;33;0m' + "[RESULT]:", str(ret) + '\033[0m')
                 return ret
             except Exception as err:
                 print('\033[5;31;0m' + str(err) + '\033[0m')
@@ -101,7 +101,7 @@ def prints(func):
             if len(str(ret)) > 200:
                 pprint.pprint(ret)
             else:
-                print('\033[5;33;0m' + ret + '\033[0m')
+                print('\033[5;33;0m' + str(ret) + '\033[0m')
             return ret
         except Exception as err:
             print('\033[5;31;0m' + str(err) + '\033[0m')
@@ -124,7 +124,7 @@ def print_def(func):
                 print('\033[5;33;0m' + "[RESULT]:" + '\033[0m')
                 pprint.pprint(ret)
             else:
-                print('\033[5;33;0m' + "[RESULT]:", ret + '\033[0m')
+                print('\033[5;33;0m' + "[RESULT]:", str(ret) + '\033[0m')
             return ret
         except Exception as err:
             print('\033[5;31;0m' + str(err) + '\033[0m')
@@ -147,7 +147,7 @@ def print_cls(func):
                 print('\033[5;33;0m' + "[RESULT]:" + '\033[0m')
                 pprint.pprint(ret)
             else:
-                print('\033[5;33;0m' + "[RESULT]:", ret + '\033[0m')
+                print('\033[5;33;0m' + "[RESULT]:", str(ret) + '\033[0m')
             return ret
         except Exception as err:
             print('\033[5;31;0m' + str(err) + '\033[0m')
