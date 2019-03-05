@@ -59,6 +59,57 @@ def loggerInFile(filename=LOG_PATH):
     return decorator
 
 
+def print_manage(description='', ifdoc=False, iftime=False):
+    """输出函数返回的结果"""
+
+    def decorator(func):
+        @wraps(func)
+        def wrapper(*args, **kwargs):
+            try:
+                if description:
+                    headline = '-' * 50 + str(description) + '-' * 180
+                else:
+                    headline = '-' * 50 + ' RUN ' + func.__name__ + '() ' + '-' * 180
+                print('\033[5;35;0m' + headline + '\033[0m')
+
+                ret = func(*args, **kwargs)
+                if len(str(ret)) > 200:
+                    print('\033[5;33;0m' + "[RESULT]:" + '\033[0m')
+                    pprint.pprint(ret)
+                else:
+                    print('\033[5;33;0m' + "[RESULT]:", ret + '\033[0m')
+                return ret
+            except Exception as err:
+                print('\033[5;31;0m' + str(err) + '\033[0m')
+                raise
+
+        return wrapper
+
+    return decorator
+
+
+def prints(func):
+    """输出函数返回的结果"""
+
+    @wraps(func)
+    def wrapper(*args, **kwargs):
+        try:
+            headline = '-' * 50 + ' RUN ' + func.__name__ + '() ' + '-' * 180
+            print('\033[5;35;0m' + headline + '\033[0m')
+
+            ret = func(*args, **kwargs)
+            if len(str(ret)) > 200:
+                pprint.pprint(ret)
+            else:
+                print('\033[5;33;0m' + ret + '\033[0m')
+            return ret
+        except Exception as err:
+            print('\033[5;31;0m' + str(err) + '\033[0m')
+            raise
+
+    return wrapper
+
+
 def print_def(func):
     """打印函数的入参和返回结果"""
 
@@ -70,10 +121,10 @@ def print_def(func):
             print('\033[5;34;0m' + "[INPUT]: ", *args, '\033[0m')
             ret = func(*args, **kwargs)
             if len(str(ret)) > 200:
-                print('\033[5;33;0m' + "[RESULT]:", '\033[0m')
+                print('\033[5;33;0m' + "[RESULT]:" + '\033[0m')
                 pprint.pprint(ret)
             else:
-                print('\033[5;33;0m' + "[RESULT]:", ret, '\033[0m')
+                print('\033[5;33;0m' + "[RESULT]:", ret + '\033[0m')
             return ret
         except Exception as err:
             print('\033[5;31;0m' + str(err) + '\033[0m')
@@ -92,10 +143,10 @@ def print_cls(func):
             print('\033[5;34;0m' + "[INPUT]: ", *args, '\033[0m')
             ret = func(self, *args, **kwargs)
             if len(str(ret)) > 200:
-                print('\033[5;33;0m' + "[RESULT]:", '\033[0m')
+                print('\033[5;33;0m' + "[RESULT]:" + '\033[0m')
                 pprint.pprint(ret)
             else:
-                print('\033[5;33;0m' + "[RESULT]:", ret, '\033[0m')
+                print('\033[5;33;0m' + "[RESULT]:", ret + '\033[0m')
             return ret
         except Exception as err:
             print('\033[5;31;0m' + str(err) + '\033[0m')
