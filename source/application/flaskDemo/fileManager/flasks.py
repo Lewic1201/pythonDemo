@@ -12,6 +12,7 @@ from view import FileService
 app = Flask(__name__)
 fs = FileService()
 
+
 @app.route('/')
 def index():
     print(os.path.abspath('index.html'))
@@ -26,7 +27,19 @@ def hello_world():
 @app.route('/filelist', methods=['GET', 'POST'])
 def get_filelist():
     get_data = request.args
-    print('获取的get数据为:',get_data)
+    print('获取的get数据为:', get_data)
+    # post_data = request.form
+    # print('获取的post数据为:', post_data)
+
+    data = fs.get_filelist(get_data)
+
+    return render_template('fileView.html', data=data)
+
+
+@app.route('/filelist', methods=['GET', 'POST'])
+def get_all_file():
+    get_data = request.args
+    print('获取的get数据为:', get_data)
     # post_data = request.form
     # print('获取的post数据为:', post_data)
 

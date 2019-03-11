@@ -616,6 +616,58 @@ class Solution:
                 ret += (m * k)
         return ret
 
+    @prints
+    def maxProduct(self, nums: list) -> int:
+        """乘积的最大子序列"""
+        max_num = nums[0]
+        for i in range(len(nums)):
+            tmp = nums[i]
+            if tmp > max_num:
+                max_num = tmp
+            for j in range(i + 1, len(nums)):
+                tmp *= nums[j]
+                if tmp > max_num:
+                    max_num = tmp
+
+        return max_num
+
+    @prints
+    def maxSlidingWindow(self, nums: list, k: int) -> list:
+        """滑动窗口最大值"""
+        # if len(nums) == 0 or k == 0:
+        #     return []
+        #
+        # klist = sorted(nums[:k])
+        # res = [klist[-1]]
+        # times = len(nums) - k
+        # for i in range(k, len(nums)):
+        #     klist.remove(nums[i - k])
+        #     new = nums[i]
+        #     if len(klist) > times:
+        #         scope = (len(klist) - times, len(klist))
+        #     else:
+        #         scope = (len(klist),)
+        #     for j in range(*scope)[::-1]:
+        #         if new >= klist[j]:
+        #             klist.insert(j + 1, new)
+        #             break
+        #     else:
+        #         klist.insert(0, new)
+        #     res.append(klist[-1])
+        #
+        # return res
+        if not nums or k <= 0 or k > len(nums):
+            return []
+        res = [max(nums[:k])]
+        max_val = res[0]
+        for i in range(k, len(nums)):
+            if nums[i] > max_val:
+                max_val = nums[i]
+            elif nums[i - k] == max_val:
+                max_val = max(nums[i - k + 1:i + 1])
+            res.append(max_val)
+        return res
+
 
 if __name__ == '__main__':
     ss = Solution()
@@ -684,4 +736,9 @@ if __name__ == '__main__':
     # ss.twoSum([2, 3, 4], 6)
     # ss.twoSum([1, 2, 3, 4, 4, 9, 56, 90], 8)
     # ss.threeSum([-1, 0, 1, 2, -1, -4])
-    ss.frequencySort("Aabb")
+    # ss.frequencySort("Aabb")
+    # ss.maxProduct([2, 3, -2, 4])
+    # ss.maxProduct([0, 2])
+    # ss.maxSlidingWindow([1, 3, -1, -3, 5, 3, 6, 7], 3)
+    # ss.maxSlidingWindow([1, 3, -1, -3, 5, 3, 6, 7], 5)
+    ss.maxSlidingWindow([4, -2], 2)
