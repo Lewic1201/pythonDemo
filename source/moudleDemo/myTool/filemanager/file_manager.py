@@ -537,8 +537,6 @@ class FileManage:
         # 保存信息
         now = get_now_time('%Y%m%d%H%M%S')
         file = save_info(save_file, now, file_info)
-        # 打开文件
-        os.system('"%s"' % file)
 
     @print_cls
     def save_name_map(self, save_file):

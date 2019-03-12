@@ -162,7 +162,7 @@ class EditManage(ReadExcel, WriteExcel):
         WriteExcel.__init__(self, filename, wwb)
 
 
-def save_info(file_name, sheet_name, datas, cover=False):
+def save_info(file_name, sheet_name, datas, cover=False, toOpen=True):
     """
     保存数据到Excel
 
@@ -186,6 +186,9 @@ def save_info(file_name, sheet_name, datas, cover=False):
     sheet = excel.add_sheet(sheet_name)
     excel.write_data(datas, sheet)
     excel.save()
+    if toOpen:
+        # 打开文件
+        os.system('"%s"' % file_name)
     return file_name
 
 
@@ -212,8 +215,11 @@ def get_excel_data(file_name, sheet_name=None):
 
 if __name__ == '__main__':
     file0 = r'E:\tmp.xls'
-    datas = [['12000000000000000003', None, 43, 5, 45], [1, 23]]
+    file1 = r'D:\task\20190312 整理项目中openstack的api文档\项目中openstack的api补充文档.xlsx'
+    # datas = [['12000000000000000003', None, 43, 5, 45], [1, 23]]
 
     # save_info(file0, 'test11113', datas, False)
     # get_excel_data(file0, 'test11113')
-    get_excel_data(file0)
+    data = get_excel_data(file1)
+    # print(data)
+    pass
