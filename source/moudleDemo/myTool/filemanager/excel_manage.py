@@ -90,16 +90,18 @@ class WriteExcel:
         :return:
         """
         width_list = []
-
+        limit_len = 256 * 70  # 256为衡量单位，20表示20个字符宽度
         # 获取每列最大数据宽度
         for data in zip(*datas):
             # 2340默认宽度
             max_len = 2340
             for txt in data:
-                # width = 256 * 20    # 256为衡量单位，20表示20个字符宽度
                 if max_len < len(str(txt)) * 256:
                     max_len = len(str(txt)) * 256
-            width_list.append(max_len)
+            if max_len <= limit_len:
+                width_list.append(max_len)
+            else:
+                width_list.append(limit_len)
 
         # 设置列宽
         for i in range(0, len(width_list)):
@@ -192,7 +194,7 @@ def save_info(file_name, sheet_name, datas, cover=False, toOpen=True):
     return file_name
 
 
-@print_def
+# @print_def
 def get_excel_data(file_name, sheet_name=None):
     """
     获取Excel数据
