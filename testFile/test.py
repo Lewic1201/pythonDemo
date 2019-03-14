@@ -9,10 +9,12 @@
 # Annotations: {'ham': <class 'str'>, 'eggs': <class 'str'>, 'return': <class 'str'>}
 # Arguments: spam eggs
 
-import re
+# import re
+#
+# s = 'adsfb12,3124ldsj,fksa34'
+# r = re.findall(r'[\d,]*', s)
+# print(r)
+# rr = ''.join(r)
+# print(rr)
 
-s = 'adsfb12,3124ldsj,fksa34'
-r = re.findall(r'[\d,]*', s)
-print(r)
-rr = ''.join(r)
-print(rr)
+print('\033[5;33;0m' + "[RESULT]:" + '\033[0m')
