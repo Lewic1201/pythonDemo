@@ -18,3 +18,17 @@
 # print(rr)
 
 print('\033[5;33;0m' + "[RESULT]:" + '\033[0m')
+# import chardet
+#
+# data = u'12312中国'.encode('gbk')
+# print(chardet.detect(data))
+
+
+# from importlib import import_module
+#
+# modules = ['os', 'sys', 're']
+# for m in modules:
+#     locals()[m] = import_module(m)
+#
+# a = os.path.join('a','b')
+# print(a)
