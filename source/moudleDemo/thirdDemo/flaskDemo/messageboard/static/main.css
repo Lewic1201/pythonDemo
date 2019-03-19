@@ -26,4 +26,5 @@ background-color: #F4F4F4;
 .entries-area p {
 padding: 0.5em 1em;
 background-color: #F0F8FF;
+white-space: pre-wrap;
 }

@@ -7,7 +7,7 @@
 
 import os
 from flask import Flask, request, render_template
-from source.moudleDemo.thirdDemo.flaskDemo.messageboard import MessageManage
+from message import MessageManage
 
 app = Flask(__name__)
 
@@ -40,4 +40,4 @@ def message():
 
 
 if __name__ == '__main__':
-    app.run("0.0.0.0", 5002)
+    app.run("0.0.0.0", 5004)
