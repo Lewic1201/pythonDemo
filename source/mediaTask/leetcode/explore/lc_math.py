@@ -83,7 +83,49 @@ class Solution:
         :rtype: bool
         """
         s = str(x)
-        return s==s[::-1]
+        return s == s[::-1]
+
+    @print_cls
+    def divide(self, dividend: int, divisor: int) -> int:
+        """29. 两数相除"""
+
+        # res = 0
+        # if dividend > 0:
+        #     if divisor > 0:
+        #         while dividend >= 0:
+        #             dividend -= divisor
+        #             res += 1
+        #         else:
+        #
+        #             res -= 1
+        #     else:
+        #         while dividend >= 0:
+        #             dividend += divisor
+        #             res -= 1
+        #         else:
+        #             res += 1
+        # else:
+        #     if divisor < 0:
+        #         while dividend < 0:
+        #             dividend -= divisor
+        #             res += 1
+        #     else:
+        #         while dividend < 0:
+        #             dividend += divisor
+        #             res -= 1
+        # return res
+        i, a, b = 0, abs(dividend), abs(divisor)
+        if a == 0 or a < b:
+            return 0
+
+        while b <= a:
+            b = b << 1
+            i = i + 1
+        else:
+            res = (1 << (i - 1)) + self.divide(a - (b >> 1), abs(divisor))
+            if (dividend ^ divisor) < 0:
+                res = -res
+            return min(res, (1 << 31) - 1)
 
 
 if __name__ == '__main__':
@@ -102,4 +144,14 @@ if __name__ == '__main__':
     # ss.countPrimes(10000)
     # ss.countPrimes(999983)
     # ss.countPrimes(1500000)
-    ss.fizzBuzz(15)
+    # ss.fizzBuzz(15)
+    ss.divide(1, 3)
+    ss.divide(11, 3)
+    ss.divide(-1, 3)
+    ss.divide(-11, 3)
+    ss.divide(-1, -3)
+    ss.divide(-12, -3)
+    ss.divide(111, -3)
+    ss.divide(1, -3)
+    ss.divide(-2147483648, -1)
+    ss.divide(10, 3)

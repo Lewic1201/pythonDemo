@@ -7,7 +7,7 @@
 
 import os
 from flask import Flask, request, render_template
-from source.application.flaskDemo.messageboard.message import MessageManage
+from source.moudleDemo.thirdDemo.flaskDemo.messageboard import MessageManage
 
 app = Flask(__name__)
 
