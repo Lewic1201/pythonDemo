@@ -6,7 +6,7 @@
 # @Software: PyCharm
 
 import os
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, flash, redirect, url_for
 from message import MessageManage
 
 app = Flask(__name__)
@@ -23,8 +23,17 @@ def hello_world():
     return 'Hello World!'
 
 
-@app.route('/message', methods=['GET', 'POST'])
+@app.route('/message', methods=['GET'])
 def message():
+    # getData = request.args
+    # print('获取的get数据为:',getData)
+    mm = MessageManage()
+
+    return render_template('board.html', datas=mm.datas[::-1])
+
+
+@app.route('/savemsg', methods=['POST'])
+def save_msg():
     # getData = request.args
     # print('获取的get数据为:',getData)
     post_data = request.form
@@ -35,8 +44,8 @@ def message():
     mm.add_message(username, context)
     mm.save_data()
 
-    # send data
-    return render_template('board.html', datas=mm.datas[::-1])
+    # 重定向
+    return redirect(url_for('message'))
 
 
 if __name__ == '__main__':

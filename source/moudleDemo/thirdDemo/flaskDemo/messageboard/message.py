@@ -4,10 +4,11 @@ import os
 import json
 
 ID_CREATER = ('{:0>5}'.format(i) for i in range(99999))
+DEFAULT_FILE = '.\\datas.pkl'
 
 
 class MessageManage:
-    def __init__(self, file='.\\datas'):
+    def __init__(self, file=DEFAULT_FILE):
         self.file = file
         self.datas = self.get_data()
 
