@@ -269,6 +269,30 @@ class Solution:
                 break
         return head
 
+    @prints
+    def mergeKLists(self, lists: [ListNode]) -> ListNode:
+        res = ListNode(None)
+        tmp = res
+        flag = 0
+        if not lists:
+            return None
+        while True:
+            while not lists[flag]:
+                lists.pop(flag)
+                flag = 0
+                if not lists:
+                    return res.next
+            min_num = lists[flag].val
+            for i in range(len(lists)):
+                if not lists[i]:
+                    continue
+                if min_num > lists[i].val:
+                    min_num = lists[i].val
+                    flag = i
+            lists[flag] = lists[flag].next
+            tmp.next = ListNode(min_num)
+            tmp = tmp.next
+
 
 if __name__ == '__main__':
     ss = Solution()
@@ -316,12 +340,22 @@ if __name__ == '__main__':
     # ss.removeNthFromEnd(links, 2)
     # getattr(ss, '1', 0)
 
-    ss.removeElements(links, 3)
+    # ss.removeElements(links, 3)
     links2 = list2link([1, 2, 6, 3, 4, 5, 6])
-    ss.removeElements(links2, 6)
+    # ss.removeElements(links2, 6)
     # ss.removeElements(links2, 5)
 
     links3 = list2link([])
+    links31 = list2link([])
     links4 = list2link([1])
-    ss.removeElements(links3, 4)
-    ss.removeElements(links4, 1)
+    # ss.removeElements(links3, 4)
+    # ss.removeElements(links4, 1)
+
+    links5 = list2link([2, 3, 6, 15])
+    links6 = list2link([2, 8, 11, 12])
+    links7 = list2link([1, 5, 6])
+    ss.mergeKLists([links5, links6, links7])
+    ss.mergeKLists([links5, links3, links7])
+    ss.mergeKLists([links3, links31])
+    ss.mergeKLists([links3])
+    ss.mergeKLists([])
