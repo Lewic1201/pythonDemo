@@ -16,3 +16,8 @@ pattern_02 = re.compile(u".*[\u4e00-\u9fa5]+.*")
 
 ret = re.match(pattern_02, str1)
 print(ret)
+ret2 = re.search(pattern_chinese, stri).group()
+ret3 = stri.replace(ret2, '***' + ret2)
+print(type(ret2))
+print(ret2)
+print(ret3)

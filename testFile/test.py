@@ -58,3 +58,5 @@ with open('test.ini', 'rb') as ff:
         raise
 with open('test', 'w') as ff:
     ff.writelines(context)
+
+print('budazi,jiuhenrongyishuizhao,nazenmeban/hehuochuagnye/haha/laoge/liupi')

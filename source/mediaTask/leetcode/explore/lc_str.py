@@ -154,6 +154,31 @@ class Solution:
             index += 1
         return ret[-1]
 
+    @prints
+    def isLongPressedName(self, name: str, typed: str) -> bool:
+        """
+        长按键入
+        :param name:
+        :param typed:
+        :return:
+        """
+        i = 0
+        j = 0
+        while j < len(typed):
+            a, b, c = name[i], typed[j], name[i - 1]
+            if i < len(name) and typed[j] == name[i]:
+                i += 1
+                j += 1
+            elif i > 0 and typed[j] == name[i - 1]:
+                j += 1
+            else:
+                return False
+        else:
+            if i == len(name):
+                return True
+            else:
+                return False
+
 
 if __name__ == '__main__':
     ss = Solution()
@@ -170,6 +195,10 @@ if __name__ == '__main__':
     # ss.strStr('hello', 'll')
     # ss.strStr('aaaaa', 'bba')
     # ss.strStr('aaaaa', '')
-    ss.countAndSay(4)
-    ss.countAndSay(3)
-    ss.countAndSay(5)
+    # ss.countAndSay(4)
+    # ss.countAndSay(3)
+    # ss.countAndSay(5)
+
+    ss.isLongPressedName("alex", "aaleex")
+    ss.isLongPressedName("saeed", "ssaaedd")
+    ss.isLongPressedName("pyplrz", "ppyypllr")
