@@ -1,0 +1,15 @@
+MANIFEST.in
+setup.py
+messageboard/__init__.py
+messageboard/flasks.py
+messageboard/message.py
+messageboard/static/main.css
+messageboard/static/style.css
+messageboard/templates/board.html
+messageboard/templates/index.html
+msgboard.egg-info/PKG-INFO
+msgboard.egg-info/SOURCES.txt
+msgboard.egg-info/dependency_links.txt
+msgboard.egg-info/entry_points.txt
+msgboard.egg-info/requires.txt
+msgboard.egg-info/top_level.txt
