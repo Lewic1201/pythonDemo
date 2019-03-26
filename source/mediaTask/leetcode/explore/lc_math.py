@@ -6,7 +6,10 @@
 # @Software: PyCharm
 # @context :
 
+import random
+
 from source.utils.decorators import print_cls
+from source.utils.decorators import times
 
 
 class Solution:
@@ -127,6 +130,85 @@ class Solution:
                 res = -res
             return min(res, (1 << 31) - 1)
 
+    # @print_cls
+    def isPowerOfTwo(self, n: int) -> bool:
+        """
+        2的幂
+        :param n:
+        :return:
+        """
+        # while n > 1:
+        #     if not n % 2:
+        #         n /= 2
+        #     else:
+        #         return False
+        # return n == 1
+
+        # ls = [2 ** i for i in range(31)]
+        # return n in ls
+
+        # b = bin(n)
+        # return b.count('1') == 1 and '-' not in b
+
+        return n > 0 and not (n & (n - 1))
+
+    def isPowerOfTwo1(self, n: int) -> bool:
+        """
+        2的幂
+        :param n:
+        :return:
+        """
+        while n > 1:
+            if not n % 2:
+                n /= 2
+            else:
+                return False
+        return n == 1
+
+    def isPowerOfTwo2(self, n: int) -> bool:
+        """
+        2的幂
+        :param n:
+        :return:
+        """
+
+        ls = [2 ** i for i in range(31)]
+        return n in ls
+
+    def isPowerOfTwo3(self, n: int) -> bool:
+        """
+        2的幂
+        :param n:
+        :return:
+        """
+
+        b = bin(n)
+        return b.count('1') == 1 and '-' not in b
+
+    @times
+    def timess(self, lists):
+        """计算isPowerOfTwo时间"""
+        for i in lists:
+            self.isPowerOfTwo(i)
+
+    @times
+    def timess1(self, lists):
+        """计算isPowerOfTwo时间"""
+        for i in lists:
+            self.isPowerOfTwo1(i)
+
+    @times
+    def timess2(self, lists):
+        """计算isPowerOfTwo时间"""
+        for i in lists:
+            self.isPowerOfTwo2(i)
+
+    @times
+    def timess3(self, lists):
+        """计算isPowerOfTwo时间"""
+        for i in lists:
+            self.isPowerOfTwo3(i)
+
 
 if __name__ == '__main__':
     ss = Solution()
@@ -145,13 +227,33 @@ if __name__ == '__main__':
     # ss.countPrimes(999983)
     # ss.countPrimes(1500000)
     # ss.fizzBuzz(15)
-    ss.divide(1, 3)
-    ss.divide(11, 3)
-    ss.divide(-1, 3)
-    ss.divide(-11, 3)
-    ss.divide(-1, -3)
-    ss.divide(-12, -3)
-    ss.divide(111, -3)
-    ss.divide(1, -3)
-    ss.divide(-2147483648, -1)
-    ss.divide(10, 3)
+
+    # ss.divide(1, 3)
+    # ss.divide(11, 3)
+    # ss.divide(-1, 3)
+    # ss.divide(-11, 3)
+    # ss.divide(-1, -3)
+    # ss.divide(-12, -3)
+    # ss.divide(111, -3)
+    # ss.divide(1, -3)
+    # ss.divide(-2147483648, -1)
+    # ss.divide(10, 3)
+
+    # ss.isPowerOfTwo(2)
+    # ss.isPowerOfTwo(20)
+    # ss.isPowerOfTwo(1)
+    # ss.isPowerOfTwo(128)
+    # ss.isPowerOfTwo(0)
+
+    ls = [random.randint(0, 1000000) for _ in range(100000)]
+    ls.append(2 ** 31)
+    ls.append(2 ** 25)
+    ls.append(2 ** 12)
+    ls.append(2 ** 4)
+    ls.append(1)
+    ls.append(2)
+    ls.append(0)
+    ss.timess(ls)
+    ss.timess1(ls)
+    ss.timess2(ls)
+    ss.timess3(ls)

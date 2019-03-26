@@ -7,3 +7,11 @@
 
 d = {"k": 1, "v": 2}
 print(d.items())
+
+k = d.pop('k')
+s = d.pop('s',None)
+
+print(k)
+print(d)
+print(s)
+print(d)
