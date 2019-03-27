@@ -5,14 +5,14 @@ stdscr = curses.initscr()
 
 
 def display_info(str, x, y, colorpair=2):
-    '''''使用指定的colorpair显示文字'''
+    """使用指定的colorpair显示文字"""
     global stdscr
     stdscr.addstr(y, x, str, curses.color_pair(colorpair))
     stdscr.refresh()
 
 
 def get_ch_and_continue():
-    '''''演示press any key to continue'''
+    """演示press any key to continue"""
     global stdscr
     # 设置nodelay，为0时会变成阻塞式等待    stdscr.nodelay(0)
     # 输入一个字符    ch=stdscr.getch()
@@ -21,7 +21,7 @@ def get_ch_and_continue():
 
 
 def set_win():
-    '''''控制台设置'''
+    """控制台设置"""
     global stdscr
     # 使用颜色首先需要调用这个方法    curses.start_color()
     # 文字和背景色设置，设置了两个color pair，分别为1和2    curses.init_pair(1, curses.COLOR_GREEN, curses.COLOR_BLACK)
@@ -32,7 +32,7 @@ def set_win():
 
 
 def unset_win():
-    '''控制台重置'''
+    """控制台重置"""
     global stdstr
     # 恢复控制台默认设置（若不恢复，会导致即使程序结束退出了，控制台仍然是没有回显的）    curses.nocbreak()
     stdscr.keypad(0)
@@ -46,7 +46,7 @@ if __name__ == '__main__':
         display_info('Hola, curses!', 0, 5)
         display_info('Press any key to continue...', 0, 10)
         get_ch_and_continue()
-    except Exception, e:
+    except Exception as e:
         raise e
     finally:
         unset_win()

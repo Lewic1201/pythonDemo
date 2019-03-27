@@ -6,6 +6,8 @@
 # @Software: PyCharm
 # @context :
 
+from source.utils.decorators import print_cls
+
 
 def prints(func):
     def wrapper(self, *args, **kwargs):
@@ -280,6 +282,63 @@ class Solution:
         """
         pass
 
+    @prints
+    def isValid(self, s: str) -> bool:
+        """有效的括号
+
+        给定一个只包括 '('，')'，'{'，'}'，'['，']' 的字符串，判断字符串是否有效。
+        有效字符串需满足：
+            左括号必须用相同类型的右括号闭合。
+            左括号必须以正确的顺序闭合。
+            注意空字符串可被认为是有效字符串
+
+        :param s:
+        :return:
+        """
+        # right = ')]}'
+        maps = {')': '(', '}': '{', ']': '['}
+        res = []
+        for i in s:
+            if i in maps:
+                if not res:
+                    return False
+                if maps[i] == res[-1]:
+                    res.pop(-1)
+                else:
+                    return False
+            else:
+                res.append(i)
+        return res == []
+
+    @print_cls
+    def generate(self, numRows: int) -> [[int]]:
+        """ 杨辉三角
+        eg:
+            输入: 5
+            输出:
+            [
+                 [1],
+                [1,1],
+               [1,2,1],
+              [1,3,3,1],
+             [1,4,6,4,1]
+            ]
+        """
+        if numRows:
+            res = [[1]]
+        else:
+            return []
+
+        for i in range(1, numRows):
+            row = []
+            for j in range(i + 1):
+                left = 0 if j == 0 else res[i - 1][j - 1]
+                right = res[i - 1][j] if len(res[i - 1]) > j else 0
+
+                row.append(left + right)
+            res.append(row)
+        return res
+
 
 if __name__ == '__main__':
     ss = Solution()
@@ -376,4 +435,18 @@ if __name__ == '__main__':
          "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
     # ss.exist(bb, aa)
 
-    ss.subsets([1, 2, 3, 4, 5, 6, 7, 8, 10, 0])
+    # ss.subsets([1, 2, 3, 4, 5, 6, 7, 8, 10, 0])
+
+    # ss.isValid('()')
+    # ss.isValid('(){}')
+    # ss.isValid('()[]')
+    # ss.isValid('[()]')
+    # ss.isValid('([)]')
+    # ss.isValid('{[]}')
+    # ss.isValid('()[]{}')
+
+    ss.generate(5)
+    ss.generate(2)
+    ss.generate(1)
+    ss.generate(10)
+    ss.generate(0)

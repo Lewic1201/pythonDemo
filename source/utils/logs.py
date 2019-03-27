@@ -45,6 +45,10 @@ def get_log(logger_name):
     ch = logging.StreamHandler()
     ch.setLevel(logging.INFO)
 
+    # 创建一个handler输出到控制台
+    de = logging.StreamHandler()
+    de.setLevel(logging.DEBUG)
+
     # 定义日志输出格式
     # 以时间-日志器名称-日志级别-日志内容的形式展示
     all_log_formatter = logging.Formatter('[%(asctime)s - %(name)s - %(levelname)s] %(message)s')
@@ -54,12 +58,14 @@ def get_log(logger_name):
     # 将定义好的输出形式添加到handler
     fh.setFormatter(all_log_formatter)
     ch.setFormatter(all_log_formatter)
+    de.setFormatter(all_log_formatter)
     eh.setFormatter(error_log_formatter)
 
     # 给logger添加handler
     logger.addHandler(fh)
     logger.addHandler(eh)
     logger.addHandler(ch)
+    logger.addHandler(de)
     return logger
 
 
