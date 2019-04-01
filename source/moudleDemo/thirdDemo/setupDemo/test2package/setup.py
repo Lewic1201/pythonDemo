@@ -1,6 +1,6 @@
 from setuptools import setup, find_packages
 
-
+# 切到当前目录下,执行 python setup.py sdist
 setup(
     name='msgboard',
     version='1.0.1',
