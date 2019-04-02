@@ -1,8 +1,14 @@
-//TODO Excel的多列优先排序
-//TODO 文件管理系统
-//TODO 将文件管理系统迁移到flask上
-//TODO 各种排序可视化
-//TODO 微信模块练习
-//TODO 自动更新requirement.txt
-//TODO 自动生成序列文件名,util下
-//TODO 代码注释转中文
+TODO Excel的多列优先排序
+TODO 文件管理系统
+TODO 将文件管理系统迁移到flask上
+TODO 各种排序可视化
+TODO 微信模块练习
+TODO 自动更新requirement.txt
+TODO 自动生成序列文件名,util下
+TODO 代码注释转中文
+
+TODO 做一个记单词的小网站(专为程序员设计)
+
+        2.界面好看
+        3.实现主要功能
+        1.可以导入本地单词库

@@ -23,30 +23,29 @@ def hello_world():
     return 'Hello World!'
 
 
-
 @app.route('/allWord', methods=['GET'])
 def message():
     # getData = request.args
     # print('获取的get数据为:',getData)
     mm = WordManage()
 
-    return render_template('word_table.html', datas=mm.datas)
+    return render_template('show.html', datas=mm.datas)
 
 
-@app.route('/know', methods=['POST'])
-def save_msg():
-    # getData = request.args
-    # print('获取的get数据为:',getData)
-    post_data = request.form
-    print('获取的post数据为:', post_data)
-    username = request.form.get('username')
-    context = request.form.get('context')
-    mm = WordManage()
-    mm.add_message(username, context)
-    mm.save_data()
-
-    # 重定向
-    return redirect(url_for('message'))
+# @app.route('/know', methods=['POST'])
+# def save_msg():
+#     # getData = request.args
+#     # print('获取的get数据为:',getData)
+#     post_data = request.form
+#     print('获取的post数据为:', post_data)
+#     username = request.form.get('username')
+#     context = request.form.get('context')
+#     mm = WordManage()
+#     mm.add_message(username, context)
+#     mm.save_data()
+#
+#     # 重定向
+#     return redirect(url_for('message'))
 
 
 if __name__ == '__main__':

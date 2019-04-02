@@ -18,8 +18,9 @@ class WordManage:
             en:str,
             ch:str,
             time:str,
-            translate_if:bool,
-            spell_if:bool
+            translate_if:int,
+            spell_if:int,
+            remember:bool
         },...]
         """
         self.datas = self.get_data()
@@ -54,8 +55,9 @@ class WordManage:
             'queue_num': en_str[0].lower() + str(wid),
             'en': en_str,
             'ch': ch_str,
-            'translate_if': False,
-            'spell_if': False,
+            'translate_if': 0,
+            'spell_if': 0,
+            'remember': False,
             'time': datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
         }
         self.datas.append(word)
@@ -87,3 +89,7 @@ class WordManage:
 
 if __name__ == '__main__':
     wm = WordManage()
+    wm.add_word('activate', '激活')
+    wm.add_word('aggregation', '聚合')
+    wm.save_data()
+    print(wm.get_data())

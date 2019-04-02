@@ -57,51 +57,85 @@
             color: #898989;
             padding: 0 20px;
         }
+
+
+
+
     </style>
 </head>
 <body>
 
 <!--<div style="width:700px;height:270px;margin:80px auto">-->
-    <!--<form action="savemsg" method="post">-->
-        <!--<div>-->
-            <!--<input required='' type='text' name="username">-->
-            <!--<label alt='请输入用户名' placeholder='用户名'></label>-->
-        <!--</div>-->
+<!--<form action="savemsg" method="post">-->
+<!--<div>-->
+<!--<input required='' type='text' name="username">-->
+<!--<label alt='请输入用户名' placeholder='用户名'></label>-->
+<!--</div>-->
 
-        <!--<div>-->
-            <!--<label class="label-liuyan">请输入留言</label>-->
-            <!--<br/>-->
-            <!--<textarea name="context"></textarea>-->
-        <!--</div>-->
+<!--<div>-->
+<!--<label class="label-liuyan">请输入留言</label>-->
+<!--<br/>-->
+<!--<textarea name="context"></textarea>-->
+<!--</div>-->
 
-        <!--<br/>-->
-        <!--<div>-->
-            <!--<input class="btn-style-01" style="float:right" type="submit" value="发表">-->
-        <!--</div>-->
-    <!--</form>-->
+<!--<br/>-->
+<!--<div>-->
+<!--<input class="btn-style-01" style="float:right" type="submit" value="发表">-->
+<!--</div>-->
+<!--</form>-->
 <!--</div>-->
 <!--<div class="entries-area">-->
-    <!--<br>-->
-    <!--{% for data in datas %}-->
-    <!--<hr>-->
-    <!--<h4>{{ data.en }}&nbsp;{{data.ch}}</h4>-->
-    <!--<p>{{data.context}}</p>-->
-    <!--{% endfor %}-->
+<!--<br>-->
+<!--{% for data in datas %}-->
+<!--<hr>-->
+<!--<h4>{{ data.en }}&nbsp;{{data.ch}}</h4>-->
+<!--<p>{{data.context}}</p>-->
+<!--{% endfor %}-->
 <!--</div>-->
 
-<div>
-    <table>
-        <tr>
-            <th>
+<table class="gallery table table_list table_striped table-bordered border " id="tableList" style="width: 100%;"
+       cellpadding="0">
+    <thead>
+    <tr>
+        <th width="50px">
+            <label class="checkbox relative"><input type="checkbox" class="ace" name="checkbox"><span
+                    class="lbl"></span></label>
+        </th>
+        <th>id</th>
+        <th>en</th>
+        <th>ch</th>
+        <th>translate num</th>
+        <th>spell num</th>
+        <th>remember</th>
+        <th>operation</th>
+    </tr>
+    </thead>
+    <tbody id="UserList">
+    {% for data in datas %}
+    <tr>
+        <th width="50px">
+        <label class="checkbox relative"><input type="checkbox" class="ace" name="checkbox"><span
+                class="lbl"></span></label>
+        </th>
+        <th>{{data.wid}}</th>
+        <th>{{data.en}}</th>
+        <th>{{data.ch}}</th>
+        <th>{{data.translate_if}}</th>
+        <th>{{data.spell_if}}</th>
+        <th>{{data.remember}}</th>
+        <th><a href="#">operation</a></th>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+<!--分页-->
+<div class="Paging" id="pagination">
 
-            </th>
-            <td>
 
-            </td>
-        </tr>
-    </table>
 </div>
+
 <div class="footer-banner" style="width:728px; margin:200px auto 0"></div>
 <script src="http://dreamsky.github.io/main/blog/common/init.js"></script>
+
 </body>
 </html>
