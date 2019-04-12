@@ -1,10 +1,10 @@
-TODO Excel的多列优先排序
-TODO 文件管理系统
-TODO 将文件管理系统迁移到flask上
-TODO 各种排序可视化
-TODO 微信模块练习
-TODO 自动更新requirement.txt
-TODO 自动生成序列文件名,util下
+#TODO Excel的多列优先排序
+#TODO 文件管理系统
+#TODO 将文件管理系统迁移到flask上
+#TODO 各种排序可视化
+#TODO 微信模块练习
+#TODO 自动更新requirement.txt
+#TODO 自动生成序列文件名,util下
 TODO 代码注释转中文
 
 TODO 做一个记单词的小网站(专为程序员设计)
@@ -21,3 +21,4 @@ TODO 做一个加密软件的工具,没有这个工具软件不能用,只能重�
                 --持久化文件
                 --exe打包目录
 
+TODO 写一个web界面,列出所有功能的入口,不然每次都得找对应的程序执行..

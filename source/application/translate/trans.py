@@ -20,7 +20,7 @@ class Trans(object):
     def __init__(self):
         self.url = 'http://fanyi.youdao.com/translate_o?smartresult=dict&smartresult=rule'
 
-    def getData(self, search_name):
+    def _getData(self, search_name):
         # salt =i = "" + ((new Date).getTime() + parseInt(10 * Math.random(), 10)
         salt = ((time.time() * 1000) + random.randint(1, 10))
         # sign = n.md5("fanyideskweb" + t + i + "ebSeFb%=XZ%T[KZ)c(sy!")
@@ -42,7 +42,7 @@ class Trans(object):
         }
         return paydata
 
-    def getHeader(self):
+    def _getHeader(self):
         header = {
             'Host': 'fanyi.youdao.com',
             'Referer': 'http://fanyi.youdao.com/',
@@ -60,13 +60,13 @@ class Trans(object):
         }
         return header
 
-    def getRequest(self, paydata, header):
+    def _getRequest(self, paydata, header):
         _data = urllib.parse.urlencode(paydata).encode('utf-8')
         _header = header
         response = requests.post(self.url, data=_data, headers=_header)
         return response.text
 
-    def getResult(self, response):
+    def _getResult(self, response):
         result_text = json.loads(response)
         # src = result_text['translateResult'][0][0]['src']
         tgt = result_text['translateResult'][0][0]['tgt']
@@ -82,10 +82,10 @@ class Trans(object):
         # app = search()
         if search_name.strip()[0] in '0123456789':
             return search_name
-        paydata = self.getData(search_name)
-        header = self.getHeader()
-        response = self.getRequest(paydata, header)
-        tgt = self.getResult(response)
+        paydata = self._getData(search_name)
+        header = self._getHeader()
+        response = self._getRequest(paydata, header)
+        tgt = self._getResult(response)
         return tgt
 
     def get_translate_split(self, text, split=''):
