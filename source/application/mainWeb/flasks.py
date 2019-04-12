@@ -5,14 +5,15 @@
 # @File    : hello.py
 # @Software: PyCharm
 
-from flask import Flask
+from flask import Flask, render_template
+from source.application.mainWeb.controller import common
 
 app = Flask(__name__)
 
 
 @app.route('/')
 def index():
-    return 'Index Page'
+    return render_template('index.html')
 
 
 @app.route('/hello')
@@ -20,10 +21,10 @@ def hello_world():
     return 'Hello World!'
 
 
-@app.route('/user/<username>')
-def show_user_profile(username):
+@app.route('/countCodeLine')
+def show_now_code_line():
     # 显示用户的名称
-    return 'User %s' % username
+    return common.count_code_line()
 
 
 @app.route('/post/<int:post_id>')

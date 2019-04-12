@@ -22,7 +22,7 @@ def get_py_files(rootDir):
     return files_path
 
 
-def countpy(files):
+def countpy1(files):
     """
     统计文件代码行数
     :param files: 文件绝对路径列表
@@ -39,7 +39,31 @@ def countpy(files):
                         blank += 1
                     elif line[0] in ['#', '/', "'", '"']:
                         comments += 1
-        return (line_of_code, blank, comments)
+        return line_of_code, blank, comments
+    except Exception as err:
+        print(err)
+        raise
+
+
+def countpy(files):
+    """
+    统计文件代码行数
+    :param files: 文件绝对路径列表
+    :return: (代码行数,空行数,注释行数)
+    """
+    try:
+        line_of_code, blank, comments = 0, 0, 0
+        for filename in files:
+            with open(filename, 'rb') as f:
+                for a_line in f:
+                    line = a_line.strip()
+                    line_of_code += 1
+                    if line == b'':
+                        blank += 1
+                    elif line[0] in [35, 47, 39, 34]:
+                        # include #/'"
+                        comments += 1
+        return line_of_code, blank, comments
     except Exception as err:
         print(err)
         raise
@@ -57,10 +81,16 @@ def record(lines, file='linenum.log'):
     with open(file, 'a') as ff:
         ff.write(data)
     print(data)
+    return data
 
 
-if __name__ == '__main__':
+def main():
     files = get_py_files(ROOT_DIR)
     # pprint.pprint(files)
     lines = countpy(files)
-    record(lines)
+    res = record(lines)
+    return res
+
+
+if __name__ == '__main__':
+    main()
