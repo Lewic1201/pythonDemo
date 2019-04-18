@@ -565,7 +565,7 @@ class FileManage:
         now = get_now_time('%Y%m%d%H%M%S')
         save_info(save_file, now, datas)
 
-    @print_cls
+    # @print_cls
     def get_same_file(self, file_list=''):
         """
         获取大小相同的文件,方便去重
@@ -573,22 +573,25 @@ class FileManage:
         :return: {size:[more file_path],...}
         :rtype: {int:list}
         """
-        file_params = self.get_all_file_params(file_list)
-        flen = len(file_params)
-        repeats = {}
-        group = {}
-        for i in range(flen):
-            # 添加文件绝对路径
-            file_name = os.path.join(file_params[i].get('path'), file_params[i].get('name'))
-            file_size = file_params[i].get('size')
-            if file_size not in group:
-                group[file_size] = [file_name]
-            else:
-                group[file_size].append(file_name)
-        for j in group:
-            if len(group[j]) > 1:
-                repeats[j] = group[j]
-        return repeats
+        try:
+            file_params = self.get_all_file_params(file_list)
+            flen = len(file_params)
+            repeats = {}
+            group = {}
+            for i in range(flen):
+                # 添加文件绝对路径
+                file_name = os.path.join(file_params[i].get('path'), file_params[i].get('name'))
+                file_size = file_params[i].get('size')
+                if file_size not in group:
+                    group[file_size] = [file_name]
+                else:
+                    group[file_size].append(file_name)
+            for j in group:
+                if len(group[j]) > 1:
+                    repeats[j] = group[j]
+            return repeats
+        except:
+            raise
 
     def create_desktop_lnk(self):
         """为根目录创建桌面快捷方式"""

@@ -7,7 +7,12 @@
 </head>
 <body>
 <div style="white-space: pre-wrap">
-    <h4>{{res}}</h4>
+    <br>
+    {% for data in datas %}
+    <hr>
+    <h4>{{ data.0 }}&nbsp;{{data.1}}</h4>
+    <a href="/showRepeatFile?dirPath={{data.1}}">{{data.1}}</a>
+    {% endfor %}
 </div>
 </body>
 </html>

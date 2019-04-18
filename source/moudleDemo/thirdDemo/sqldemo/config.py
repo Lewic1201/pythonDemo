@@ -1,7 +1,7 @@
 import configparser
 from os import path
 
-CONF_NAME = path.abspath('data.conf')
+CONF_NAME = path.abspath('data.db')
 
 
 class Config:

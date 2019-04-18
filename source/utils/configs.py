@@ -7,7 +7,7 @@ from source.utils.logs import logger
 
 
 CONFIG_FILE = '/config/config.ini'
-JSON_FILE = '/config/case_json.conf'
+JSON_FILE = '/config/case_json.db'
 
 
 class Dictionary(dict):
@@ -91,8 +91,8 @@ class Config(object):
             logger.error(str(err))
 
 # if __name__ == "__main__":
-#     conf = Config()
-#     info = conf.get_conf("token", 'test')
+#     db = Config()
+#     info = db.get_conf("token", 'test')
 #     print info
 #     print type(info)
 #     import json

@@ -22,27 +22,27 @@ def get_py_files(rootDir):
     return files_path
 
 
-def countpy1(files):
-    """
-    统计文件代码行数
-    :param files: 文件绝对路径列表
-    :return: (代码行数,空行数,注释行数)
-    """
-    try:
-        line_of_code, blank, comments = 0, 0, 0
-        for filename in files:
-            with open(filename, 'rb') as f:
-                for a_line in f:
-                    line = a_line.decode('utf-8').strip()
-                    line_of_code += 1
-                    if line == '':
-                        blank += 1
-                    elif line[0] in ['#', '/', "'", '"']:
-                        comments += 1
-        return line_of_code, blank, comments
-    except Exception as err:
-        print(err)
-        raise
+# def countpy1(files):
+#     """
+#     统计文件代码行数
+#     :param files: 文件绝对路径列表
+#     :return: (代码行数,空行数,注释行数)
+#     """
+#     try:
+#         line_of_code, blank, comments = 0, 0, 0
+#         for filename in files:
+#             with open(filename, 'rb') as f:
+#                 for a_line in f:
+#                     line = a_line.decode('utf-8').strip()
+#                     line_of_code += 1
+#                     if line == '':
+#                         blank += 1
+#                     elif line[0] in ['#', '/', "'", '"']:
+#                         comments += 1
+#         return line_of_code, blank, comments
+#     except Exception as err:
+#         print(err)
+#         raise
 
 
 def countpy(files):
@@ -88,7 +88,10 @@ def main():
     files = get_py_files(ROOT_DIR)
     # pprint.pprint(files)
     lines = countpy(files)
-    res = record(lines)
+    record(lines)
+    now = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+    res = '\n{}\n文件类型:{:<20} 文件总数:{:<8} 总行数:{:<8} 空行数:{:<8} 注释行数:{:<8}' \
+        .format(now, str(FILE_TYPE), len(files), lines[0], lines[1], lines[2])
     return res
 
 

@@ -7,7 +7,11 @@ background-color: #FAFAFA;
 }
 h1 {
 padding: 0 1em;
-color: #FFFFFF;
+color: #4B0551;
+}
+h4 {
+padding: 0 1em;
+color: #40023E;
 }
 form {
 padding: 0.5em 2em;
@@ -40,7 +44,7 @@ padding:0 1em;
 }
 
 a:link{		/*默认状态*/
-    color: black;
+    color: #860849;
 }
 a:visited{	/*浏览过的*/
     color:darkgrey;
