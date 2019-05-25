@@ -11,7 +11,9 @@ import os
 import os.path as op
 import re
 import time
+import sys
 import winshell
+import win32com.client
 
 from source.utils.logs import logger
 from source.application.pingyin.pinyin import PinYin
@@ -78,6 +80,20 @@ def create_lnk(target, lnkdir=None, filename=None, description="", is_desk=False
             Description=description)
 
         print('create lnk success, path: %s' % file_name)
+    except Exception:
+        raise
+
+
+def get_lnk_info(lnk_name):
+    try:
+        shell = win32com.client.Dispatch("WScript.Shell")
+        if os.path.isfile(lnk_name) and lnk_name[-4:] == '.lnk':
+            shortcut = shell.CreateShortCut(lnk_name)
+            target_path = shortcut.Targetpath
+            print(target_path)
+            return target_path
+        else:
+            print('lnk name error: %s' % lnk_name)
     except Exception:
         raise
 
@@ -475,13 +491,19 @@ class FileManage:
         t = os.path.getmtime(file_name)
         return TimeStampToTime(t)
 
-    def get_file_params(self, file_name):
+    def get_file_params(self, file_name, lnk_target=False):
         """
         获取文件所有参数
         :param file_name:
+        :param lnk_target: 替换lnk为lnk目标文件信息,默认不替换
         :return: {path:,name:,type,size:,createTime:,modifyTime:}
         """
         try:
+            if lnk_target and os.path.isfile(file_name) and file_name[-4:] == '.lnk':
+                print(file_name)
+                target_name = get_lnk_info(file_name)
+                if target_name:
+                    file_name = target_name
             context = {'path': os.path.split(file_name)[0],
                        'name': os.path.split(file_name)[1],
                        'type': os.path.splitext(file_name)[1][1:],
@@ -509,11 +531,12 @@ class FileManage:
             result.append(file_params)
         return result
 
-    def save_all(self, save_file, file_list=None):
+    def save_all(self, save_file, file_list=None, lnk_target=False):
         """
         保存所有子文件信息到指定Excel文件
         :param save_file: 生成文件的绝对路径
         :param file_list: 要保存的文件名绝对路径(默认根目录下全部)
+        :param lnk_target: 替换lnk为lnk目标文件信息,默认不替换
         :return:
         """
         if not file_list:
@@ -527,7 +550,7 @@ class FileManage:
         file_info = []
         first = True
         for f in file_list:
-            file_params = self.get_file_params(f)
+            file_params = self.get_file_params(f, lnk_target)
             if first:
                 # 添加表头
                 file_info.append(list(file_params.keys()))

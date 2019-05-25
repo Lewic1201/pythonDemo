@@ -64,6 +64,8 @@
 # -*-code: utf-8 -*-
 import os
 import winshell
+import sys
+import win32com.client
 
 
 def main():
@@ -114,6 +116,18 @@ def create_lnk(target, lnkdir=None, filename=None, description="", is_desk=False
         raise
 
 
+def get_lnk_info(lnk_name):
+    shell = win32com.client.Dispatch("WScript.Shell")
+    if os.path.isfile(lnk_name) and lnk_name[-4:] == '.lnk':
+        shortcut = shell.CreateShortCut(lnk_name)
+        target_path = shortcut.Targetpath
+        print(target_path)
+        return target_path
+    else:
+        print('lnk name error')
+        return ''
+
+
 if __name__ == "__main__":
     # main()
     file0 = r'C:\python37'
@@ -121,5 +135,7 @@ if __name__ == "__main__":
     # create_lnk(r'C:\python37', is_desk=True)
     # create_lnk(file1, is_desk=True)
     # create_lnk(file1)
-    create_lnk(file1, 'E:\\', 'test', '213', True)
-    create_lnk(file1, 'E:\\', 'test', '213')
+    # create_lnk(file1, 'E:\\', 'test', '213', True)
+    # create_lnk(file1, 'E:\\', 'test', '213')
+
+    get_lnk_info('E:\\test.lnk')
