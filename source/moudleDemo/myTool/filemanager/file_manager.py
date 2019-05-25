@@ -565,7 +565,7 @@ class FileManage:
         now = get_now_time('%Y%m%d%H%M%S')
         save_info(save_file, now, datas)
 
-    # @print_cls
+    @print_cls
     def get_same_file(self, file_list=''):
         """
         获取大小相同的文件,方便去重
@@ -627,7 +627,8 @@ if __name__ == '__main__':
     path9 = r'E:\bak\testlnk2'
     path8 = r'E:\lewic\pycharm\workspace\myCode\pythonDemo'
     path10 = r'F:\tmp\lnk_pre3'
-    fm = FileManage(path2)
+    path11 = r'F:\tmp\tmp2'
+    # fm = FileManage(path2)
     # fm.change_queue_name()
     # pprint.pprint(fm.get_all_file_params())
     # for ff in fm.get_all_filelist():
@@ -652,13 +653,13 @@ if __name__ == '__main__':
     # fm.change_queue_name()
 
     # 获取pre文件快捷方式
-    fms = FileManage(path2)
-    fm_ls = fms.get_files_by_name([r'.*\\pre\\.*', r'.*\\pre_(mp4|avi)\\.*', r'.*\\java\\.*'], nameorpath=False)
-    fm_ls = fms.get_files_by_size(min_size=500 * 1024, file_list=fm_ls)
-    fm.create_lnks(path10, fm_ls)
-    fm2 = FileManage(path10)
-    fm2_list = fm2.get_all_filelist()
-    fm2.change_names(fm2_list, 5)
+    # fms = FileManage(path2)
+    # fm_ls = fms.get_files_by_name([r'.*\\pre\\.*', r'.*\\pre_(mp4|avi)\\.*', r'.*\\java\\.*'], nameorpath=False)
+    # fm_ls = fms.get_files_by_size(min_size=500 * 1024, file_list=fm_ls)
+    # fm.create_lnks(path10, fm_ls)
+    # fm2 = FileManage(path10)
+    # fm2_list = fm2.get_all_filelist()
+    # fm2.change_names(fm2_list, 5)
 
     # fm_list = fm.get_all_filelist()
     # fm.change_names(fm_list, 5)
@@ -668,3 +669,11 @@ if __name__ == '__main__':
     #
     # fm.save_all(path2 + '\\..\\files')
 
+    # 文件去重
+    fms = FileManage(path2)
+    # fm_ls = fms.get_files_by_name([r'.*\\pre\\.*', r'.*\\pre_(mp4|avi)\\.*', r'.*\\java\\.*'], nameorpath=False)
+    fms2 = FileManage(path11)
+    fms_all = fms.get_all_filelist() + fms2.get_all_filelist()
+    fms_all = fms.filter_files_by_name([r'.*\.download', r'.*fox-.*', r'.*ShareCircle-.*'], fms_all)
+    same_file = fms.get_same_file(fms_all)
+    print('--')
