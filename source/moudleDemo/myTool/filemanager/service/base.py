@@ -19,4 +19,6 @@ PATH22 = CFG['path']['pre_dir']
 BAK_FILE = CFG['bak']['file']
 BAK_PRE_FILE = CFG['bak']['pre_file']
 
-RE_PRE = [r'.*\\pre\\.*', r'.*\\pre_(mp4|avi)\\.*', r'.*\\java\\.*']
+RE_PRE = [r'.*\pre\.*', r'.*\pre_(mp4|avi)\.*', r'.*\java\.*']
+RE_PACKAGE = [r'.*\.exe', r'.*\.zip', r'.*\.tar', r'.*\.gz',
+              r'.*\.rar', r'.*\.msi', r'.*\.7z', r'.*\.bz2']

@@ -588,7 +588,7 @@ class FileManage:
         now = get_now_time('%Y%m%d%H%M%S')
         save_info(save_file, now, datas)
 
-    @print_cls
+    # @print_cls
     def get_same_file(self, file_list=''):
         """
         获取大小相同的文件,方便去重
