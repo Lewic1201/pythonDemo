@@ -1,0 +1,82 @@
+<?xml version  = "1.0" encoding  = "UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sc.hoperun.mapper.InformationMapper">
+
+    <resultMap id="Information" type="com.sc.hoperun.entity.Information">
+        <result column="id" jdbcType="VARCHAR" property="infoId"/>
+        <result column="info_name" jdbcType="VARCHAR" property="infoName"/>
+        <result column="tp_id" jdbcType="VARCHAR" property="tpId"/>
+        <result column="client_id" jdbcType="VARCHAR" property="clientId"/>
+        <result column="is_used" jdbcType="NUMERIC" property="isUsed"/>
+        <result column="update_time" jdbcType="VARCHAR" property="updateTime"/>
+    </resultMap>
+
+    <select id="listInformation" resultMap="Information">
+        SELECT
+        id,
+        tp_name,
+        is_used,
+        rules,
+        update_time
+        FROM
+        information
+        WHERE
+        1 = 1
+        ORDER BY
+        id
+        <if test="page != null">
+            limit #{page.startRow,jdbcType  = INTEGER},#{page.pageSize,jdbcType  = INTEGER}
+        </if>
+    </select>
+
+    <select id="getInformation" resultMap="Information">
+        SELECT
+        id,
+        tp_name,
+        is_used,
+        rules,
+        update_time,
+        description
+        FROM
+        information
+        where 1 = 1
+        <if test="infoId != null and infoId != ''">
+            AND id = #{infoId,jdbcType=VARCHAR}
+        </if>
+    </select>
+
+    <select id="getInformationCount" resultType="java.lang.Integer">
+        SELECT count(id)
+        FROM information
+    </select>
+
+    <insert id="insertInformation" parameterType="com.sc.hoperun.entity.Information">
+        INSERT INTO information (info_name,
+                                 tp_id,
+                                 client_id,
+                                 is_used,
+                                 update_time)
+        VALUES (#{infoName,jdbcType  = VARCHAR},
+                #{tpId,jdbcType  = VARCHAR},
+                #{clientId,jdbcType  = VARCHAR},
+                #{isUsed,jdbcType  = NUMERIC},
+                #{updateTime,jdbcType  = TIMESTAMP})
+    </insert>
+
+    <update id="updateInformation" parameterType="com.sc.hoperun.entity.Information">
+        UPDATE information
+        SET info_name   = #{infoName,jdbcType  = VARCHAR},
+            tp_id       = #{tpId,jdbcType  = VARCHAR},
+            client_id   = #{clientId,jdbcType  = VARCHAR},
+            is_used     = #{isUsed,jdbcType  = NUMERIC},
+            update_time = #{updateTime,jdbcType  = TIMESTAMP}
+        WHERE id = #{infoId,jdbcType  = VARCHAR}
+    </update>
+
+    <delete id="deleteInformation" parameterType="java.lang.String">
+        DELETE
+        FROM information
+        WHERE id = #{infoId,jdbcType = VARCHAR}
+    </delete>
+</mapper>

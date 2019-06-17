@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sc.hoperun.mapper.AlertTpMapper">
+
+    <resultMap id="AlertTp" type="com.sc.hoperun.entity.AlertTp">
+        <result column="id" jdbcType="VARCHAR" property="tpId"/>
+        <result column="tp_name" jdbcType="VARCHAR" property="tpName"/>
+        <result column="is_used" jdbcType="VARCHAR" property="isUsed"/>
+        <result column="rules" jdbcType="VARCHAR" property="rules"/>
+        <result column="update_time" jdbcType="VARCHAR" property="updateTime"/>
+        <result column="description" jdbcType="VARCHAR" property="description"/>
+    </resultMap>
+
+    <select id="listAlertTp" resultMap="AlertTp">
+        SELECT
+        id,
+        tp_name,
+        is_used,
+        rules,
+        update_time,
+        description
+        FROM
+        alert_tp
+        WHERE
+        1=1
+        ORDER BY
+        id
+        <if test="page != null">
+            limit #{page.startRow,jdbcType=INTEGER},#{page.pageSize,jdbcType=INTEGER}
+        </if>
+    </select>
+
+    <select id="getAlertTp" resultMap="AlertTp">
+        SELECT
+        id,
+        tp_name,
+        is_used,
+        rules,
+        update_time,
+        description
+        FROM
+        alert_tp
+        where 1=1
+        <if test="tpId != null and tpId != ''">
+            AND id=#{tpId,jdbcType=VARCHAR}
+        </if>
+    </select>
+
+    <select id="getAlertTpCount" resultType="java.lang.Integer">
+        SELECT count(id)
+        FROM alert_tp
+    </select>
+
+    <insert id="insertAlertTp" parameterType="com.sc.hoperun.entity.AlertTp">
+        INSERT INTO alert_tp (tp_name,
+                              is_used,
+                              rules,
+                              update_time,
+                              description)
+        VALUES (#{tpName,jdbcType=VARCHAR},
+                #{isUsed,jdbcType=NUMERIC},
+                #{rules,jdbcType=VARCHAR},
+                #{updateTime,jdbcType=TIMESTAMP},
+                #{description,jdbcType=VARCHAR})
+    </insert>
+
+    <update id="updateAlertTp" parameterType="com.sc.hoperun.entity.AlertTp">
+        UPDATE alert_tp
+        SET tp_name     =#{tpName,jdbcType=VARCHAR},
+            is_used     =#{isUsed,jdbcType=NUMERIC},
+            rules       =#{rules,jdbcType=VARCHAR},
+            description =#{description,jdbcType=VARCHAR}
+        WHERE id = #{tpId,jdbcType=VARCHAR}
+    </update>
+
+    <delete id="deleteAlertTp" parameterType="java.lang.String">
+        DELETE
+        FROM alert_tp
+        WHERE id = #{tpId,jdbcType=VARCHAR}
+    </delete>
+</mapper>

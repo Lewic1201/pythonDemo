@@ -1,0 +1,34 @@
+server:
+  port: 9104
+spring:
+  profiles:
+    active: dev
+  jackson:
+    date-format: yyyy-MM-dd'T'HH:mm:ss
+    time-zone: Asia/Shanghai
+  application:
+    name: ai-data-center
+  datasource:
+    url: jdbc:mysql://169.254.219.4:3306/monitor?useUnicode=true&characterEncoding=utf8&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Shanghai
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    database: mysql
+    show-sql: true
+hystrix:
+  command:
+    default:
+      circuitBreaker:
+        enabled: false
+      execution:
+        isolation:
+          strategy: SEMAPHORE
+        timeout:
+          enabled: false
+      fallback:
+        enabled: false
+  threadpool:
+    default:
+      coreSize: 100
+      queueSizeRejectionThreshold: 2000

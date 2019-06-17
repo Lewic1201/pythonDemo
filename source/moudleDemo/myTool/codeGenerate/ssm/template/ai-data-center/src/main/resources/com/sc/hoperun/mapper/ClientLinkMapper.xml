@@ -1,0 +1,71 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sc.hoperun.mapper.ClientLinkMapper">
+
+    <resultMap id="ClientLink" type="com.sc.hoperun.entity.ClientLink">
+        <result column="id" jdbcType="VARCHAR" property="clientId"/>
+        <result column="client_name" jdbcType="VARCHAR" property="clientName"/>
+        <result column="email" jdbcType="VARCHAR" property="email"/>
+        <result column="mobile" jdbcType="VARCHAR" property="mobile"/>
+    </resultMap>
+
+    <select id="listClientLink" resultMap="ClientLink">
+        SELECT
+        id,
+        client_name,
+        email,
+        mobile
+        FROM
+        client_link
+        WHERE
+        1 = 1
+        ORDER BY
+        id
+        <if test="page != null">
+            limit #{page.startRow,jdbcType = INTEGER},#{page.pageSize,jdbcType = INTEGER}
+        </if>
+    </select>
+
+    <select id="getClientLink" resultMap="ClientLink">
+        SELECT
+        id,
+        client_name,
+        email,
+        mobile
+        FROM
+        client_link
+        where 1 = 1
+        <if test="clientId != null and clientId != ''">
+            AND id = #{clientId,jdbcType = VARCHAR}
+        </if>
+    </select>
+
+    <select id="getClientLinkCount" resultType="java.lang.Integer">
+        SELECT count(id)
+        FROM client_link
+    </select>
+
+    <insert id="insertClientLink" parameterType="com.sc.hoperun.entity.ClientLink">
+        INSERT INTO client_link (client_name,
+                                 email,
+                                 mobile)
+        VALUES (#{clientName, jdbcType = VARCHAR},
+                #{email, jdbcType = VARCHAR},
+                #{mobile, jdbcType = VARCHAR})
+    </insert>
+
+    <update id="updateClientLink" parameterType="com.sc.hoperun.entity.ClientLink">
+        UPDATE client_link
+        SET client_name = #{clientName, jdbcType = VARCHAR},
+            email       = #{email, jdbcType = VARCHAR},
+            mobile      = #{mobile, jdbcType = VARCHAR}
+        WHERE id = #{clientId,jdbcType = VARCHAR}
+    </update>
+
+    <delete id="deleteClientLink" parameterType="java.lang.String">
+        DELETE
+        FROM client_link
+        WHERE id = #{clientId,jdbcType = VARCHAR}
+    </delete>
+</mapper>
