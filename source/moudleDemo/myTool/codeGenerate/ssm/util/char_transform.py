@@ -41,3 +41,14 @@ class CharTransform:
             else:
                 new_word += i
         return new_word
+
+    @classmethod
+    def to_upper_hump(cls, word):
+        # word 为 hump
+        if word:
+            new_word = word[0] + word[1:]
+        elif word == '':
+            new_word = ''
+        else:
+            return None
+        return new_word
