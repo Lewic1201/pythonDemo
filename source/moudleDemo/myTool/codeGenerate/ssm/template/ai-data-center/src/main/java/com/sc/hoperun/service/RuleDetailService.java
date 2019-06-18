@@ -14,7 +14,7 @@ import java.util.Map;
 
 /**
  * @ClassName RuleDetailService.java
- * @Description TODO
+ * @Description 规则模板
  * @Date 2019/6/13 15:10
  **/
 @Service
@@ -33,7 +33,7 @@ public class RuleDetailService {
         resultMap.put("ruleDetailList", ruleDetails);
         resultMap.put("page", page);
 
-        Message msg = new Message();
+        Message<Map> msg = new Message<>();
         msg.setData(resultMap);
         return msg;
     }
@@ -42,20 +42,16 @@ public class RuleDetailService {
     public Message getRuleDetail(String id) {
         RuleDetail ruleDetail = ruleDetailMapper.getRuleDetail(id);
 
-        Message msg = new Message();
+        Message<RuleDetail> msg = new Message<>();
         msg.setData(ruleDetail);
         return msg;
     }
 
 
-    public Message insertRuleDetail(String ruleName, String infoScheme, String ruleType,
-                                    String alertScheme, String alertRule, String threshold, Integer severityValue,
-                                    Integer urgencyValue, Integer generalValue, String infoMaxNum, String period,
-                                    Integer isUsed, String description) {
-        Message msg = new Message();
+    public Message insertRuleDetail(String ruleName, String description) {
+        Message<String> msg = new Message<>();
         try {
-            RuleDetail ruleDetail = new RuleDetail(ruleName, infoScheme, ruleType, alertScheme, alertRule,
-                    threshold, severityValue, urgencyValue, generalValue, infoMaxNum, period, isUsed, description);
+            RuleDetail ruleDetail = new RuleDetail(ruleName, description);
             ruleDetailMapper.insertRuleDetail(ruleDetail);
             msg.setData("insert success");
         } catch (Exception e) {
@@ -64,14 +60,10 @@ public class RuleDetailService {
         return msg;
     }
 
-    public Message updateRuleDetail(String ruleId, String ruleName, String infoScheme, String ruleType,
-                                    String alertScheme, String alertRule, String threshold, Integer severityValue,
-                                    Integer urgencyValue, Integer generalValue, String infoMaxNum, String period,
-                                    Integer isUsed, String description) {
-        Message msg = new Message();
+    public Message updateRuleDetail(String ruleId, String ruleName, String description) {
+        Message<String> msg = new Message<>();
         try {
-            RuleDetail ruleDetail = new RuleDetail(ruleId, ruleName, infoScheme, ruleType, alertScheme, alertRule,
-                    threshold, severityValue, urgencyValue, generalValue, infoMaxNum, period, isUsed, description);
+            RuleDetail ruleDetail = new RuleDetail(ruleId, ruleName, description);
             ruleDetailMapper.updateRuleDetail(ruleDetail);
             msg.setData("update success");
         } catch (Exception e) {
@@ -81,7 +73,7 @@ public class RuleDetailService {
     }
 
     public Message deleteRuleDetail(String tpId) {
-        Message msg = new Message();
+        Message<String> msg = new Message<>();
         try {
             ruleDetailMapper.deleteRuleDetail(tpId);
             msg.setData("delete success");

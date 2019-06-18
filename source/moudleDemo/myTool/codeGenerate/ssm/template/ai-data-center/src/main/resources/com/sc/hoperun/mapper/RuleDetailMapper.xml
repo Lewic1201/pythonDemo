@@ -6,17 +6,6 @@
     <resultMap id="RuleDetail" type="com.sc.hoperun.entity.RuleDetail">
         <result column="id" jdbcType="VARCHAR" property="ruleId"/>
         <result column="rule_name" jdbcType="VARCHAR" property="ruleName"/>
-        <result column="info_scheme" jdbcType="VARCHAR" property="infoScheme"/>
-        <result column="rule_type" jdbcType="VARCHAR" property="ruleType"/>
-        <result column="alert_scheme" jdbcType="VARCHAR" property="alertScheme"/>
-        <result column="alert_rule" jdbcType="VARCHAR" property="alertRule"/>
-        <result column="threshold" jdbcType="VARCHAR" property="threshold"/>
-        <result column="severity_value" jdbcType="VARCHAR" property="severityValue"/>
-        <result column="urgency_value" jdbcType="VARCHAR" property="urgencyValue"/>
-        <result column="general_value" jdbcType="VARCHAR" property="generalValue"/>
-        <result column="info_max_num" jdbcType="VARCHAR" property="infoMaxNum"/>
-        <result column="period" jdbcType="VARCHAR" property="period"/>
-        <result column="is_used" jdbcType="VARCHAR" property="isUsed"/>
         <result column="description" jdbcType="VARCHAR" property="description"/>
     </resultMap>
 
@@ -24,17 +13,6 @@
         SELECT
         id,
         rule_name,
-        info_scheme,
-        rule_type,
-        alert_scheme,
-        alert_rule,
-        threshold,
-        severity_value,
-        urgency_value,
-        general_value,
-        info_max_num,
-        period,
-        is_used,
         description
         FROM
         rule_detail
@@ -49,17 +27,6 @@
         SELECT
         id,
         rule_name,
-        info_scheme,
-        rule_type,
-        alert_scheme,
-        alert_rule,
-        threshold,
-        severity_value,
-        urgency_value,
-        general_value,
-        info_max_num,
-        period,
-        is_used,
         description
         FROM
         rule_detail
@@ -76,48 +43,15 @@
 
     <insert id="insertRuleDetail" parameterType="com.sc.hoperun.entity.RuleDetail">
         INSERT INTO rule_detail (rule_name,
-                                 info_scheme,
-                                 rule_type,
-                                 alert_scheme,
-                                 alert_rule,
-                                 threshold,
-                                 severity_value,
-                                 urgency_value,
-                                 general_value,
-                                 info_max_num,
-                                 period,
-                                 is_used,
                                  description)
         VALUES (#{ruleName,jdbcType=VARCHAR},
-                #{infoScheme,jdbcType=VARCHAR},
-                #{ruleType,jdbcType=VARCHAR},
-                #{alertScheme,jdbcType=VARCHAR},
-                #{alertRule,jdbcType=VARCHAR},
-                #{threshold,jdbcType=VARCHAR},
-                #{severityValue,jdbcType=NUMERIC},
-                #{urgencyValue,jdbcType=NUMERIC},
-                #{generalValue,jdbcType=NUMERIC},
-                #{infoMaxNum,jdbcType=VARCHAR},
-                #{period,jdbcType=VARCHAR},
-                #{isUsed,jdbcType=NUMERIC},
                 #{description,jdbcType=VARCHAR})
     </insert>
 
     <update id="updateRuleDetail" parameterType="com.sc.hoperun.entity.RuleDetail">
         UPDATE rule_detail
         SET rule_name      = #{ruleName,jdbcType=VARCHAR},
-            info_scheme    = #{infoScheme,jdbcType=VARCHAR},
-            rule_type      = #{ruleType,jdbcType=VARCHAR},
-            alert_scheme   = #{alertScheme,jdbcType=VARCHAR},
-            alert_rule     = #{alertRule,jdbcType=VARCHAR},
-            threshold      = #{threshold,jdbcType=VARCHAR},
-            severity_value = #{severityValue,jdbcType=NUMERIC},
-            urgency_value  = #{urgencyValue,jdbcType=NUMERIC},
-            general_value  = #{generalValue,jdbcType=NUMERIC},
-            info_max_num   = #{infoMaxNum,jdbcType=VARCHAR},
-            period         = #{period,jdbcType=VARCHAR},
-            is_used        = #{isUsed,jdbcType=NUMERIC},
-            discirption    = #{description,jdbcType=VARCHAR}
+            description    = #{description,jdbcType=VARCHAR}
         WHERE id = #{ruleId,jdbcType=VARCHAR}
     </update>
 

@@ -3,7 +3,7 @@ package com.sc.hoperun.common;
 import lombok.Data;
 
 @Data
-public class Message {
+public class Message<Object> {
 
     private String status;
     private String message;
