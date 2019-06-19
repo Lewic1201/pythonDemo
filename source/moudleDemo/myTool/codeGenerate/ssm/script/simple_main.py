@@ -56,9 +56,9 @@ def generate_file(base_file, div_map):
             new_content = new_content.replace(div[0], div[1])
 
     # 生成新的文件名
-    new_dir = os.path.join(RES_DIR, div_map[13][1])
+    new_dir = os.path.join(RES_DIR, div_map[11][1])
     os.makedirs(new_dir,exist_ok=True)
-    new_file = os.path.join(new_dir, os.path.basename(base_file).replace(div_map[13][0], div_map[13][1]))
+    new_file = os.path.join(new_dir, os.path.basename(base_file).replace(div_map[11][0], div_map[11][1]))
     with open(new_file, 'w', encoding='utf8') as nf:
         nf.write(new_content)
 
@@ -78,10 +78,10 @@ def generate_group(table_field):
 
 
 if __name__ == '__main__':
-    tf = TableFields('client_link', '客户资料', 'com.sc.hoperun', 'clientId')
+    tf = TableFields('client_link2', '客户资料', 'com.sc.hoperun', 'clientId')
     tf.add_column('user_name', '用户名')
     tf.add_column('password', '密码')
     tf.add_column('create_time', '创建时间', 'datetime')
-    tf.add_column('level', '权限级别', 'int')
+    tf.add_column('level', '权限级别', 'integer')
 
     generate_group(tf)

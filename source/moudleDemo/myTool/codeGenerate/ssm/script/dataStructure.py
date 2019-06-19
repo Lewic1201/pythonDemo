@@ -10,8 +10,15 @@ from script.char_transform import CharTransform as ct
 
 TYPE_MAP = {'varchar': 'String',
             'int': 'Integer',
+            'integer': 'Integer',
             'double': 'Double',
             'datetime': 'String'}
+JDBC_MAP = {'datetime': 'TIMESTAMP',
+            'int': 'INTEGER',
+            'integer': 'INTEGER',
+            'varchar': 'VARCHAR',
+            'double': 'DOUBLE',
+            }
 
 
 class TableFields:
@@ -39,6 +46,7 @@ class TableFields:
         column_dict['column_type'] = column_type
         column_dict['param_name'] = ct.to_hump(column_name)
         column_dict['param_type'] = TYPE_MAP[column_type]
+        column_dict['jdbc_type'] = JDBC_MAP[column_type]
 
         self._columns.append(column_dict)
 
