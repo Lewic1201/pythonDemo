@@ -46,7 +46,7 @@ class CharTransform:
     def to_upper_hump(cls, word):
         # word 为 hump
         if word:
-            new_word = word[0] + word[1:]
+            new_word = word[0].upper() + word[1:]
         elif word == '':
             new_word = ''
         else:
