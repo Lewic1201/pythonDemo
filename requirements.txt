@@ -27,3 +27,4 @@ PyAutoGUI==0.9.39
 PyMySQL==0.9.3
 redis==3.2.0
 selenium==3.141.0
+pypiwin32==223
