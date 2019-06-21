@@ -1,11 +1,14 @@
-package com.sc.hoperun.common;
+package com.lewic.common;
 
 import java.io.Serializable;
 
+
 /**
- * 
- * @author Administrator
- */
+ * @author lewic
+ * @apiNote 分页管理
+ * @since 2019/6/14 15:38
+ **/
+
 public class Page implements Serializable{
 
 	private static final long serialVersionUID = 5790890024078772097L;

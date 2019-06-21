@@ -17,7 +17,7 @@
 	</appender>
 
 	<!-- project default level -->
-	<logger name="com.sc.hoperun" level="DEBUG" />
+	<logger name="com.lewic" level="DEBUG" />
 
 	<!--log4jdbc -->
 	<logger name="jdbc.sqltiming" level="DEBUG"/>

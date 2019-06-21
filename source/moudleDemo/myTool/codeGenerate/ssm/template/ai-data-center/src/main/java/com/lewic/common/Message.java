@@ -1,4 +1,4 @@
-package com.sc.hoperun.common;
+package com.lewic.common;
 
 import lombok.Data;
 

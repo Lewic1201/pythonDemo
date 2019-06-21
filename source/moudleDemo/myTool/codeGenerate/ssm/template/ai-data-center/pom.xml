@@ -8,7 +8,7 @@
         <version>2.1.5.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.sc.hoperun</groupId>
+    <groupId>com.lewic</groupId>
     <artifactId>ai-data-center</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>ai-data-center</name>
@@ -80,7 +80,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <mainClass>com.sc.hoperun.AiDataCenterApplication</mainClass>
+                    <mainClass>com.lewic.AiDataCenterApplication</mainClass>
                 </configuration>
                 <executions>
                     <execution>

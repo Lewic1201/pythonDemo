@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.sc.hoperun.mapper.RuleDetailMapper">
+<mapper namespace="com.lewic.mapper.RuleDetailMapper">
 
-    <resultMap id="RuleDetail" type="com.sc.hoperun.entity.RuleDetail">
+    <resultMap id="RuleDetail" type="com.lewic.entity.RuleDetail">
         <result column="id" jdbcType="VARCHAR" property="ruleId"/>
         <result column="rule_name" jdbcType="VARCHAR" property="ruleName"/>
         <result column="description" jdbcType="VARCHAR" property="description"/>
@@ -41,14 +41,14 @@
         FROM rule_detail
     </select>
 
-    <insert id="insertRuleDetail" parameterType="com.sc.hoperun.entity.RuleDetail">
+    <insert id="insertRuleDetail" parameterType="com.lewic.entity.RuleDetail">
         INSERT INTO rule_detail (rule_name,
                                  description)
         VALUES (#{ruleName,jdbcType=VARCHAR},
                 #{description,jdbcType=VARCHAR})
     </insert>
 
-    <update id="updateRuleDetail" parameterType="com.sc.hoperun.entity.RuleDetail">
+    <update id="updateRuleDetail" parameterType="com.lewic.entity.RuleDetail">
         UPDATE rule_detail
         SET rule_name      = #{ruleName,jdbcType=VARCHAR},
             description    = #{description,jdbcType=VARCHAR}

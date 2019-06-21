@@ -1,4 +1,4 @@
-package com.sc.hoperun.common;
+package com.lewic.common;
 
 
 import lombok.Data;
@@ -30,7 +30,7 @@ public class BoxUtil {
 
 
 @Data
-class SecondBox {//二级下拉框,可调用common中dealBox进行转换
+class SecondBox {// 二级下拉框,可调用common中dealBox进行转换
     // 一级菜单
     private String firstParam;
     // 二级菜单

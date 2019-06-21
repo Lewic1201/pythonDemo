@@ -1,18 +1,24 @@
-package com.sc.hoperun.rest;
+package com.lewic.rest;
 
-import com.sc.hoperun.common.Message;
-import com.sc.hoperun.service.RuleDetailService;
+import com.lewic.common.Message;
+import com.lewic.common.Util;
+import com.lewic.entity.RuleDetail;
+import com.lewic.service.RuleDetailService;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 
 /**
- * @ClassName RuleDetailController.java
- * @Description 规则模板
- * @Date 2019/6/13 15:22
+ * @author lewic
+ * @apiNote 规则模板
+ * @since 2019/6/14 15:38
  **/
+
 @RestController
 @RequestMapping("/api/v1.0")
 public class RuleDetailController {
@@ -40,10 +46,13 @@ public class RuleDetailController {
     @ApiOperation("新建规则详情")
     @RequestMapping(value = "/ruleDetail", method = RequestMethod.POST)
     public Message insertRuleDetail(
-            @ApiParam(value = "规则名称") @RequestParam(value = "ruleName") String ruleName,
-            @ApiParam(value = "描述") @RequestParam(value = "description") String description
+            @ApiParam(value = "告警模板") @RequestBody @Valid RuleDetail ruleDetail,
+            BindingResult bindingResult
     ) {
-        return ruleDetailService.insertRuleDetail(ruleName, description);
+        if (bindingResult.hasErrors()) {
+            return Util.checkParam(bindingResult);
+        }
+        return ruleDetailService.insertRuleDetail(ruleDetail);
     }
 
 
@@ -51,10 +60,14 @@ public class RuleDetailController {
     @RequestMapping(value = "/ruleDetail/{id}", method = RequestMethod.PUT)
     public Message updateRuleDetail(
             @PathVariable(value = "id") String ruleId,
-            @ApiParam(value = "规则名称") @RequestParam(value = "ruleName") String ruleName,
-            @ApiParam(value = "描述") @RequestParam(value = "description") String description
+            @ApiParam(value = "告警模板") @RequestBody @Valid RuleDetail ruleDetail,
+            BindingResult bindingResult
     ) {
-        return ruleDetailService.updateRuleDetail(ruleId, ruleName,description);
+        ruleDetail.setRuleId(ruleId);
+        if (bindingResult.hasErrors()) {
+            return Util.checkParam(bindingResult);
+        }
+        return ruleDetailService.updateRuleDetail(ruleDetail);
     }
 
     @ApiOperation("删除规则详情")

@@ -1,9 +1,9 @@
-package com.sc.hoperun.service;
+package com.lewic.service;
 
-import com.sc.hoperun.common.Message;
-import com.sc.hoperun.common.Page;
-import com.sc.hoperun.entity.RuleDetail;
-import com.sc.hoperun.mapper.RuleDetailMapper;
+import com.lewic.common.Message;
+import com.lewic.common.Page;
+import com.lewic.entity.RuleDetail;
+import com.lewic.mapper.RuleDetailMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -48,10 +48,9 @@ public class RuleDetailService {
     }
 
 
-    public Message insertRuleDetail(String ruleName, String description) {
+    public Message insertRuleDetail(RuleDetail ruleDetail) {
         Message<String> msg = new Message<>();
         try {
-            RuleDetail ruleDetail = new RuleDetail(ruleName, description);
             ruleDetailMapper.insertRuleDetail(ruleDetail);
             msg.setData("insert success");
         } catch (Exception e) {
@@ -60,10 +59,9 @@ public class RuleDetailService {
         return msg;
     }
 
-    public Message updateRuleDetail(String ruleId, String ruleName, String description) {
+    public Message updateRuleDetail(RuleDetail ruleDetail) {
         Message<String> msg = new Message<>();
         try {
-            RuleDetail ruleDetail = new RuleDetail(ruleId, ruleName, description);
             ruleDetailMapper.updateRuleDetail(ruleDetail);
             msg.setData("update success");
         } catch (Exception e) {

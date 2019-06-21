@@ -1,4 +1,4 @@
-package com.sc.hoperun.common;
+package com.lewic.common;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -18,15 +18,15 @@ public class Swagger2 {
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.sc.hoperun"))
+                .apis(RequestHandlerSelectors.basePackage("com.lewic"))
                 .paths(PathSelectors.any())
                 .build();
     }
 
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-                .title("ai智能平台数据中心")
-                .description("ai智能平台数据中心RESTful")
+                .title("数据中心")
+                .description("lewic数据中心模板RESTFUL")
                 .termsOfServiceUrl("http://blog.csdn.net/saytime")
                 .version("1.0")
                 .build();

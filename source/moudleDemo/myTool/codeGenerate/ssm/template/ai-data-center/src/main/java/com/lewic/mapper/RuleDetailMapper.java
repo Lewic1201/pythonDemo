@@ -1,16 +1,19 @@
-package com.sc.hoperun.mapper;
+package com.lewic.mapper;
 
-import com.sc.hoperun.common.Page;
-import com.sc.hoperun.entity.RuleDetail;
+import com.lewic.common.Page;
+import com.lewic.entity.RuleDetail;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
+
 /**
- * @Description 规则模板
- * @Date 2019/6/14 16:37
+ * @author lewic
+ * @apiNote 规则模板
+ * @since 2019/6/14 15:38
  **/
+
 @Mapper
 public interface RuleDetailMapper {
 
