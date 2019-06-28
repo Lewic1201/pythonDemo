@@ -1,5 +1,5 @@
 server:
-  port: 8091
+  port: 8092
 spring:
   profiles:
     active: dev
@@ -9,9 +9,9 @@ spring:
   application:
     name: ai-data-center
   datasource:
-    url: jdbc:mysql://169.254.219.4:3306/monitor?useUnicode=true&characterEncoding=utf8&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Shanghai
+    url: jdbc:mysql://localhost:3306/lewic?useUnicode=true&characterEncoding=utf8&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Shanghai
     username: root
-    password: 123456
+    password: root
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     database: mysql
