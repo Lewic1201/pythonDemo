@@ -28,3 +28,4 @@ PyMySQL==0.9.3
 redis==3.2.0
 selenium==3.141.0
 pypiwin32==223
+winshell==0.6

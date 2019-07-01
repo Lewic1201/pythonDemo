@@ -651,6 +651,7 @@ if __name__ == '__main__':
     path8 = r'E:\lewic\pycharm\workspace\myCode\pythonDemo'
     path10 = r'F:\tmp\lnk_pre3'
     path11 = r'F:\tmp\tmp2'
+    path12 = r'E:\javalib\shortMessage'
     # fm = FileManage(path2)
     # fm.change_queue_name()
     # pprint.pprint(fm.get_all_file_params())
@@ -692,11 +693,16 @@ if __name__ == '__main__':
     #
     # fm.save_all(path2 + '\\..\\files')
 
-    # 文件去重
-    fms = FileManage(path2)
-    # fm_ls = fms.get_files_by_name([r'.*\\pre\\.*', r'.*\\pre_(mp4|avi)\\.*', r'.*\\java\\.*'], nameorpath=False)
-    fms2 = FileManage(path11)
-    fms_all = fms.get_all_filelist() + fms2.get_all_filelist()
-    fms_all = fms.filter_files_by_name([r'.*\.download', r'.*fox-.*', r'.*ShareCircle-.*'], fms_all)
-    same_file = fms.get_same_file(fms_all)
-    print('--')
+    # # 文件去重
+    # fms = FileManage(path2)
+    # # fm_ls = fms.get_files_by_name([r'.*\\pre\\.*', r'.*\\pre_(mp4|avi)\\.*', r'.*\\java\\.*'], nameorpath=False)
+    # fms2 = FileManage(path11)
+    # fms_all = fms.get_all_filelist() + fms2.get_all_filelist()
+    # fms_all = fms.filter_files_by_name([r'.*\.download', r'.*fox-.*', r'.*ShareCircle-.*'], fms_all)
+    # same_file = fms.get_same_file(fms_all)
+    # print('--')
+
+    fm = FileManage(path12)
+    fl = fm.get_all_filelist()
+    import pprint
+    pprint.pprint(fl)
