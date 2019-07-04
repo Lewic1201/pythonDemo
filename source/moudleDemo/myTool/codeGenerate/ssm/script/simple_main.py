@@ -57,7 +57,7 @@ def generate_file(base_file, div_map):
 
     # 生成新的文件名
     new_dir = os.path.join(RES_DIR, div_map[11][1])
-    os.makedirs(new_dir,exist_ok=True)
+    os.makedirs(new_dir, exist_ok=True)
     new_file = os.path.join(new_dir, os.path.basename(base_file).replace(div_map[11][0], div_map[11][1]))
     with open(new_file, 'w', encoding='utf8') as nf:
         nf.write(new_content)
@@ -78,10 +78,13 @@ def generate_group(table_field):
 
 
 if __name__ == '__main__':
-    tf = TableFields('client_link2', '客户资料', 'com.sc.hoperun', 'clientId')
-    tf.add_column('user_name', '用户名')
-    tf.add_column('password', '密码')
-    tf.add_column('create_time', '创建时间', 'datetime')
-    tf.add_column('level', '权限级别', 'integer')
+    tf = TableFields('notification_response', '通知返回值', 'com.sc.hoperun', 'clientId')
+    tf.add_column('id', '监控策略ID')
+    tf.add_column('notificationName', '通知名称')
+    tf.add_column('monitorName', '监控名称')
+    tf.add_column('monitorRule',  '监控规则')
+    tf.add_column('monitorObj', '监控对象名称')
+    tf.add_column('createdTime')
+    tf.add_column('value', '监控规则实际监控到的值')
 
     generate_group(tf)
