@@ -36,3 +36,5 @@ TODO 做一个自动生成ssm代码的小工具,传入表结构即可
 TODO 根据Python GUI编程(Tkinter),实现一个界面(her)
 
 TODO 将FileManage的功能分割下,常用的功能放一块,不常用的放一块,这样就不会总出现未下载模块的问题了
+
+TODO 将每个模块的所需要的包分开,或者项目中加入threePackages目录

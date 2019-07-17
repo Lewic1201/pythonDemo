@@ -7,7 +7,7 @@
 @desc:
 """
 import datetime
-from script.dataStructure import TableFields
+from util.dataStructure import TableFields
 
 txt00 = 'com.sc.hoperun'
 txt01 = '规则模板'
@@ -49,7 +49,7 @@ def create_replace_map(table_fields):
     # 添加[:]浅拷贝
     new00 = table_fields.package_pre[:]
     new01 = table_fields.table_name_ch[:]
-    new02 = '@Date %s' % get_now_time('%Y/%m/%d %H:%M')[:]
+    new02 = '@since %s' % get_now_time('%Y/%m/%d %H:%M')[:]
     new03 = table_fields.class_name[:]
     new04 = table_fields.entity_name[:]
     new05 = table_fields.column_id[:]
@@ -119,12 +119,3 @@ def create_replace_map(table_fields):
     return res
 
 
-if __name__ == '__main__':
-    tf = TableFields('client_link', '客户资料', 'com.hoperun', 'clientId')
-    tf.add_column('user_name', '用户名')
-    tf.add_column('password', '密码')
-    tf.add_column('create_time', '创建时间', 'datetime')
-    tf.add_column('level', '权限级别', 'int')
-
-    maps = create_replace_map(tf)
-    print(maps)

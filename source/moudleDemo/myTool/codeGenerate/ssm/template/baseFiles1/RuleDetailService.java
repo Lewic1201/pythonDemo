@@ -12,11 +12,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+
 /**
- * @ClassName RuleDetailService.java
- * @Description 规则模板
- * @Date 2019/6/13 15:10
+ * @author lewic
+ * @apiNote 规则模板
+ * @since 2019/6/13 15:10
  **/
+
 @Service
 @Slf4j
 public class RuleDetailService {

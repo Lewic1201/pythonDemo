@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.*;
 
 
 /**
- * @ClassName RuleDetailController.java
- * @Description 规则模板
- * @Date 2019/6/13 15:22
+ * @author lewic
+ * @apiNote 规则模板
+ * @since 2019/6/13 15:22
  **/
 @RestController
 @RequestMapping("/api/v1.0")

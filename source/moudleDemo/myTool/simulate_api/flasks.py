@@ -53,7 +53,7 @@ def hello3():
 
 
 @app.route('/hello4', methods=['POST', 'GET'])
-def hello3():
+def hello4():
     data = {
         'success': True,
     }

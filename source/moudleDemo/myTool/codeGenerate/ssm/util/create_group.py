@@ -1,17 +1,14 @@
 #!/usr/bin/env python
-# -- coding: utf-8 --
+# -*- coding:utf-8 -*-
+
 """
 @author: Lewic
-@file: main
-@time: 2019/6/19 0:18
+@file: create_group
+@time: 2019/7/16 20:36
 @desc:
 """
-import os
-from script.dataStructure import TableFields
-from script.code_div import create_replace_map
 
-BASE_FILES_DIR = os.path.abspath('../template/baseFiles/')
-RES_DIR = os.path.abspath('../result/')
+import os
 
 
 def get_all_filelist(rootdir):
@@ -43,10 +40,11 @@ def get_all_filelist(rootdir):
     return result
 
 
-def generate_file(base_file, div_map):
+def generate_file(base_file, div_map, res_dir):
     """
     :param base_file: 模板文件
     :param div_map: 代码块map
+    :param res_dir: 返回目录
     :return:
     """
     with open(base_file, encoding='utf8') as bf:
@@ -56,7 +54,7 @@ def generate_file(base_file, div_map):
             new_content = new_content.replace(div[0], div[1])
 
     # 生成新的文件名
-    new_dir = os.path.join(RES_DIR, div_map[11][1])
+    new_dir = os.path.join(res_dir, div_map[11][1])
     os.makedirs(new_dir, exist_ok=True)
     new_file = os.path.join(new_dir, os.path.basename(base_file).replace(div_map[11][0], div_map[11][1]))
     with open(new_file, 'w', encoding='utf8') as nf:
@@ -65,26 +63,3 @@ def generate_file(base_file, div_map):
     print('create file success: %s' % os.path.basename(new_file))
 
 
-def generate_group(table_field):
-    """
-    生成一个表的一组code
-    :param table_field:
-    :return:
-    """
-    div_map = create_replace_map(table_field)
-    base_files = get_all_filelist(BASE_FILES_DIR)
-    for bf in base_files:
-        generate_file(bf, div_map)
-
-
-if __name__ == '__main__':
-    tf = TableFields('notification_response', '通知返回值', 'com.sc.hoperun', 'clientId')
-    tf.add_column('id', '监控策略ID')
-    tf.add_column('notificationName', '通知名称')
-    tf.add_column('monitorName', '监控名称')
-    tf.add_column('monitorRule',  '监控规则')
-    tf.add_column('monitorObj', '监控对象名称')
-    tf.add_column('createdTime')
-    tf.add_column('value', '监控规则实际监控到的值')
-
-    generate_group(tf)

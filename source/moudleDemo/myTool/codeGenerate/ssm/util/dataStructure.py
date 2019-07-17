@@ -6,7 +6,7 @@
 @time: 2019/6/17 22:56
 @desc:
 '''
-from script.char_transform import CharTransform as ct
+from util.char_transform import CharTransform as ct
 
 TYPE_MAP = {'varchar': 'String',
             'int': 'Integer',

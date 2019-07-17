@@ -3,9 +3,9 @@ package com.sc.hoperun.entity;
 import lombok.Data;
 
 /**
- * @ClassName RuleDetail
- * @Description 规则模板
- * @Date 2019/6/14 15:38
+ * @author lewic
+ * @apiNote 规则模板
+ * @since 2019/6/14 15:38
  **/
 @Data
 public class RuleDetail {

@@ -7,10 +7,13 @@ import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
+
 /**
- * @Description 规则模板
- * @Date 2019/6/14 16:37
+ * @author lewic
+ * @apiNote 规则模板
+ * @since 2019/6/14 16:37
  **/
+
 @Mapper
 public interface RuleDetailMapper {
 
