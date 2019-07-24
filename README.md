@@ -5,7 +5,19 @@ Auther: lewic
 - pythonDemo
   - source
     - application 小应用
-      - assignment
+      - mainWeb web管理工具
+      - pingyin 汉字转拼音
+      - qqAuto  自动发送qq消息
+      - scrapyDemo 获取天气情况的爬虫
+      - simpleProject
+        - game2048 2048
+        - pictureCharacterDraw 图片根据灰度转字符画
+      - Sorting_Visualization 各种排序
+      - translate 调用有道词典接口进行自动检测地翻译
+      - wechatAuto
+        - autoChat.py 调用图灵接口自动去和微信好友聊天
+        - chat_manage.py 管理微信号
+        - avatar.py 自动拼接微信头像
     - env_test
     - html_template h5模板
     - logs
