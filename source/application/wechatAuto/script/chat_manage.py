@@ -73,6 +73,7 @@ class ChatManage:
         groups_info = []
         for group in groups:
             data = [
+                group.members,
                 group.name,
                 group.owner.nick_name,
                 [people.name for people in group.members],
@@ -169,7 +170,7 @@ if __name__ == '__main__':
     cm = ChatManage()
     # friend_list = cm.get_friends()
     # infos = cm.get_friend_info()
-    # gro = cm.get_group_info()
+    gro = cm.get_group_info()
     # mps = cm.get_mps()
     # cm.get_friend_nums()
 

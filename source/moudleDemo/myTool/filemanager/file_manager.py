@@ -17,8 +17,7 @@ import win32com.client
 
 from source.utils.logs import logger
 from source.application.pingyin.pinyin import PinYin
-from source.application.translate.trans import Trans
-from source.moudleDemo.myTool.filemanager.excel_manage import save_info
+
 from source.utils.decorators import print_cls
 
 """[正则表达式,表达式说明]"""
