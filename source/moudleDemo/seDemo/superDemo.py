@@ -16,3 +16,7 @@ class Son(Base):
 
 a = Son()
 object()
+
+print(isinstance(a, Base))
+print(isinstance(a, Son))
+print(issubclass(Son, Base))
