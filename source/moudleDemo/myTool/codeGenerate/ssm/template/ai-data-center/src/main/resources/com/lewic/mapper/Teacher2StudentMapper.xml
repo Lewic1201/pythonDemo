@@ -1,0 +1,24 @@
+<?xml version  = "1.0" encoding  = "UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lewic.mapper.Teacher2StudentMapper">
+    <delete id="removeAllStudent">
+        DELETE
+        FROM tea_2_stu
+        WHERE tid = #{tid}
+    </delete>
+
+    <update id="addStudent">
+        <!--循环插入每个字表数据信息-->
+        insert into tea_2_stu(tid,sid) values
+        <foreach collection="students" item="item" separator=",">
+            (#{tid},#{item.sid})
+        </foreach>
+        ;
+    </update>
+
+    <update id="addOneStudent">
+        INSERT INTO tea_2_stu(tid, sid)
+        VALUES (#{tid,jdbcType=NUMERIC}, #{sid,jdbcType=NUMERIC});
+    </update>
+</mapper>
