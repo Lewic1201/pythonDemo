@@ -1,0 +1,33 @@
+api:
+  web:
+    http: 'https://'
+
+  head:
+
+    origin:
+      host: 127.0.0.1
+      port: 5001
+
+    now:
+      host: 127.0.0.1
+      port: 5002
+
+
+
+  interface:
+    getSnapshot:
+      method: get
+      used: true
+      uri: /v2/{pid}/snapshots
+      uri_suffix_dict:
+        -
+          used: true
+          txt: ?limit=2
+        -
+          txt: ?limit=2&sort=id
+      uri_suffix_list:
+        - ?limit=3&offset=1
+
+
+
+

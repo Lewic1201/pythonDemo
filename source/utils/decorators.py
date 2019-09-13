@@ -156,7 +156,7 @@ def print_cls(func):
     return wrapper
 
 
-def print_classparams(obj):
+def print_class_params(obj):
     """打印所有的类变量"""
 
     # 添加函数属性

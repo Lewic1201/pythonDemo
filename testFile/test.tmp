@@ -1,14 +1,11 @@
-    // 编号
-    private String ruleId;
-    // 规则名称
-    private String ruleName;
-    // 描述
-    private String description;
-
-
-    // 编号
-    private String clientId;
-    // 规则名称
-    private String ruleName;
-    // 描述
-    private String description;
+"""
+{"api": {"head": {"now": {"host": "127.0.0.1", "port": 5002},
+              "origin": {"host": "127.0.0.1", "port": 5001}},
+     "interface": {"getSnapshot": {"uri": "/v2/{pid}/snapshots",
+                                   "uri_suffix_dict": [{"txt": "?limit=2",
+                                                        "used": true},
+                                                       {"txt": "?limit=2&sort=id"}],
+                                   "uri_suffix_list": ["?limit=3&offset=1"],
+                                   "used": true}},
+     "web": {"http": "https://"}}}
+"""

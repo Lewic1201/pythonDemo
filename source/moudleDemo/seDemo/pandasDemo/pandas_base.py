@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 
 from pandas import Series, DataFrame
-from source.utils.decorators import print_classparams as pcp
+from source.utils.decorators import print_class_params as pcp
 
 
 @pcp  # 自动打印类变量
