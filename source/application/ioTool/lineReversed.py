@@ -17,7 +17,7 @@ def reversed_row(input_file='input.txt', output_file=None):
     with open(input_file, 'r', encoding='utf8') as inf:
         lines = inf.readlines()
         lines.append('')
-        reverse_lines = lines[::-2]
+        reverse_lines = lines[::-1]
 
     if output_file is None:
         output_file = './output/' + get_now_time() + '.txt'
