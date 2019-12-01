@@ -1,5 +1,0 @@
-setup.py
-test_myDemo.egg-info/PKG-INFO
-test_myDemo.egg-info/SOURCES.txt
-test_myDemo.egg-info/dependency_links.txt
-test_myDemo.egg-info/top_level.txt

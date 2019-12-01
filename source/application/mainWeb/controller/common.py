@@ -5,8 +5,8 @@
 # @File    : common.py
 # @Software: PyCharm
 # @context : 
-from source.moudleDemo.myTool.count_code_line import ccl_main
-from source.moudleDemo.myTool.filemanager.file_manager import FileManage
+from source.basics.myTool.count_code_line import ccl_main
+from source.basics.myTool.filemanager.file_manager import FileManage
 from source.application.mainWeb.utils.sqlutil import SqliteManage
 
 

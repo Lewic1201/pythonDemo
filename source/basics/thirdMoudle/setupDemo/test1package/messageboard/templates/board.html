@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>message board</title>
+    <link rel="stylesheet" href="/static/main.css" type="text/css">
+</head>
+<body>
+<form action="message" method="post">
+    <div>
+        <label>用户:</label>
+        <input type="text" name="username">
+        <br><br>
+    </div>
+    <div>
+        <label>留言板:</label><br>
+        <textarea rows="8" cols="40" name="context"></textarea>
+    </div>
+
+    <div>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <input type="submit" value="发表" align="right">
+    </div>
+</form>
+<div class="entries-area">
+    <br>
+    {% for data in datas %}
+    <hr>
+    <h4>{{ data.username }}&nbsp;{{data.now_time}}</h4>
+    <p>{{data.context}}</p>
+    {% endfor %}
+</div>
+</body>
+</html>

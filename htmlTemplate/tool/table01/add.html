@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<!-- saved from url=(0064)http://www.17sucai.com/preview/1528155/2019-01-25/bg/index.html# -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <title>表格制作</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <link rel="stylesheet" type="text/css" href="./static/style.css">
+	
+    <link rel="stylesheet" type="text/css" href="./static/bootstrap.min.css">
+	
+    <script src="./static/jquery.min.js.下载"></script>
+    <script src="./static/bootstrap.min.js.下载" type="text/javascript" charset="utf-8"></script>
+    <script src="./static/bootbox.min.js.下载"></script>
+	
+</head>
+<body class="modal-open" style="">
+<div class="box">
+    <div class="title">使用Jquery实现表格内数据的添加、删除、修改、查找</div>
+    <div class="content">
+        <!--搜索输入框及查询、重置按钮-->
+        <div class="container content_width">
+            <div class="person_search">
+                <div class="search_input">
+                    <div class="input-group mb-3">
+                        <span>姓名：</span>
+                        <input id="Ktext" type="text" class="form-control" placeholder="请输入姓名">
+                    </div>
+                </div>
+                <div class="search_input">
+                    <div class="input-group mb-3" hidden="">
+                        <span>工号：</span>
+                        <input id="job_num" type="text" class="form-control" placeholder="请输入工号">
+                    </div>
+                </div>
+                <div class="search_input">
+                    <button class="btn btn-primary search_btn" type="button" id="search_btn">查询</button>
+                    <button class="btn btn-primary search_btn" type="button" id="back_btn">重置</button>
+                </div>
+            </div>
+            <div class="line"></div>
+        </div>
+        <!--添加按钮及bootstrap的模态框-->
+        <div class="export">
+            <button id="new_add" type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#renyuan">
+                <img src="./static/add_two.png">
+                <span>添加</span>
+            </button>
+            <div class="modal fade show" id="renyuan" style="display: block;">
+                <div class="modal-dialog modal-lg modal_position">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">添加</h4>
+                            <button type="button" class="close" data-dismiss="modal">×</button>
+                        </div>
+                        <div class="modal-body">
+                            <table id="xztb" class="table">
+                                <!--新修改弹窗的样式-->
+                                <tbody>
+                                <tr>
+                                    <td class="tb_bg"><label for=""><font style="font-size: 14px; color: red;">*</font>姓名</label>
+                                    </td>
+                                    <td><input class="userName" type="text" placeholder="请输入姓名"></td>
+                                    <td class="tb_bg"><label for=""><font style="font-size: 14px; color: red;">*</font>工号</label>
+                                    </td>
+                                    <td><input class="jobNum" type="number" placeholder="请输入工号"></td>
+                                </tr>
+                                <tr>
+                                    <td class="tb_bg"><label for=""><font style="font-size: 14px; color: red;">*</font>手机号</label>
+                                    </td>
+                                    <td><input class="phoneNum" type="number" placeholder="请输入手机号"></td>
+                                    <td class="tb_bg"><label for="">产品名称</label></td>
+                                    <td><input type="text" placeholder="请输入产品名称"></td>
+                                </tr>
+                                <tr>
+                                    <td class="tb_bg"><label for="">技能等级</label></td>
+                                    <td>
+                                        <select class="form-control select_down" style="font-size: 13px; color: #666;">
+                                            <option>一级</option>
+                                            <option>二级</option>
+                                            <option>三级</option>
+                                        </select>
+                                    </td>
+                                    <td class="tb_bg"><label for="">用户类型</label></td>
+                                    <td>
+                                        <select class="form-control select_down" style="font-size: 13px; color: #666;">
+                                            <option>初级</option>
+                                            <option>中级</option>
+                                            <option>高级</option>
+                                            <option>专家</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+                            <button id="add_btn" type="button" class="btn btn-secondary">确定</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--表格列表-->
+        <table id="tb" class="table">
+            <thead>
+            <tr>
+                <th>姓名</th>
+                <th>工号</th>
+                <th>手机号</th>
+                <th>产品名称</th>
+                <th>技能等级</th>
+                <th>用户类型</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody id="show_tbody">
+            <tr class="">
+                <td>刘晓晓</td>
+                <td>7652101</td>
+                <td>18086667777</td>
+                <td>------</td>
+                <td>一级</td>
+                <td>高级</td>
+                <td>
+                    <a href="http://www.17sucai.com/preview/1528155/2019-01-25/bg/index.html#" class="edit">编辑</a>
+                    <a href="http://www.17sucai.com/preview/1528155/2019-01-25/bg/index.html#" class="del">删除</a>
+                </td>
+            </tr>
+            <tr>
+                <td>李磊</td>
+                <td>7652102</td>
+                <td>18086668888</td>
+                <td>------</td>
+                <td>三级</td>
+                <td>专家</td>
+                <td>
+                    <a href="http://www.17sucai.com/preview/1528155/2019-01-25/bg/index.html#" class="edit">编辑</a>
+                    <a href="http://www.17sucai.com/preview/1528155/2019-01-25/bg/index.html#" class="del">删除</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script src="./static/mejs.js.下载"></script>
+
+
+<div class="modal-backdrop fade show"></div></body></html>

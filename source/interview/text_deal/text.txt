@@ -1,0 +1,90 @@
+
+一、编辑器
+1、Notepad++：意外关闭此软件文件不会丢失；
+2、PSPad：保持上一次编辑状态，这样在你下次打开编辑器的时候可以直接显示原来的文件。此外它还支持通过FTP进行远程编辑，支持多文件的比较等；
+3、Komodo：支持与CVS、Subversion 和Perforce 的集成，也允许直接向服务器 FTP 传递代码；
+4、Vim：和Emacs并列成为类Unix系统用户最喜欢的编辑器；
+5、Gedit：Linux下的一个纯文本编辑器；
+6、UltraEdit：常用编辑器
+7、TextPad：
+8、EditPlus：个人喜欢的文本编辑器
+9、WPS：word，excel，ppt编辑器；
+10、有道云笔记：在线做笔记，比较好用；
+11、SourceInsight：个人最喜欢的代码编辑器，配合astyle很强大，强烈推荐。
+ 
+二、编译器
+1、VC++6.0：学校里面主流的C/C++编译器；
+2、Codeblocks：c/c++编译器，跨平台，提供多种工程模板；
+3、GCC/G++：Linux下c、c++的编译器；
+4、VS2010：推荐使用的c++编译器；
+5、Dev-C++：轻巧的C++编译器，写小型代码推荐使用；
+6、Eclipse：Java编译器；
+7、Keil：51/ARM单片机编译器；
+8、Adobe Dreamweaver：html
+9、VB6.0企业版：VB编译器
+10、Kdevelop： 是 C/C++ 和其他语言的开源插件可扩展IDE；
+ 
+三、串口工具
+1、SecureCRT：功能齐全，支持远程登录；
+2、sscom42：专业的串口调试软件；
+3、PortHelper：功能强大的单片机开发助手，包含常见的多个开发工具，方面初学者快速掌握单片机程序设计；
+四、浏览器
+1、google浏览器：程序员必用浏览器；
+2、360极速浏览器：个人喜好；
+3、世界之窗浏览器；
+4、IE；
+5、Firefox；
+五、截图工具
+1、FSCapture：个人喜欢的截图软件；
+2、极智截图软件
+3、屏幕截图精灵
+4、epsnap
+5、360snapshot
+6、WinSnap
+六、网络应用
+1、百度网盘：初始5G，手机登录送2T空间；
+2、360云盘：空间非常大，方便存储视频文件；
+3、115网盘
+4、ADSafe净网大师：看视频无广告的软件，个人喜欢；
+5、冰点文库：百度文库下载无需点券；
+七、远程登录工具
+1、SecureCRT：功能强大的串口工具，也是很好的远程登录工具；
+2、TeamViewer 11：远程控制、桌面共享和文件传输，至今唯一的一款能穿透内网的远程控制软件
+3、Putty：方便轻巧；
+八、虚拟机软件
+1、VMware：windows/Linux/Mac虚拟机；不需要重开机就能在同一台电脑使用好几个OS；
+2、VirtualBox：开源；
+3、Vitual PC：一台 PC 上同时运行多个操作系统，使用它你不用重新启动系统；
+4、Cygwin：windows平台上运行的类UNIX模拟环境；
+5、colinux：让Linux更好的运行在MicrosoftWindows 本机系统下；
+在windows上模拟linux环境，主要有三种方法：
+1.VMware等虚拟机，缺点：占用系统资源多，运行速度慢。
+2.Cygwin等模拟环境，用windows下的程序模拟实现linux下的功能，缺点：与实际linux环境有差异，并且功能模拟不完全，容易出现冲突。
+3.colinux/andlinux等模拟环境，通过使用一种特殊的驱动程序，使得模拟环境可以运行在ring0特权模式下，与windows交替使用CPU，这样运行模拟环境就像运行本地系统一样，速度非常快，稳定性好。
+九、单片机套件
+1、51单片机：KeiluVision5集成开发环境；CH340驱动：USB转串口驱动；STC_ISP_V480烧录工具；点阵液晶取模软件；Jlink配套软件；AD PCB制作软件等等
+2、stm32单片机：MDK；JLINKV8驱动；mcuisp串口下载工具；PortHelper串口调试工具；Zimo3InstallFULL字模制作软件；ADPCB制作软件；福昕阅读器（PDF）等等；
+十、ARM套件
+1、arm-linux-gcc4.4.6：交叉编译工具
+2、mkimage：制作文件系统镜像工具
+3、minicom：Linux下的串口控制台软件
+4、uboot_TQ210_1.3.4_V1.3.tar.bz2：uboot源代码
+5、Image2LCD.rar：Windows平台下的BMP图片转换为.c或.bin的软件，适用于制作WinCE的NK.bin的logo.c和uboot所使用的logo.bin；
+6、TFTP_Server.rar：Windows平台下的TFTP服务器的安装软件，配合u-boot的TFTP下载功能使用；
+7、Kernel：内核源代码；
+8、busybox：集成了一百多个最常用linux命令和工具的软件；
+十一、其他软件
+1、QT套件：MinGW-gcc440_1；qt-creator-opensource-windows-x86-3.0.1；qt-win-opensource-4.8.5-mingw；
+2、画流程图软件：edrawmax-cn；DiagramDesigner_1.26；Visio2003_SP3_XiaZaiBa；
+3、网盘搜索：合购VIP网盘搜索工具，EV网盘搜索器，hgVIPwpsssq_piaodown等等；
+4、屏幕录像专家：bdcamsetup(超级高清录像软件)，屏幕录像专家V2015；
+5、网络三剑客：Adobe Dreamweaver CS3；Fireworks；photoshopcs5；Flash；
+6、反汇编工具：HA_OllyDBG_1.10_second_cao_cong_fix
+7、小型数据库：sqlite3；
+8、wify共享：猎豹；WiFi共享精灵；
+9、U盘启动盘制作软件：老毛桃，大白菜，UltraISO等等；
+10、系统一键还原：lmtghost3.0；
+11、帮助文档：C_C++开发API帮助文档；
+12、版本控制：git，svn，cvs等；
+13、项目进度管理：redmine；
+14、文件比较工具：merge；

@@ -1,0 +1,63 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lewic.mapper.StudentMapper">
+
+    <resultMap id="Student" type="com.lewic.entity.Student">
+        <result column="id" jdbcType="VARCHAR" property="sid"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="mobile" jdbcType="VARCHAR" property="mobile"/>
+    </resultMap>
+
+    <select id="listStudent" resultMap="Student">
+        SELECT
+        id,
+        name,
+        mobile
+        FROM
+        student
+        WHERE 1 = 1
+        ORDER BY id
+        <if test="page != null">
+            limit #{page.startRow,jdbcType = INTEGER},#{page.pageSize,jdbcType = INTEGER}
+        </if>
+    </select>
+
+    <select id="getStudent" resultMap="Student">
+        SELECT
+        id,
+        name,
+        mobile
+        FROM
+        student
+        where 1 = 1
+        <if test="sid != null and sid != ''">
+            AND id = #{sid,jdbcType = VARCHAR}
+        </if>
+    </select>
+
+    <select id="getStudentCount" resultType="java.lang.Integer">
+        SELECT count(id)
+        FROM student
+    </select>
+
+    <insert id="insertStudent" parameterType="com.lewic.entity.Student">
+        INSERT INTO student (name,
+                             mobile)
+        VALUES (#{name, jdbcType = VARCHAR},
+                #{mobile, jdbcType = VARCHAR})
+    </insert>
+
+    <update id="updateStudent" parameterType="com.lewic.entity.Student">
+        UPDATE student
+        SET name   = #{name, jdbcType = VARCHAR},
+            mobile = #{mobile, jdbcType = VARCHAR}
+        WHERE id = #{sid,jdbcType = VARCHAR}
+    </update>
+
+    <delete id="deleteStudent" parameterType="java.lang.String">
+        DELETE
+        FROM student
+        WHERE id = #{sid,jdbcType = VARCHAR}
+    </delete>
+</mapper>

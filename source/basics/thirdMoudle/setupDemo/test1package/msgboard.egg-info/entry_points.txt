@@ -1,0 +1,4 @@
+
+        [console_scripts]
+        msgboard = messageboard.flasks:main
+    

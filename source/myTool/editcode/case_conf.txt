@@ -1,0 +1,1036 @@
+[test_post_ikepolicies]
+req_body =
+
+
+[test_post_ipsec_connections]
+req_body =
+
+
+[test_post_ipsecpolicies]
+req_body =
+
+
+[test_post_vpns]
+req_body =
+
+
+[test_put_vpns_id]
+req_body =
+
+
+[test_delete_vpns_id]
+req_body =
+
+
+[test_post_host_aggregates]
+req_body =
+
+
+[test_put_host_aggregates_id]
+req_body =
+
+
+[test_delete_host_aggregates_id]
+req_body =
+
+
+[test_put_host_aggregates_id_add]
+req_body =
+
+
+[test_put_host_aggregates_id_remove]
+req_body =
+
+
+[test_post_instances]
+req_body =
+
+
+[test_delete_instances]
+req_body =
+
+
+[test_put_instances_id]
+req_body =
+
+
+[test_delete_instances_id]
+req_body =
+
+
+[test_post_instances_id_backup]
+req_body =
+
+
+[test_post_instances_id_forceRestart]
+req_body =
+
+
+[test_post_instances_id_image_imageName_type_type]
+req_body =
+
+
+[test_post_instances_id_liveMigration_hostName]
+req_body =
+
+
+[test_post_instances_id_os_getVNCConsole]
+req_body =
+
+
+[test_put_instances_id_os_getVNCConsole]
+req_body =
+
+
+[test_delete_instances_id_os_getVNCConsole]
+req_body =
+
+
+[test_options_instances_id_os_getVNCConsole]
+req_body =
+
+
+[test_patch_instances_id_os_getVNCConsole]
+req_body =
+
+
+[test_post_instances_id_pause]
+req_body =
+
+
+[test_post_instances_id_ports]
+req_body =
+
+
+[test_delete_instances_id_ports_portId]
+req_body =
+
+
+[test_post_instances_id_reset_password]
+req_body =
+
+
+[test_post_instances_id_resize_flavorId]
+req_body =
+
+
+[test_post_instances_id_restart]
+req_body =
+
+
+[test_post_instances_id_resume]
+req_body =
+
+
+[test_post_instances_id_snapshots]
+req_body =
+
+
+[test_post_instances_id_start]
+req_body =
+
+
+[test_post_instances_id_stop]
+req_body =
+
+
+[test_post_instances_id_suspend]
+req_body =
+
+
+[test_post_instances_id_unpause]
+req_body =
+
+
+[test_post_instances_id_volumes]
+req_body =
+
+
+[test_delete_instances_id_volumes_volumeId]
+req_body =
+
+
+[test_delete_instances_reclaim]
+req_body =
+
+
+[test_post_instances_startHA]
+req_body =
+
+
+[test_post_instances_stopHA]
+req_body =
+
+
+[test_put_instances_unDelete]
+req_body =
+
+
+[test_post_vdi_instances]
+req_body =
+
+
+[test_post_volumeQos]
+req_body =
+
+
+[test_delete_volumeQos_id]
+req_body =
+
+
+[test_put_volumeQos_id_attach_volumeTypeId]
+req_body =
+
+
+[test_put_volumeQos_id_detach_volumeTypeId]
+req_body =
+
+
+[test_post_volumes]
+req_body =
+
+
+[test_delete_volumes]
+req_body =
+
+
+[test_put_volumes_id]
+req_body =
+
+
+[test_delete_volumes_id]
+req_body =
+
+
+[test_put_volumes_id_size]
+req_body =
+
+
+[test_delete_volumes_reclaim]
+req_body =
+
+
+[test_put_volumes_unDelete]
+req_body =
+
+
+[test_post_volumes_type]
+req_body =
+
+
+[test_put_volumes_type_id]
+req_body =
+
+
+[test_delete_volumes_type_id]
+req_body =
+
+
+[test_put_regions_id]
+req_body =
+
+
+[test_post_rating_init]
+req_body =
+
+
+[test_post_rating_policies_id]
+req_body =
+
+
+[test_post_rating_services]
+req_body =
+
+
+[test_post_rating_tenants]
+req_body =
+
+
+[test_put_rating_tenants_id]
+req_body =
+
+
+[test_delete_rating_tenants_id]
+req_body =
+
+
+[test_put_rating_versions_id]
+req_body =
+
+
+[test_delete_rating_versions_id]
+req_body =
+
+
+[test_post_templates]
+req_body =
+
+
+[test_put_templates_id]
+req_body =
+
+
+[test_delete_templates_id]
+req_body =
+
+
+[test_post_backup_tasks]
+req_body =
+
+
+[test_put_backup_tasks_id]
+req_body =
+
+
+[test_delete_backup_tasks_id]
+req_body =
+
+
+[test_post_backups]
+req_body =
+
+
+[test_delete_backups_id]
+req_body =
+
+
+[test_post_backups_id_volumeId]
+req_body =
+
+
+[test_post_subnets]
+req_body =
+
+
+[test_put_subnets_id]
+req_body =
+
+
+[test_delete_subnets_id]
+req_body =
+
+
+[test_post_subnets_batch]
+req_body =
+
+
+[test_post_security_groups]
+req_body =
+
+
+[test_put_security_groups_id]
+req_body =
+
+
+[test_delete_security_groups_id]
+req_body =
+
+
+[test_put_security_groups_id_addPort]
+req_body =
+
+
+[test_put_security_groups_id_port_portId]
+req_body =
+
+
+[test_delete_security_groups_id_port_portId]
+req_body =
+
+
+[test_put_security_groups_id_removePort]
+req_body =
+
+
+[test_delete_security_groups_id_removePort]
+req_body =
+
+
+[test_put_security_groups_id_rules]
+req_body =
+
+
+[test_delete_security_groups_id_rules_ruleId]
+req_body =
+
+
+[test_post_security_group_rules]
+req_body =
+
+
+[test_delete_security_group_rules_id]
+req_body =
+
+
+[test_post_k8scontainers]
+req_body =
+
+
+[test_post_k8scontainers_containers]
+req_body =
+
+
+[test_delete_k8scontainers_containers_id]
+req_body =
+
+
+[test_delete_k8scontainers_namespaces_name]
+req_body =
+
+
+[test_post_k8scontainers_volumes]
+req_body =
+
+
+[test_put_k8scontainers_volumes_id]
+req_body =
+
+
+[test_delete_k8scontainers_volumes_id]
+req_body =
+
+
+[test_post_containerimages]
+req_body =
+
+
+[test_put_containerimages_id]
+req_body =
+
+
+[test_delete_containerimages_id]
+req_body =
+
+
+[test_post_containerimages_id_file]
+req_body =
+
+
+[test_put_containerimages_id_file]
+req_body =
+
+
+[test_put_containerimages_id_file_filename]
+req_body =
+
+
+[test_put_containerimages_id_status_status]
+req_body =
+
+
+[test_post_keypairs]
+req_body =
+
+
+[test_put_keypairs]
+req_body =
+
+
+[test_delete_keypairs]
+req_body =
+
+
+[test_delete_keypairs_name]
+req_body =
+
+
+[test_put_workflow_processDefinition_id]
+req_body =
+
+
+[test_put_workflow_processDefinition_id_action]
+req_body =
+
+
+[test_put_workflow_step_id]
+req_body =
+
+
+[test_put_workflow_step_id_action]
+req_body =
+
+
+[test_post_workflow_steps]
+req_body =
+
+
+[test_put_configurations]
+req_body =
+
+
+[test_put_overcommits]
+req_body =
+
+
+[test_post_dbinstances]
+req_body =
+
+
+[test_delete_dbinstances_id]
+req_body =
+
+
+[test_delete_dbinstances_id_dbs_dbId]
+req_body =
+
+
+[test_post_dbinstances_id_restart]
+req_body =
+
+
+[test_post_dbinstances_id_users]
+req_body =
+
+
+[test_delete_dbinstances_id_users_userId]
+req_body =
+
+
+[test_post_dbinstances_id_users_userId_databases]
+req_body =
+
+
+[test_put_dbinstances_id_users_userId_databases]
+req_body =
+
+
+[test_delete_dbinstances_id_users_userId_databases]
+req_body =
+
+
+[test_post_dbinstances_instanceId_dbs]
+req_body =
+
+
+[test_delete_operations]
+req_body =
+
+
+[test_post_chassis]
+req_body =
+
+
+[test_put_workflow_processInstance_id]
+req_body =
+
+
+[test_delete_workflow_processInstance_id]
+req_body =
+
+
+[test_post_workflow_task_id_action]
+req_body =
+
+
+[test_delete_workflow_role_id]
+req_body =
+
+
+[test_post_workflow_role_origUserAccount_delegateRole_targetUserAccount]
+req_body =
+
+
+[test_delete_workflow_role_delegateRole_id]
+req_body =
+
+
+[test_post_workflow_roles]
+req_body =
+
+
+[test_put_workflow_roles_id]
+req_body =
+
+
+[test_post_floating_ips]
+req_body =
+
+
+[test_put_floating_ips_id]
+req_body =
+
+
+[test_delete_floating_ips_id]
+req_body =
+
+
+[test_delete_floating_ips_id_port]
+req_body =
+
+
+[test_put_floating_ips_id_port_portId]
+req_body =
+
+
+[test_post_bare_metals]
+req_body =
+
+
+[test_put_bare_metals_id]
+req_body =
+
+
+[test_delete_bare_metals_id]
+req_body =
+
+
+[test_patch_bare_metals_id]
+req_body =
+
+
+[test_delete_bare_metals_delete]
+req_body =
+
+
+[test_post_bare_metals_instances]
+req_body =
+
+
+[test_put_bare_metals_power_action]
+req_body =
+
+
+[test_post_auth_sign_up]
+req_body =
+
+
+[test_put_auth_sign_up]
+req_body =
+
+
+[test_delete_auth_sign_up]
+req_body =
+
+
+[test_options_auth_sign_up]
+req_body =
+
+
+[test_patch_auth_sign_up]
+req_body =
+
+
+[test_put_user_tenant_name]
+req_body =
+
+
+[test_post_users]
+req_body =
+
+
+[test_delete_users]
+req_body =
+
+
+[test_delete_users_id]
+req_body =
+
+
+[test_put_users_id_action]
+req_body =
+
+
+[test_put_users_id_bind_ddh]
+req_body =
+
+
+[test_delete_users_destroy]
+req_body =
+
+
+[test_post_skins]
+req_body =
+
+
+[test_post_alarms]
+req_body =
+
+
+[test_put_alarms_id]
+req_body =
+
+
+[test_delete_alarms_id]
+req_body =
+
+
+[test_put_alarms_id_action]
+req_body =
+
+
+[test_post_alarms_id_resources]
+req_body =
+
+
+[test_delete_alarms_id_resources_resourceId]
+req_body =
+
+
+[test_post_alarms_id_rules]
+req_body =
+
+
+[test_delete_alarms_id_rules]
+req_body =
+
+
+[test_post_monitors]
+req_body =
+
+
+[test_put_monitors_id]
+req_body =
+
+
+[test_delete_monitors_id]
+req_body =
+
+
+[test_put_monitors_id_tenantId]
+req_body =
+
+
+[test_delete_monitors_id_tenantId]
+req_body =
+
+
+[test_post_snapshots]
+req_body =
+
+
+[test_put_snapshots_id]
+req_body =
+
+
+[test_delete_snapshots_id]
+req_body =
+
+
+[test_post_ports]
+req_body =
+
+
+[test_put_ports_id]
+req_body =
+
+
+[test_delete_ports_id]
+req_body =
+
+
+[test_put_tenant_language_locale]
+req_body =
+
+
+[test_post_tenants]
+req_body =
+
+
+[test_put_tenants_id]
+req_body =
+
+
+[test_delete_tenants_id]
+req_body =
+
+
+[test_put_tenants_id_add]
+req_body =
+
+
+[test_put_tenants_id_addRole]
+req_body =
+
+
+[test_put_tenants_id_remove]
+req_body =
+
+
+[test_post_networkQos]
+req_body =
+
+
+[test_post_networks]
+req_body =
+
+
+[test_put_networks_id]
+req_body =
+
+
+[test_delete_networks_id]
+req_body =
+
+
+[test_post_networks_basic]
+req_body =
+
+
+[test_post_roles]
+req_body =
+
+
+[test_put_roles_id]
+req_body =
+
+
+[test_delete_roles_id]
+req_body =
+
+
+[test_post_currencies]
+req_body =
+
+
+[test_delete_currencies_id]
+req_body =
+
+
+[test_post_auth_checkOldPass]
+req_body =
+
+
+[test_put_auth_logout]
+req_body =
+
+
+[test_post_auth_modify]
+req_body =
+
+
+[test_post_auth_tokens]
+req_body =
+
+
+[test_post_loadbalances]
+req_body =
+
+
+[test_delete_loadbalances_id]
+req_body =
+
+
+[test_delete_loadbalances_id_ports_portId]
+req_body =
+
+
+[test_post_loadbalances_id_posts]
+req_body =
+
+
+[test_post_billings]
+req_body =
+
+
+[test_put_billings_id]
+req_body =
+
+
+[test_delete_billings_id]
+req_body =
+
+
+[test_put_billings_id_billingId]
+req_body =
+
+
+[test_post_pools]
+req_body =
+
+
+[test_put_pools_id]
+req_body =
+
+
+[test_delete_pools_id]
+req_body =
+
+
+[test_post_stacks]
+req_body =
+
+
+[test_put_stacks_id]
+req_body =
+
+
+[test_delete_stacks_id]
+req_body =
+
+
+[test_post_flavors]
+req_body =
+
+
+[test_put_flavors_id]
+req_body =
+
+
+[test_delete_flavors_id]
+req_body =
+
+
+[test_post_flavors_id_extraspecs]
+req_body =
+
+
+[test_post_routers]
+req_body =
+
+
+[test_put_routers_id]
+req_body =
+
+
+[test_delete_routers_id]
+req_body =
+
+
+[test_delete_routers_id_disabledGateway]
+req_body =
+
+
+[test_put_routers_id_enabledGateway]
+req_body =
+
+
+[test_put_routers_id_ports_portId]
+req_body =
+
+
+[test_delete_routers_id_ports_portId]
+req_body =
+
+
+[test_put_routers_id_subnets_subnetId]
+req_body =
+
+
+[test_delete_routers_id_subnets_subnetId]
+req_body =
+
+
+[test_post_notification_lists]
+req_body =
+
+
+[test_put_notification_lists_id]
+req_body =
+
+
+[test_delete_notification_lists_id]
+req_body =
+
+
+[test_post_notification_lists_id_terminals]
+req_body =
+
+
+[test_delete_notification_lists_id_terminals_pid]
+req_body =
+
+
+[test_post_notification_lists_terminals_id_verify]
+req_body =
+
+
+[test_post_notifications]
+req_body =
+
+
+[test_delete_notifications]
+req_body =
+
+
+[test_put_notifications_id]
+req_body =
+
+
+[test_put_notifications_read]
+req_body =
+
+
+[test_put_notifications_unread]
+req_body =
+
+
+[test_post_quota_templates]
+req_body =
+
+
+[test_put_quota_templates_id]
+req_body =
+
+
+[test_delete_quota_templates_id]
+req_body =
+
+
+[test_put_quota_templates_id_tenantId]
+req_body =
+
+
+[test_put_quota_templates_id_tenants]
+req_body =
+
+
+[test_put_tenants_quota_templates]
+req_body =
+
+
+[test_post_images]
+req_body =
+
+
+[test_put_images_id]
+req_body =
+
+
+[test_delete_images_id]
+req_body =
+
+
+[test_post_images_id_file]
+req_body =
+
+
+[test_put_images_id_file]
+req_body =
+
+
+[test_put_images_id_file_filename]
+req_body =
+
+
+[test_put_images_id_status_status]
+req_body =
+
+
+[test_post_firewalls]
+req_body =
+
+
+[test_put_firewalls_id]
+req_body =
+
+
+[test_delete_firewalls_id]
+req_body =
+
+
+[test_post_firewalls_id_ports]
+req_body =
+
+
+[test_delete_firewalls_id_ports_portId]
+req_body =
+
+
+[test_post_firewalls_id_start]
+req_body =
+
+
+[test_post_firewalls_id_stop]
+req_body =
+
+
