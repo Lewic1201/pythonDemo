@@ -11,7 +11,7 @@ class FileService:
 
     def get_filelist(self, request):
         """获取当前文件夹文件"""
-        dir0 = r'E:\lewic\pycharm\workspace\webDemo\DjangoDemo'
+        dir0 = r'E:\Project\PycharmProjects\commonTool\org.lewic\script'
         if 'currentDir' in request:
             dir0 = request['currentDir']
             if 'dirName' in request:
@@ -31,7 +31,7 @@ class FileService:
 
     def get_all_file(self, request):
         """获取当前文件夹文件"""
-        dir0 = r'E:\lewic\pycharm\workspace\webDemo\DjangoDemo'
+        dir0 = r'E:\Project\PycharmProjects\commonTool\org.lewic\script'
         if 'currentDir' in request:
             dir0 = request['currentDir']
             if 'dirName' in request:

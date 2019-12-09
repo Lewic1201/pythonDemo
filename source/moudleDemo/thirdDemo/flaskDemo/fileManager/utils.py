@@ -11,7 +11,6 @@ import os
 import os.path as op
 import re
 import time
-import winshell
 
 from source.utils.logs import logger
 from source.application.pingyin.pinyin import PinYin
