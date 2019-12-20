@@ -1,0 +1,31 @@
+/*全局样式*/
+body{color:#000;background:#fff;font:12px/1.6 Verdana, Helvetica, sans-serif;text-align:center;}
+body,ul,ol,li,p,h1,h2,h3,h4,h5,h6,form,fieldset,table,td,img,div,tr{margin:0;padding:0;}
+input,select{font-size:12px;vertical-align:middle;}
+body div{text-align:left;}
+textarea,input{word-wrap:break-word;word-break:break-all;padding:0px;}
+li{list-style-type:none;}
+img{border:0 none;}
+a:link, a:visited{color:#333;text-decoration:none;outline:none;}
+a:hover{color:#0E4470;text-decoration:underline;}
+h1{font-size:24px;}
+h2{font-size:20px;}
+h3{font-size:18px;}
+h4{font-size:16px;}
+h5{font-size:14px;}
+h6{font-size:12px;}
+.block{width:1000px;height:auto;clear:both;margin:0 auto;}
+.clearfix:after{visibility:hidden;display:block;font-size:0;content:" ";clear:both;height:0;}
+.clearfix{display:inline-table;}
+*html .clearfix{height:1%;}
+.clearfix{display:block;}
+
+/*客服样式*/
+#haiiskefu{width:112px;position:fixed;right:-80px;top:50%;margin-top:-283px;z-index:999;}
+#haiiskefu .kfleft{width:32px;height:168px;background:url(../images/kefu.png) no-repeat;cursor:pointer;float:left;}
+#haiiskefu ul{width:80px;height:566px;background:url(../images/kefu1.png) no-repeat;float:left;}
+#haiiskefu ul li a{width:80px;height:80px;display:block;margin-bottom:1px;background:#EEE;-moz-opacity:0.4;filter:alpha(opacity=40);opacity:0.4;}
+#haiiskefu ul li a:hover{-moz-opacity:0;filter:alpha(opacity=0);opacity:0;transition:all 0.5s linear;-webkit-transition:all 0.5s linear;-moz-transition:all 0.5s linear;-o-transition:all 0.5s linear;}
+/*ie6*/
+*html{overflow:hidden;}
+*html #haiiskefu{position:absolute;right:expression(eval(document.documentElement.scrollLeft))-80;top:expression(eval(document.documentElement.scrollTop))-283;}
