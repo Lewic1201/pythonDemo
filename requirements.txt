@@ -7,7 +7,7 @@ Flask==1.0.2
 gevent==1.4.0
 greenlet==0.4.15
 Jinja2>=2.10.1
-lxml==4.2.4
+lxml==4.6.3
 matplotlib==3.0.1
 numpy==1.15.1
 opencv-python==3.4.3.18
