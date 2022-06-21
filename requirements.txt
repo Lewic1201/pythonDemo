@@ -9,7 +9,7 @@ greenlet==0.4.15
 Jinja2>=2.10.1
 lxml==4.2.4
 matplotlib==3.0.1
-numpy==1.15.1
+numpy==1.22.0
 opencv-python==3.4.3.18
 paramiko==2.4.2
 Pillow==5.2.0
